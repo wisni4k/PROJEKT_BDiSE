@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 /*create table DocPZpos(
+id_docpzpos int(5) primary key auto_increment;
 id_DocPZ int (5) ,
 pozycja int(5),
 id_product int (5),
@@ -15,12 +16,17 @@ ilosc_palet int(5)
 );*/
 
 @Entity
-@Table(name = "docpzpos")
+@Table(name = "docpzpos", uniqueConstraints = { @UniqueConstraint(columnNames = { "id_docpzpos" }) })
 public class Docpzpos {
 	
+	@Id
 	@Basic(optional = false)
 	@Column(name = "id_docpzpos")
 	private int id_docpzpos;
+	
+	@Basic(optional = false)
+	@Column(name = "id_docpz")
+	private int id_docpz;
 
 	@Basic(optional = false)
 	@Column(name = "pozycja")
@@ -39,12 +45,21 @@ public class Docpzpos {
 	
 	//////////getery setery///////////
 
+	
 	public int getId_docpzpos() {
 		return id_docpzpos;
 	}
 
 	public void setId_docpzpos(int id_docpzpos) {
 		this.id_docpzpos = id_docpzpos;
+	}
+
+	public int getId_docpz() {
+		return id_docpz;
+	}
+
+	public void setId_docpz(int id_docpz) {
+		this.id_docpz = id_docpz;
 	}
 
 	public int getPozycja() {
@@ -70,6 +85,9 @@ public class Docpzpos {
 	public void setIlosc_palet(int ilosc_palet) {
 		this.ilosc_palet = ilosc_palet;
 	}
+	
+
+	
 	
 	
 
