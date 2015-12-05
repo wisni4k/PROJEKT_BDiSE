@@ -21,6 +21,8 @@ fax varchar(15),
 NIP varchar(15)
 );*/
 
+import pl.warehouse.model.Invoice;
+
 @Entity
 @Table(name = "customer", uniqueConstraints = { @UniqueConstraint(columnNames = { "id_customer" }) })
 public class Customer {
@@ -57,11 +59,60 @@ public class Customer {
 	
 	
 	////////////relacje////////////
+	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "customer")
+	@Column(nullable = false)
+	private List<Invoice> invoice = new ArrayList<>();
 	
+	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "customer")
+	@Column(nullable = false)
+	private List<Product> product = new ArrayList<>();
+	
+	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "customer")
+	@Column(nullable = false)
+	private List<Docwz> docwz = new ArrayList<>();
+	
+	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "customer")
+	@Column(nullable = false)
+	private List<Docpz> docpz = new ArrayList<>();
+	
+	
+
 	
 	///////getery setery///////
 	
 	
+	public List<Invoice> getInvoice() {
+		return invoice;
+	}
+
+	public void setInvoice(List<Invoice> invoice) {
+		this.invoice = invoice;
+	}
+
+	public List<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
+
+	public List<Docwz> getDocwz() {
+		return docwz;
+	}
+
+	public void setDocwz(List<Docwz> docwz) {
+		this.docwz = docwz;
+	}
+
+	public List<Docpz> getDocpz() {
+		return docpz;
+	}
+
+	public void setDocpz(List<Docpz> docpz) {
+		this.docpz = docpz;
+	}
+
 	public int getId_customer() {
 		return id_customer;
 	}

@@ -26,8 +26,20 @@ public class Uslugi {
 	
 	////////relacje//////
 	
+	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "customer")
+	@Column(nullable = false)
+	private List<Invoiceposition> invoiceposition = new ArrayList<>();
+	
 	
 	///////getery setery////////
+
+	public List<Invoiceposition> getInvoiceposition() {
+		return invoiceposition;
+	}
+
+	public void setInvoiceposition(List<Invoiceposition> invoiceposition) {
+		this.invoiceposition = invoiceposition;
+	}
 
 	public int getId_customer() {
 		return id_customer;

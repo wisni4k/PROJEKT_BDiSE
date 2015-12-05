@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import pl.warehouse.model.Invoice;
+
 /*create table pracownik(
 id_pracownik int (5) primary key auto_increment,
 nazwisko varchar(30),
@@ -66,6 +68,19 @@ public class Pracownik {
 	
 	//////relacje////////
 	
+	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "customer")
+	@Column(nullable = false)
+	private List<Wyplata> wyplata = new ArrayList<>();
+
+	
+	public List<Wyplata> getWyplata() {
+		return wyplata;
+	}
+
+	public void setWyplata(List<Wyplata> wyplata) {
+		this.wyplata = wyplata;
+	}
+
 	////////getery setery///////
 	public int getId_pracownik() {
 		return id_pracownik;

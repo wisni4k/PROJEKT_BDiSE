@@ -4,7 +4,10 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -42,9 +45,31 @@ public class Docwzpos {
 	private int ilosc_palet;
 	
 	////////relacje////////
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_product", referencedColumnName = "id_product", nullable = false, insertable = false, updatable = false)
+	private Product product;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_docwz", referencedColumnName = "id_docwz", nullable = false, insertable = false, updatable = false)
+	private Docwz docwz;
 	
 	//////////getery setery///////////
+
+	public Docwz getDocwz() {
+		return docwz;
+	}
+
+	public void setDocwz(Docwz docwz) {
+		this.docwz = docwz;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
 	public int getId_customer() {
 		return id_customer;

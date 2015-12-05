@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import pl.warehouse.model.Invoice;
+
 /*create table pozycja(
 id_pozycja int (5) primary key auto_increment,
 X int (5),
@@ -45,11 +47,35 @@ public class Pozycja {
 	@Column(name = "status_pozycja")
 	private int status_pozycja;
 	
+	/////////////default values/////////////
+	
+	/*@PrePersist
+	public void prePersist() {
+	    if(this.status_pozycja == null) //We set default value in case if the value is not set yet.
+	    	this.status_pozycja = 1;
+	}*/
+	
+	
+	///////nie dziala tak gdy zmienna jest int (null), 
+	////////ewentaulnie mozna zmienic na varchar w bazie i tutaj na int///
+	
 	
 	////////////relacje////////////
 	
+	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "customer")
+	@Column(nullable = false)
+	private List<Paleta> paleta = new ArrayList<>();
+
 	
 	///////getery setery///////
+
+	public List<Paleta> getPaleta() {
+		return paleta;
+	}
+
+	public void setPaleta(List<Paleta> paleta) {
+		this.paleta = paleta;
+	}
 
 	public int getId_pozycja() {
 		return id_pozycja;

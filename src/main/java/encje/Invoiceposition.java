@@ -7,7 +7,10 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -72,8 +75,52 @@ public class Invoiceposition {
 	
 	/////////////////relacje/////////////
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_product", referencedColumnName = "id_product", nullable = false, insertable = false, updatable = false)
+	private Product product;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_uslugi", referencedColumnName = "id_uslugi", nullable = false, insertable = false, updatable = false)
+	private Uslugi uslugi;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_invoice", referencedColumnName = "id_invoice", nullable = false, insertable = false, updatable = false)
+	private Invoice invoice;
+	
+	
+	
 	
 	//////////getery setery/////////////
+
+
+	public Uslugi getUslugi() {
+		return uslugi;
+	}
+
+
+	public void setUslugi(Uslugi uslugi) {
+		this.uslugi = uslugi;
+	}
+
+
+	public Invoice getInvoice() {
+		return invoice;
+	}
+
+
+	public void setInvoice(Invoice invoice) {
+		this.invoice = invoice;
+	}
+
+
+	public Product getProduct() {
+		return product;
+	}
+
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
 
 	public int getId_invoiceposition() {

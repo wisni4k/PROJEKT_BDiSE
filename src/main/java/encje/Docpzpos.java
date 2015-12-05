@@ -3,9 +3,14 @@ package encje;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+
+import pl.warehouse.model.Customer;
 
 /*create table DocPZpos(
 id_docpzpos int(5) primary key auto_increment;
@@ -42,10 +47,33 @@ public class Docpzpos {
 	
 	////////relacje////////
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_product", referencedColumnName = "id_product", nullable = false, insertable = false, updatable = false)
+	private Product product;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_docpz", referencedColumnName = "id_docpz", nullable = false, insertable = false, updatable = false)
+	private Docpz docpz;
 	
 	//////////getery setery///////////
 
 	
+	public Docpz getDocpz() {
+		return docpz;
+	}
+
+	public void setDocpz(Docpz docpz) {
+		this.docpz = docpz;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
 	public int getId_docpzpos() {
 		return id_docpzpos;
 	}
