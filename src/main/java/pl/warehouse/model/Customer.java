@@ -31,6 +31,7 @@ public class Customer {
 	@Basic(optional = false)
 	@Column(name = "id_customer")
 	private int id_customer;
+	
 
 	@Basic(optional = false)
 	@Column(name = "customer_name")

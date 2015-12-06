@@ -6,7 +6,6 @@ angularKlient.config(["RestangularProvider",function(RestangularProvider){
 
 angularKlient.controller("MainCtrl",["Restangular","$scope",function(Restangular,$scope){
 	$scope.getCustomer = function(customer) {
-		console.log("6");
 		var User = Restangular.all('customers');
 		var oneUser = Restangular.one('customers', customer.id);
 		oneUser.get().then(function(user) {
@@ -16,7 +15,6 @@ angularKlient.controller("MainCtrl",["Restangular","$scope",function(Restangular
       };
       
     $scope.getAllCustomers = function() {
-    	console.log("5");
     	var User = Restangular.all('customers');
     	User.getList()
     	.then(function(User) {

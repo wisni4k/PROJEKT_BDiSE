@@ -27,6 +27,12 @@ public class Product {
 	@Basic(optional = false)
 	@Column(name = "id_product")
 	private int id_product;
+	
+	@Basic(optional = false)
+	@Column(name = "id_product", insertable = false, updatable = false)
+	private int id_prod;
+	
+
 
 	@Basic(optional = false)
 	@Column(name = "nazwa")
@@ -59,6 +65,15 @@ public class Product {
 	private Customer customer;
 
 	/////// getery setery///////
+
+
+	public int getId_prod() {
+		return id_prod;
+	}
+
+	public void setId_prod(int id_prod) {
+		this.id_prod = id_prod;
+	}
 
 	public Customer getCustomer() {
 		return customer;
