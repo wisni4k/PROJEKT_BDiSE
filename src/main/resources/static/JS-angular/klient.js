@@ -15,13 +15,11 @@ angularKlient.controller("MainCtrl",["Restangular","$scope","$filter",function(R
 			});
       };
       
-    $scope.getAllCustomers = function() {
-    	var User = Restangular.all('customers');
-    	User.getList()
-    	.then(function(User) {
-    	  $scope.users = User[0];
-    	  $scope.naglowek = 1;
-    	})
-    }
+
+    var User = Restangular.all('customers');
+  	User.getList().then(function(User) {
+  	  $scope.users = User[0];
+  	  $scope.naglowek = 1;
+  	})
 	
 }])

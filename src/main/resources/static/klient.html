@@ -31,17 +31,18 @@
     <br>
     
     <div class="container">
-    	<center>
+    	
     	<div class="jumbotron">
 	    	<div class="btn-group" role="group">  		
-	  			<button type="button" class="btn btn-default" ng-click="getAllCustomers()">Pokaż wszytskich</button>
-	  			<button type="button" class="btn btn-default" ng-click="getAllCustomers()">Szukaj</button>
-	  			<input type="text" class="form-control" ng-model="wyszukiwarka">
+	  			<div class="input-group">
+				<span class="input-group-addon">Szukaj:</span>
+				<input type="text" class="form-control" ng-model="wyszukiwarka">
+			</div>
 	  		</div>
 	  	</div>
-	  	</center>
+	  	
     	<br>
-		<div class="jumbotron" ng-if="naglowek == 1">
+		<div class="jumbotron">
 			<div class="table-resposive">
 				<table class="table table-hover">
 				<thead>
