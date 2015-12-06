@@ -6,6 +6,4 @@ import pl.warehouse.model.Customer;
 
 public interface CustomerRepository extends CrudRepository<Customer, Integer> {
 
-	// List<Customers> findByCustomerID(@Param("id") String id);
-
 }

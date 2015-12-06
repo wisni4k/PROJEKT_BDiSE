@@ -1,4 +1,4 @@
-package encje;
+package pl.warehouse.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,10 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+
 @Entity
 @Table(name = "uslugi", uniqueConstraints = { @UniqueConstraint(columnNames = { "id_uslugi" }) })
 public class Uslugi {
-	
+
 	@Id
 	@Basic(optional = false)
 	@Column(name = "id_uslugi")
@@ -23,15 +24,14 @@ public class Uslugi {
 	@Basic(optional = false)
 	@Column(name = "opis")
 	private String opis;
-	
-	////////relacje//////
-	
-	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "customer")
+
+	//////// relacje//////
+
+	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "uslugi")
 	@Column(nullable = false)
 	private List<Invoiceposition> invoiceposition = new ArrayList<>();
-	
-	
-	///////getery setery////////
+
+	/////// getery setery////////
 
 	public List<Invoiceposition> getInvoiceposition() {
 		return invoiceposition;
@@ -56,7 +56,5 @@ public class Uslugi {
 	public void setOpis(String opis) {
 		this.opis = opis;
 	}
-	
-	
 
 }

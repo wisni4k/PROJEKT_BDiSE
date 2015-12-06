@@ -1,4 +1,5 @@
-package encje;
+package pl.warehouse.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,53 +15,40 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import pl.warehouse.model.Customer;
-
-//import pl.warehouse.model.Invoice;
-
-
-
-/*CREATE TABLE Invoice(
-id_invoice int(5) primary key auto_increment,
+/*create table DocPZ(
+id_DocPZ int(5) primary key auto_increment,
 id_customer int(5),
-kwota int(50) DEFAULT 0
-);
-*/
+data_przyjecia varchar(50)
+);*/
 @Entity
-@Table(name = "invoice", uniqueConstraints = { @UniqueConstraint(columnNames = { "id_invoice" }) })
-public class Invoice {
-	
+@Table(name = "docpz", uniqueConstraints = { @UniqueConstraint(columnNames = { "id_docpz" }) })
+public class Docpz {
+
 	@Id
 	@Basic(optional = false)
-	@Column(name = "id_invoice")
-	private int id_invoice;
+	@Column(name = "id_docpz")
+	private int id_docpz;
 
 	@Basic(optional = false)
 	@Column(name = "id_customer")
 	private int id_customer;
-	
+
 	@Basic(optional = false)
-	@Column(name = "kwota")
-	private int kwota;
+	@Column(name = "data_przyjecia")
+	private String data_przyjecia;
 
+	/////////// relacje///////////
 
-	
-	
-	///////////relacje////////////
-	
-	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "customer")
+	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "docpz")
 	@Column(nullable = false)
-	private List<Invoiceposition> invoiceposition = new ArrayList<>();
-	
+	private List<Docpzpos> docpzpos = new ArrayList<>();
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_customer", referencedColumnName = "id_customer", nullable = false, insertable = false, updatable = false)
 	private Customer customer;
 
-	
-	////////getery setery/////////
-	
-	
-	
+	///////// getery setery/////////
+
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -69,20 +57,20 @@ public class Invoice {
 		this.customer = customer;
 	}
 
-	public List<Invoiceposition> getInvoiceposition() {
-		return invoiceposition;
+	public List<Docpzpos> getDocpzpos() {
+		return docpzpos;
 	}
 
-	public void setInvoiceposition(List<Invoiceposition> invoiceposition) {
-		this.invoiceposition = invoiceposition;
+	public void setDocpzpos(List<Docpzpos> docpzpos) {
+		this.docpzpos = docpzpos;
 	}
 
-	public int getId_invoice() {
-		return id_invoice;
+	public int getId_docpz() {
+		return id_docpz;
 	}
 
-	public void setId_invoice(int id_invoice) {
-		this.id_invoice = id_invoice;
+	public void setId_docpz(int id_docpz) {
+		this.id_docpz = id_docpz;
 	}
 
 	public int getId_customer() {
@@ -93,14 +81,12 @@ public class Invoice {
 		this.id_customer = id_customer;
 	}
 
-	public int getKwota() {
-		return kwota;
+	public String getData_przyjecia() {
+		return data_przyjecia;
 	}
 
-	public void setKwota(int kwota) {
-		this.kwota = kwota;
+	public void setData_przyjecia(String data_przyjecia) {
+		this.data_przyjecia = data_przyjecia;
 	}
-	
-	
 
 }

@@ -1,4 +1,4 @@
-package encje;
+package pl.warehouse.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import pl.warehouse.model.Customer;
-import pl.warehouse.model.Invoice;
-
 /*create table DocWZ(
 id_DocWZ int (5) primary key auto_increment,
 id_customer int(5),
@@ -26,7 +23,7 @@ data_wydania varchar(50)
 @Entity
 @Table(name = "docwz", uniqueConstraints = { @UniqueConstraint(columnNames = { "id_docwz" }) })
 public class Docwz {
-	
+
 	@Id
 	@Basic(optional = false)
 	@Column(name = "id_docwz")
@@ -35,21 +32,21 @@ public class Docwz {
 	@Basic(optional = false)
 	@Column(name = "id_customer")
 	private int id_customer;
-	
+
 	@Basic(optional = false)
 	@Column(name = "data_wydania")
 	private String data_wydania;
-	
-	////////////relacje/////////
-	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "customer")
+
+	//////////// relacje/////////
+	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "docwz")
 	@Column(nullable = false)
 	private List<Docwzpos> docwzpos = new ArrayList<>();
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_customer", referencedColumnName = "id_customer", nullable = false, insertable = false, updatable = false)
 	private Customer customer;
-	
-	///////////getery setery/////
+
+	/////////// getery setery/////
 
 	public Customer getCustomer() {
 		return customer;
@@ -90,7 +87,5 @@ public class Docwz {
 	public void setData_wydania(String data_wydania) {
 		this.data_wydania = data_wydania;
 	}
-	
-	
 
 }

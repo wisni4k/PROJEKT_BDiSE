@@ -1,14 +1,12 @@
-package encje;
+package pl.warehouse.model;
 
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -22,7 +20,7 @@ ilosc_palet int(5)
 @Entity
 @Table(name = "docwzpos", uniqueConstraints = { @UniqueConstraint(columnNames = { "id_docwzpos" }) })
 public class Docwzpos {
-	
+
 	@Id
 	@Basic(optional = false)
 	@Column(name = "id_docwzpos")
@@ -31,29 +29,29 @@ public class Docwzpos {
 	@Basic(optional = false)
 	@Column(name = "id_docwz")
 	private int id_docwz;
-	
+
 	@Basic(optional = false)
 	@Column(name = "pozycja")
 	private int pozycja;
-	
+
 	@Basic(optional = false)
 	@Column(name = "id_product")
 	private int id_product;
-	
+
 	@Basic(optional = false)
 	@Column(name = "ilosc_palet")
 	private int ilosc_palet;
-	
-	////////relacje////////
+
+	//////// relacje////////
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_product", referencedColumnName = "id_product", nullable = false, insertable = false, updatable = false)
 	private Product product;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_docwz", referencedColumnName = "id_docwz", nullable = false, insertable = false, updatable = false)
 	private Docwz docwz;
-	
-	//////////getery setery///////////
+
+	////////// getery setery///////////
 
 	public Docwz getDocwz() {
 		return docwz;
@@ -110,7 +108,5 @@ public class Docwzpos {
 	public void setIlosc_palet(int ilosc_palet) {
 		this.ilosc_palet = ilosc_palet;
 	}
-	
-	
 
 }

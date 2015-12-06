@@ -1,4 +1,4 @@
-package encje;
+package pl.warehouse.model;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -8,9 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
-import pl.warehouse.model.Customer;
 
 /*create table DocPZpos(
 id_docpzpos int(5) primary key auto_increment;
@@ -21,43 +18,38 @@ ilosc_palet int(5)
 );*/
 
 @Entity
-@Table(name = "docpzpos", uniqueConstraints = { @UniqueConstraint(columnNames = { "id_docpzpos" }) })
+@Table(name = "docpzpos")
 public class Docpzpos {
-	
-	@Id
-	@Basic(optional = false)
-	@Column(name = "id_docpzpos")
-	private int id_docpzpos;
-	
+
 	@Basic(optional = false)
 	@Column(name = "id_docpz")
 	private int id_docpz;
 
+	@Id
 	@Basic(optional = false)
 	@Column(name = "pozycja")
 	private int pozycja;
-	
+
 	@Basic(optional = false)
 	@Column(name = "id_product")
 	private int id_product;
-	
+
 	@Basic(optional = false)
 	@Column(name = "ilosc_palet")
 	private int ilosc_palet;
-	
-	////////relacje////////
-	
+
+	//////// relacje////////
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_product", referencedColumnName = "id_product", nullable = false, insertable = false, updatable = false)
 	private Product product;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_docpz", referencedColumnName = "id_docpz", nullable = false, insertable = false, updatable = false)
 	private Docpz docpz;
-	
-	//////////getery setery///////////
 
-	
+	////////// getery setery///////////
+
 	public Docpz getDocpz() {
 		return docpz;
 	}
@@ -72,14 +64,6 @@ public class Docpzpos {
 
 	public void setProduct(Product product) {
 		this.product = product;
-	}
-
-	public int getId_docpzpos() {
-		return id_docpzpos;
-	}
-
-	public void setId_docpzpos(int id_docpzpos) {
-		this.id_docpzpos = id_docpzpos;
 	}
 
 	public int getId_docpz() {
@@ -113,10 +97,5 @@ public class Docpzpos {
 	public void setIlosc_palet(int ilosc_palet) {
 		this.ilosc_palet = ilosc_palet;
 	}
-	
-
-	
-	
-	
 
 }

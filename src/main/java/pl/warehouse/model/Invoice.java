@@ -15,6 +15,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+//import pl.warehouse.model.Invoice;
+
+/*CREATE TABLE Invoice(
+id_invoice int(5) primary key auto_increment,
+id_customer int(5),
+kwota int(50) DEFAULT 0
+);
+*/
 @Entity
 @Table(name = "invoice", uniqueConstraints = { @UniqueConstraint(columnNames = { "id_invoice" }) })
 public class Invoice {
@@ -25,39 +33,24 @@ public class Invoice {
 	private int id_invoice;
 
 	@Basic(optional = false)
-	@Column(name = "invoice_price")
-	private int invoice_price;
-
-	@Basic(optional = false)
 	@Column(name = "id_customer")
 	private int id_customer;
 
-	// RELACJE
+	@Basic(optional = false)
+	@Column(name = "kwota")
+	private int kwota;
+
+	/////////// relacje////////////
+
+	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "invoice")
+	@Column(nullable = false)
+	private List<Invoiceposition> invoiceposition = new ArrayList<>();
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_customer", referencedColumnName = "id_customer", nullable = false, insertable = false, updatable = false)
 	private Customer customer;
 
-	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "invoice")
-	@Column(nullable = false)
-	private List<Invoiceposition> position = new ArrayList<>();
-
-	// GETTERS SETTERS
-	public int getId_invoice() {
-		return id_invoice;
-	}
-
-	public void setId_invoice(int id_invoice) {
-		this.id_invoice = id_invoice;
-	}
-
-	public int getInvoice_price() {
-		return invoice_price;
-	}
-
-	public void setInvoice_price(int invoice_price) {
-		this.invoice_price = invoice_price;
-	}
+	//////// getery setery/////////
 
 	public Customer getCustomer() {
 		return customer;
@@ -67,12 +60,20 @@ public class Invoice {
 		this.customer = customer;
 	}
 
-	public List<Invoiceposition> getPosition() {
-		return position;
+	public List<Invoiceposition> getInvoiceposition() {
+		return invoiceposition;
 	}
 
-	public void setPosition(List<Invoiceposition> position) {
-		this.position = position;
+	public void setInvoiceposition(List<Invoiceposition> invoiceposition) {
+		this.invoiceposition = invoiceposition;
+	}
+
+	public int getId_invoice() {
+		return id_invoice;
+	}
+
+	public void setId_invoice(int id_invoice) {
+		this.id_invoice = id_invoice;
 	}
 
 	public int getId_customer() {
@@ -81,6 +82,14 @@ public class Invoice {
 
 	public void setId_customer(int id_customer) {
 		this.id_customer = id_customer;
+	}
+
+	public int getKwota() {
+		return kwota;
+	}
+
+	public void setKwota(int kwota) {
+		this.kwota = kwota;
 	}
 
 }

@@ -1,4 +1,4 @@
-package encje;
+package pl.warehouse.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-
-import pl.warehouse.model.Invoice;
 
 /*create table pracownik(
 id_pracownik int (5) primary key auto_increment,
@@ -28,7 +26,7 @@ stanowisko varchar(30)
 @Entity
 @Table(name = "pracownik", uniqueConstraints = { @UniqueConstraint(columnNames = { "id_pracownik" }) })
 public class Pracownik {
-	
+
 	@Id
 	@Basic(optional = false)
 	@Column(name = "id_pracownik")
@@ -37,42 +35,41 @@ public class Pracownik {
 	@Basic(optional = false)
 	@Column(name = "nazwisko")
 	private String nazwisko;
-	
+
 	@Basic(optional = false)
 	@Column(name = "imie")
 	private String imie;
-	
+
 	@Basic(optional = false)
 	@Column(name = "adres")
 	private String adres;
-	
+
 	@Basic(optional = false)
 	@Column(name = "miasto")
 	private String miasto;
-	
+
 	@Basic(optional = false)
 	@Column(name = "kod_pocztowy")
 	private String kod_pocztowy;
-	
+
 	@Basic(optional = false)
 	@Column(name = "kraj")
 	private String kraj;
-	
+
 	@Basic(optional = false)
 	@Column(name = "telefon")
 	private String telefon;
-	
+
 	@Basic(optional = false)
 	@Column(name = "stanowisko")
 	private String stanowisko;
-	
-	//////relacje////////
-	
-	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "customer")
+
+	////// relacje////////
+
+	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "pracownik")
 	@Column(nullable = false)
 	private List<Wyplata> wyplata = new ArrayList<>();
 
-	
 	public List<Wyplata> getWyplata() {
 		return wyplata;
 	}
@@ -81,7 +78,7 @@ public class Pracownik {
 		this.wyplata = wyplata;
 	}
 
-	////////getery setery///////
+	//////// getery setery///////
 	public int getId_pracownik() {
 		return id_pracownik;
 	}
@@ -153,7 +150,5 @@ public class Pracownik {
 	public void setStanowisko(String stanowisko) {
 		this.stanowisko = stanowisko;
 	}
-	
-	
 
 }

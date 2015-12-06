@@ -1,16 +1,12 @@
-package encje;
-import java.util.ArrayList;
-import java.util.List;
+package pl.warehouse.model;
 
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 /*create table wyplata(
@@ -23,12 +19,10 @@ pensja_netto int (5) default 0,
 pensja_brutto int(5) default 0
 );*/
 
-
-
 @Entity
 @Table(name = "wyplata", uniqueConstraints = { @UniqueConstraint(columnNames = { "id_wyplata" }) })
 public class Wyplata {
-	
+
 	@Id
 	@Basic(optional = false)
 	@Column(name = "id_wyplata")
@@ -37,36 +31,33 @@ public class Wyplata {
 	@Basic(optional = false)
 	@Column(name = "id_pracownik")
 	private int id_pracownik;
-	
 
 	@Basic(optional = false)
 	@Column(name = "miesiac")
 	private String miesiac;
-	
+
 	@Basic(optional = false)
 	@Column(name = "stawka")
 	private int stawka;
-	
+
 	@Basic(optional = false)
 	@Column(name = "ilosc_godz")
 	private int ilosc_godz;
-	
+
 	@Basic(optional = false)
 	@Column(name = "pensja_netto")
 	private int pensja_netto;
-	
+
 	@Basic(optional = false)
 	@Column(name = "pensja_brutto")
 	private int pensja_brutto;
-	
-	////////////relacje////////////
-	
+	//////////// relacje////////////
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_pracownik", referencedColumnName = "id_pracownik", nullable = false, insertable = false, updatable = false)
 	private Pracownik pracownik;
-	
-	
-	/////////getery setery/////////
+
+	///////// getery setery/////////
 
 	public Pracownik getPracownik() {
 		return pracownik;
@@ -131,12 +122,5 @@ public class Wyplata {
 	public void setPensja_brutto(int pensja_brutto) {
 		this.pensja_brutto = pensja_brutto;
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }

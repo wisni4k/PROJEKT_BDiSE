@@ -1,17 +1,12 @@
-package encje;
-
-import java.util.ArrayList;
-import java.util.List;
+package pl.warehouse.model;
 
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -24,7 +19,7 @@ na_magazynie varchar(1)
 @Entity
 @Table(name = "paleta", uniqueConstraints = { @UniqueConstraint(columnNames = { "id_paleta" }) })
 public class Paleta {
-	
+
 	@Id
 	@Basic(optional = false)
 	@Column(name = "id_paleta")
@@ -33,28 +28,26 @@ public class Paleta {
 	@Basic(optional = false)
 	@Column(name = "id_product")
 	private int id_product;
-	
+
 	@Basic(optional = false)
 	@Column(name = "id_pozycja")
 	private int id_pozycja;
-	
+
 	@Basic(optional = false)
 	@Column(name = "na_magazynie")
 	private String na_magazynie;
-	
-	
-	////////////relacje////////////
-	
+
+	//////////// relacje////////////
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_product", referencedColumnName = "id_product", nullable = false, insertable = false, updatable = false)
 	private Product product;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_pozycja", referencedColumnName = "id_pozycja", nullable = false, insertable = false, updatable = false)
 	private Pozycja pozycja;
-	
-	
-	///////getery setery///////
+
+	/////// getery setery///////
 
 	public Pozycja getPozycja() {
 		return pozycja;
@@ -103,12 +96,5 @@ public class Paleta {
 	public void setNa_magazynie(String na_magazynie) {
 		this.na_magazynie = na_magazynie;
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }
