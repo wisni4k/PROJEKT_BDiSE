@@ -1,0 +1,165 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+  </head><body>
+    <div class="section section-primary">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <h1 class="text-center">ZARZADZANIE UŻYTKOWNIKAMI</h1>
+          </div>
+          <div class="col-md-5">
+            <a class="btn btn-info btn-lg" href="magazyn.html">START<br></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            
+            <a class="btn btn-lg btn-primary" data-toggle="modal" data-target="#addEmployeeModal">DODAJ PRACOWNIKA</a>
+            <a class="btn btn-lg btn-primary" data-toggle="modal" data-target="#addCustomerModal">DODAJ KLIENTA</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="addCustomerModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title">Dodaj klienta</h1>
+          </div>
+          <div class="modal-body">
+           
+            <p class="lead">Nazwa firmy</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+            <p class="lead">Nazwisko kontaktu</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+            <p class="lead">Adres</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+            <p class="lead">Telefon</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+            <p class="lead">Fax</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+			<p class="lead">NIP</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-default btn-lg" data-dismiss="modal">Zamknij<br></a>
+            <a class="btn btn-lg btn-primary">Dodaj</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fade modal" id="addEmployeeModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title">Dodaj pracownika</h1>
+          </div>
+          <div class="modal-body">
+            
+            <p class="lead">Nazwisko</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+            <p class="lead">Imię</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+            <p class="lead">Adres</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+            <p class="lead">Miasto</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+            <p class="lead">Kod pocztowy</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+            <p class="lead">Kraj</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+            <p class="lead">Telefon</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+            <p class="lead">Stanowisko</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-default btn-lg" data-dismiss="modal">Zamknij</a>
+            <a class="btn btn-lg btn-primary">Dodaj</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  
+
+</body></html>

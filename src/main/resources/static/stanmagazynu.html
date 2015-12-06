@@ -1,0 +1,123 @@
+<html><head>
+        <link rel="icon">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		
+		<link rel="stylesheet" href=css/boostrap.min.css">
+
+		
+		<link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    </head><body ng-app="aplikacja">
+        <div class="section section-primary">
+            <div class="container">
+			
+                <div class="row">
+				
+                    <div class="col-md-7">
+                        <h1 class="text-center">STAN MAGAZYNU
+                            <br>
+                        </h1>
+                    </div>
+                    
+                    <div class="col-md-5">
+                        <a class="btn btn-info btn-lg" href="magazyn.html">START<br></a>
+						
+                    </div>
+                </div>
+				
+            </div>
+			
+        </div>
+		
+		<div class="container" ng-controller="kontrolertabeliproduktow">
+	
+		<div class="row">
+		<div class="col-sm-8>
+			<div class="tabela">
+			<center>
+			<br>
+			<div class="input-group">
+			
+				<span class="input-group-addon">Szukaj:</span>
+				<input type="text" class="form-control" ng-model="wyszukiwarka">
+			
+			</div>
+			
+			</center>
+		
+			<br>
+			
+			<div class="table-resposive">
+			
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<th ng-repeat="naglowek in [
+						    'id_product','nazwa','ilosc','id_customer'
+						]">
+							{{naglowek}}
+
+						</th>
+					
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat = "produkty in produkty | filter:wyszukiwarka">
+						<td>
+							{{produkty.id_product}}
+						</td>
+						<td>
+							{{produkty.nazwa}}
+						</td>
+						<td>
+							{{produkty.ilosc}}
+						</td>
+						<td>
+							{{produkty.id_customer}}
+						</td>
+					</tr>
+				
+				</tbody>
+				</table>
+			</div>
+			
+			
+			</div>
+			</div>
+		</div>
+		</div>
+        <script src="js/angular.min.js"></script>
+		
+		<script>
+			
+			
+			
+			var angularExample = angular.module('aplikacja',["restangular"])
+			angularExample.config(["RestangularProvider",function(RestangularProvider){
+			RestangularProvider.setBaseUrl('/api');
+			}]);
+
+			angularExample.controller("kontrolertabeliproduktow",["Restangular","$scope",'$filter',function(Restangular,$scope,$filter){
+					    $scope.getAllProducts = function() {
+    	// First way of creating a Restangular object. Just saying the base URL
+							var baseAccounts = Restangular.all('products');
+
+							// This will query /accounts and return a promise.
+							baseAccounts.getList().then(function(products) {
+							  $scope.produkty = products;
+							});
+			
+			
+			}]);
+		
+		
+		</script>
+		<script src="http://cdn.jsdelivr.net/restangular/1.1.3/restangular.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+    
+
+</body></html>
