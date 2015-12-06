@@ -4,7 +4,7 @@ angularProdukt.config(["RestangularProvider",function(RestangularProvider){
 }]);
 
 
-angularProdukt.controller("MainCtrl",["Restangular","$scope",function(Restangular,$scope){
+angularProdukt.controller("MainCtrl",["Restangular","$scope","$filter",function(Restangular,$scope,$filter){
 	$scope.getProduct = function(product) {
 		var Product = Restangular.all('products');
 		var oneProduct = Restangular.one('products', product.id);

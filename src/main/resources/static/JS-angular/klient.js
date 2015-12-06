@@ -4,7 +4,7 @@ angularKlient.config(["RestangularProvider",function(RestangularProvider){
 }]);
 
 
-angularKlient.controller("MainCtrl",["Restangular","$scope",function(Restangular,$scope){
+angularKlient.controller("MainCtrl",["Restangular","$scope","$filter",function(Restangular,$scope,$filter){
 	$scope.naglowek = 0;
 	
 	$scope.getCustomer = function(customer) {
