@@ -11,22 +11,43 @@ angularExample.config(["RestangularProvider",function(RestangularProvider){
 }]);
 
 angularExample.controller("MainCtrl",["Restangular","$scope",function(Restangular,$scope){
-	var User = Restangular.all('customers');
-	var oneUser = Restangular.one('customers', 1);
-	oneUser.get().then(function(user) {
-		  $scope.userek = user; 
-		});
+	
+	$scope.getCustomer = function(customer) {
+		var User = Restangular.all('customers');
+		var oneUser = Restangular.one('customers', customer.id);
+		oneUser.get().then(function(user) {
+			  $scope.userek = user; 
+			});
+      };
+      
+    $scope.getAllCustomers = function() {
+    	// First way of creating a Restangular object. Just saying the base URL
+    	var baseAccounts = Restangular.all('customers');
+
+    	// This will query /accounts and return a promise.
+    	baseAccounts.getList().then(function(customers) {
+    	  $scope.allAccounts = customers;
+    	});
+    }
+	
 }])
 </script>
+
+
+
 </head>
 <body>
 <div ng-controller="MainCtrl">
-		IMIE: {{userek.customer_name}}.<br/>
-		ADRES: {{userek.customer_adress}}
-	<div>
-		add new: <br/>
-		<input type="text" ng-model="newVegetable.name"/><button type="submit" ng-click="add()">add</button>
-	</div>
+	<form novalidate class="simple-form">
+	    Podaj id customera: <input type="text" ng-model="customer.id" /><br />
+	    <input type="submit" ng-click="getCustomer(customer)" value="Pokaz" />
+	    <input type="submit" ng-click="getAllCustomers" value="Pokaz wszytsko" />
+	</form>
+
+		IMIE: {{userek.customer_name}}<br/>
+		ADRES: {{userek.customer_adress}}<br/>
+		NIP: {{userek.nip}}<br/>
+		PHONE: {{userek.phone}}<br/>
 </div>
 </body>
 </html>
