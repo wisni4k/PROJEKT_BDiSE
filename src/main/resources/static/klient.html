@@ -68,21 +68,35 @@ angularExample.factory('productData', ['Restangular', function(Restangular){
       </div>
     </div>
     <div ng-controller="MainCtrl"> 
-<input type="submit" ng-click="getAllCustomers()" value="Pokaz wszytsko" />
-	<table>
+    <center>
+<input type="submit" ng-click="getAllCustomers()" value="Pokaz wszystko" />
+</center>
+<div class="container" ng-controller="MainCtrl">
+<div class="table-resposive">
+	<table class="table table-hover">
+		<thead>
 		<tr>
-			<td>Nazwa</td>
-			<td>Adres</td>
-			<td>Nip</td>
-			<td>Telefon</td>
+						<th ng-repeat="naglowek in [
+						    'Nazwa firmy','Adres','NIP','Telefon'
+						]">
+							{{naglowek}}
+
+						</th>
+		
 		</tr>
+		</thead>
+		<tbody>
   		<tr ng-repeat="n in users.customers">
     		<td>{{n.customer_name}}</td>
     		<td>{{n.customer_adress}}</td>
     		<td>{{n.nip}}</td>
     		<td>{{n.phone}}</td>
   		</tr>
+  		</tbody>
 	</table>
+	</div>
+	</div>
+
 
 </div>
    
