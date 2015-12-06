@@ -26,16 +26,20 @@
         </div>
       </div>
     </div>
+
     <div ng-controller="MainCtrl">
     <br>
-    <div class="container">
     
+    <div class="container">
+    	<center>
     	<div class="jumbotron">
-	    	<div class="btn-group" role="group">
+	    	<div class="btn-group" role="group">  		
 	  			<button type="button" class="btn btn-default" ng-click="getAllCustomers()">Pokaż wszytskich</button>
 	  			<button type="button" class="btn btn-default" ng-click="getAllCustomers()">Szukaj</button>
+	  			<input type="text" class="form-control" ng-model="wyszukiwarka">
 	  		</div>
 	  	</div>
+	  	</center>
     	<br>
 		<div class="jumbotron" ng-if="naglowek == 1">
 			<div class="table-resposive">
@@ -49,7 +53,7 @@
 					</tr>
 				</thead>
 				<tbody>
-			  		<tr ng-repeat="n in users.customers">
+			  		<tr ng-repeat="n in users.customers | filter:wyszukiwarka">
 			    		<td>{{n.customer_name}}</td>
 			    		<td>{{n.customer_adress}}</td>
 			    		<td>{{n.nip}}</td>
