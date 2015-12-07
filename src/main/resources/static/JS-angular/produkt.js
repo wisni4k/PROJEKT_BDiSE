@@ -14,7 +14,7 @@ angularProdukt.controller("MainCtrl",["Restangular","$scope","$filter",function(
 			});
       };
       
-    $scope.getAllProducts = function() {
+      	
     	var Product = Restangular.all('products');
     	Product.getList()
     	.then(function(Product) {
@@ -22,6 +22,6 @@ angularProdukt.controller("MainCtrl",["Restangular","$scope","$filter",function(
     	  $scope.products = Product[0];
     
     	})
-    }
+    
 	
 }])
