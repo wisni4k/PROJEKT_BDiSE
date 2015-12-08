@@ -5,7 +5,6 @@ angularKlient.config(["RestangularProvider",function(RestangularProvider){
 
 
 angularKlient.controller("MainCtrl",["Restangular","$scope","$filter",function(Restangular,$scope,$filter){
-	$scope.naglowek = 0;
 	
 	$scope.getCustomer = function(customer) {
 		var User = Restangular.all('customers');
@@ -15,11 +14,22 @@ angularKlient.controller("MainCtrl",["Restangular","$scope","$filter",function(R
 			});
       };
       
+    $scope.addCustomer = function(customer){
+    	var User = Restangular.all('customers');
+    	$scope.user = {	customer_name: 		customer.imie,
+		    			contact_name: 		customer.nazwa,
+		    			customer_adress: 	customer.adres,
+		    			phone:				customer.tel,
+		    			fax:				customer.fax,
+		    			nip:				customer.nip};
+    	
+    	User.post($scope.user);
+    };
+      
 
     var User = Restangular.all('customers');
   	User.getList().then(function(User) {
   	  $scope.users = User[0];
-  	  $scope.naglowek = 1;
   	})
 	
 }])

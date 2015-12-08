@@ -18,7 +18,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7">
-            <h1 class="text-center">PODGLAD KLIENTOW</h1>
+            <h1 class="text-center">DODAWANIE KLIENTOW</h1>
           </div>
           <div class="col-md-5">
             <a class="btn btn-info btn-lg" href="magazyn.html">START<br></a>
@@ -32,45 +32,35 @@
     
     <div class="container">
     	
-    	<div class="jumbotron">
-	    	<div class="btn-group" role="group">  		
-	  			<div class="input-group">
-				<span class="input-group-addon">Szukaj:</span>
-				<input type="text" class="form-control" ng-model="wyszukiwarka">
-			</div>
-			<a class="btn btn-info btn-lg" href="dodawanieKlient.html">Nowy klient<br></a>
-	  		</div>
-	  	</div>
-	  	
-    	<br>
 		<div class="jumbotron">
-			<div class="table-resposive">
-				<table class="table table-hover">
-				<thead>
-					<tr>
-						
-						<td>Nazwa</td>
-						<td>Kontakt</td>
-						<td>Adres</td>
-						<td>Telefon</td>
-						<td>Fax</td>
-						<td>NIP</td>
-					</tr>
-				</thead>
-				<tbody>
-			  		<tr ng-repeat="n in users.customers | filter:wyszukiwarka">
-			  			
-			    		<td>{{n.customer_name}}</td>
-			    		<td>{{n.contact_name}}</td>
-			    		<td>{{n.customer_adress}}</td>
-			    		<td>{{n.phone}}</td>
-			    		<td>{{n.fax}}</td>
-			    		<td>{{n.nip}}</td>
-			  		</tr>
-			  	</tbody>
-				</table>
+			<div class="form-group">
+			  <label for="imie">Imie:</label>
+			  <input type="text" class="form-control" id="imie" ng-model="customer.imie">
 			</div>
+			<div class="form-group">
+			  <label for="nazwa">Nazwa:</label>
+			  <input type="text" class="form-control" id="nazwa" ng-model="customer.nazwa">
+			</div>
+			<div class="form-group">
+			  <label for="adres">Adres:</label>
+			  <input type="text" class="form-control" id="adres" ng-model="customer.adres">
+			</div>
+			<div class="form-group">
+			  <label for="nip">NIP:</label>
+			  <input type="text" class="form-control" id="nip" ng-model="customer.nip">
+			</div>
+			<div class="form-group">
+			  <label for="fax">FAX:</label>
+			  <input type="text" class="form-control" id="fax" ng-model="customer.fax">
+			</div>
+			<div class="form-group">
+			  <label for="tel">TEL:</label>
+			  <input type="text" class="form-control" id="tel" ng-model="customer.tel">
+			</div>
+			<br>
+			<a class="btn btn-info btn-lg" ng-click="addCustomer(customer)">DODAJ<br></a>
 		</div>
+	</div>
 	</div>
 
 </body></html>
