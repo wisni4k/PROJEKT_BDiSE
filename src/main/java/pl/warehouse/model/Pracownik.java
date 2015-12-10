@@ -31,6 +31,10 @@ public class Pracownik {
 	@Basic(optional = false)
 	@Column(name = "id_pracownik")
 	private int id_pracownik;
+	
+	@Basic(optional = false)
+	@Column(name = "id_pracownik", insertable = false, updatable = false)
+	private int id_prac;
 
 	@Basic(optional = false)
 	@Column(name = "nazwisko")
@@ -79,6 +83,14 @@ public class Pracownik {
 	}
 
 	//////// getery setery///////
+	public int getId_prac() {
+		return id_prac;
+	}
+
+	public void setId_prac(int id_prac) {
+		this.id_prac = id_prac;
+	}
+
 	public int getId_pracownik() {
 		return id_pracownik;
 	}
