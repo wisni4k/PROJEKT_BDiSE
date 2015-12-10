@@ -1,74 +1,54 @@
-<html><head>
-    <meta charset="utf-8">
+<html ng-app="angularDocpz">
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+<script src="http://cdn.jsdelivr.net/restangular/1.1.3/restangular.min.js"></script>
+<script src="http://cdn.jsdelivr.net/underscorejs/1.5.1/underscore-min.js"></script>
+<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="JS-angular/docpz.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
-  </head><body>
+	
+</head>
+<body>
     <div class="section section-primary">
       <div class="container">
         <div class="row">
           <div class="col-md-7">
-            <h1 class="text-center">PRZYJECIE TOWARU &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <h1 class="text-center">PRZYJECIE TOWARU 
               <br>
             </h1>
           </div>
           <div class="col-md-5">
             <a class="btn btn-info btn-lg" href="magazyn.html">START<br></a>
+            <a class="btn btn-info btn-lg" href="klient.html">KLIENCI<br></a>
           </div>
         </div>
       </div>
     </div>
-    <div class="section text-center">
+     
       <div class="container">
+      <div ng-controller="MainCtrl">
         <div class="row">
-          <div class="col-md-12">
-            <a class="btn btn-lg btn-primary" data-toggle="modal" data-target="#addProductModal">Dodaj produkt</a>
-          </div>
+        	<div class="jumbotron">
+        	<div class="section text-center">
+       			 <h3>Przyjęcie zewnętrzne</h3>
+       			 </div>
+       			 <div class="form-group">
+			  		<label for="ID">ID Klienta</label>
+			 		 <input type="text" class="form-control" id="id_customer" ng-model="docpz.id_customer">
+			 		 <label for="dataa">Data przyjęcia</label>
+			 		<input type="text" class="form-control" id="data_przyjecia" ng-model="docpz.data_przyjecia">
+				</div>
+				<a class="btn btn-info btn-lg" ng-click="addDocpz(docpz)">DODAJ<br></a>
+				
+        	</div>
         </div>
       </div>
-    </div>
-    <div class="modal" id="addProductModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title" id="addProductModalLabel" contenteditable="true">Dodaj produkt</h1>
-          </div>
-          <div class="modal-body">
-
-            <ul class="list-group"></ul>
-            <p class="lead">Nazwa produktu</p>
-            <div class="form-group has-success">
-              <div class="input-group">
-                <input type="text" class="form-control">
-                <span class="input-group-btn"></span>
-              </div>
-            </div>
-            <p class="lead">Ilosc palet</p>
-            <div class="form-group has-success">
-              <div class="input-group">
-                <input type="number" class="form-control">
-                <span class="input-group-btn"></span>
-              </div>
-            </div>
-            <p class="lead">ID Dostawcy</p>
-            <div class="form-group has-success">
-              <div class="input-group">
-                <input type="text" class="form-control">
-                <span class="input-group-btn"></span>
-              </div>
-            </div>
-            
-          </div>
-          <div class="modal-footer">
-            <button type="resset" value="Reset" class="btn btn-default btn-lg" data-dismiss="modal" data-target="#addProductModal">Zamknij</button>
-            <button type="button" class="btn btn-lg btn-primary">Dodaj</button>
-          </div>
-        </div>
       </div>
-    </div>
+    
   
 
 </body></html>
