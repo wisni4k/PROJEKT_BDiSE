@@ -56,7 +56,7 @@ public class Invoiceposition {
 
 	@Basic(optional = false)
 	@Column(name = "cena_paleta")
-	private int paleta;
+	private int cena_paleta;
 
 	@Basic(optional = false)
 	@Column(name = "kwota")
@@ -158,12 +158,12 @@ public class Invoiceposition {
 		this.ilosc_palet = ilosc_palet;
 	}
 
-	public int getPaleta() {
-		return paleta;
+	public int getCena_paleta() {
+		return cena_paleta;
 	}
 
-	public void setPaleta(int paleta) {
-		this.paleta = paleta;
+	public void setCena_paleta(int cena_paleta) {
+		this.cena_paleta = cena_paleta;
 	}
 
 	public int getKwota() {

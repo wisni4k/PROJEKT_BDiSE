@@ -18,10 +18,10 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7">
-            <h1 class="text-center">PODGLAD PRODUKTÓW</h1>
+            <h1 class="text-center">DODAWANIE PRODUKTÓW</h1>
           </div>
           <div class="col-md-5">
-            <a class="btn btn-info btn-lg" href="magazyn.html">START<br></a>
+           
           </div>
         </div>
       </div>
@@ -29,40 +29,24 @@
 
     <div ng-controller="MainCtrl">
     <br>
+    
     <div class="container">
     	
-    	<div class="jumbotron">
-	    	<div class="btn-group" role="group">  		
-	  			<div class="input-group">
-				<span class="input-group-addon">Szukaj:</span>
-				<input type="text" class="form-control" ng-model="wyszukiwarka">
-			</div>
-	  		</div>
-	  	</div>
-	  	
-    	<br>
 		<div class="jumbotron">
-			<div class="table-resposive">
-				<table class="table table-hover">
-				<thead>
-					<tr>
-						<td>ID</td>
-						<td>Nazwa</td>
-						<td>Ilość</td>
-						<td>ID Dostawcy</td>
-					</tr>
-				</thead>
-				<tbody>
-			  		<tr ng-repeat="n in users.products | filter:wyszukiwarka">
-			    		<td>{{n.id_prod}}</td>
-			    		<td>{{n.nazwa}}</td>
-			    		<td>{{n.ilosc}}</td>
-			    		<td>{{n.id_cust}}</td>
-			  		</tr>
-			  	</tbody>
-				</table>
+			<div class="form-group">
+			  <label for="imie">Nazwa produktu:</label>
+			  <input type="text" class="form-control" id="nazwa" ng-model="product.nazwa">
+		
+			  <label for="nazwa">Ilość palet:</label>
+			  <input type="number" class="form-control" id="ilosc" ng-model="product.ilosc">
+		
+			  <label for="adres">ID Dostawcy:</label>
+			  <input type="text" class="form-control" id="id_customer" ng-model="product.id_customer">
 			</div>
+			<br>
+			<a class="btn btn-info btn-lg" ng-click="addProduct(product)">DODAJ<br></a>
 		</div>
+	</div>
 	</div>
 
 </body></html>

@@ -41,8 +41,22 @@ public class Product {
 	@Basic(optional = false)
 	@Column(name = "ilosc")
 	private int ilosc;
+	
+	@Basic(optional = false)
+	@Column(name = "id_customer")
+	private int id_customer;
+	
+	
 
 	//////////// relacje////////////
+
+	public int getId_customer() {
+		return id_customer;
+	}
+
+	public void setId_customer(int id_customer) {
+		this.id_customer = id_customer;
+	}
 
 	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "product")
 	@Column(nullable = false)
