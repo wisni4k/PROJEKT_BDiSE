@@ -32,6 +32,10 @@ public class Customer {
 	@Column(name = "id_customer")
 	private int id_customer;
 	
+	@Basic(optional = false)
+	@Column(name = "id_customer", insertable = false, updatable = false)
+	private int id_cust;
+	
 
 	@Basic(optional = false)
 	@Column(name = "customer_name")
@@ -84,6 +88,14 @@ public class Customer {
 	
 	public List<Invoice> getInvoice() {
 		return invoice;
+	}
+
+	public int getId_cust() {
+		return id_cust;
+	}
+
+	public void setId_cust(int id_cust) {
+		this.id_cust = id_cust;
 	}
 
 	public void setInvoice(List<Invoice> invoice) {
