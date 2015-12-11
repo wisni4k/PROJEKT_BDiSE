@@ -24,7 +24,7 @@ public class Docwzpos {
 	@Id
 	@Basic(optional = false)
 	@Column(name = "id_docwzpos")
-	private int id_customer;
+	private int id_docwzpos;
 
 	@Basic(optional = false)
 	@Column(name = "id_docwz")
@@ -69,12 +69,14 @@ public class Docwzpos {
 		this.product = product;
 	}
 
-	public int getId_customer() {
-		return id_customer;
+
+
+	public int getId_docwzpos() {
+		return id_docwzpos;
 	}
 
-	public void setId_customer(int id_customer) {
-		this.id_customer = id_customer;
+	public void setId_docwzpos(int id_docwzpos) {
+		this.id_docwzpos = id_docwzpos;
 	}
 
 	public int getId_docwz() {

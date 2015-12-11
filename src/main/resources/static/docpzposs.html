@@ -1,4 +1,4 @@
-<html ng-app="angularProdukt">
+<html ng-app="angularDocpzpos">
 <head>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
 <script src="http://cdn.jsdelivr.net/restangular/1.1.3/restangular.min.js"></script>
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="JS-angular/produkt.js"></script>
+    <script type="text/javascript" src="JS-angular/pozycjepz.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
 	
@@ -18,7 +18,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7">
-            <h1 class="text-center">DODAWANIE PRODUKTÓW</h1>
+            <h1 class="text-center">POZYCJE PZ</h1>
           </div>
           <div class="col-md-5">
            
@@ -34,17 +34,20 @@
     	
 		<div class="jumbotron">
 			<div class="form-group">
-			  <label for="imie">Nazwa produktu:</label>
-			  <input type="text" class="form-control" id="nazwa" ng-model="product.nazwa">
+			  <label for="imie">ID Przyjęcia zewnętrznego:</label>
+			  <input type="text" class="form-control" id="id_docpz" ng-model="docpzpos.id_docpz">
 		
-			  <label for="nazwa">Ilość palet:</label>
-			  <input type="number" class="form-control" id="ilosc" ng-model="product.ilosc">
+			  <label for="nazwa">Pozycja:</label>
+			  <input type="text" class="form-control" id="pozycja" ng-model="docpzpos.pozycja">
 		
-			  <label for="adres">ID Dostawcy:</label>
-			  <input type="text" class="form-control" id="id_customer" ng-model="product.id_customer">
+			  <label for="adres">Nazwa produktu:</label>
+			  <input type="text" class="form-control" id="nazwa" ng-model="docpzpos.nazwa">
+			  
+			   <label for="adres">Ilość palet:</label>
+			  <input type="text" class="form-control" id="ilosc_palet" ng-model="docpzpos.ilosc_palet">
 			</div>
 			<br>
-			<a class="btn btn-info btn-lg" ng-click="addProduct(product)">DODAJ<br></a>
+			<a class="btn btn-info btn-lg" ng-click="addDocpzpos(docpzpos)">UTWÓRZ<br></a>
 		</div>
 	</div>
 	</div>

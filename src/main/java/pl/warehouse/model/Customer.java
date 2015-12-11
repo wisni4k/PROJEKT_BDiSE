@@ -68,9 +68,7 @@ public class Customer {
 	@Column(nullable = false)
 	private List<Invoice> invoice = new ArrayList<>();
 	
-	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "customer")
-	@Column(nullable = false)
-	private List<Product> product = new ArrayList<>();
+
 	
 	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "customer")
 	@Column(nullable = false)
@@ -102,13 +100,7 @@ public class Customer {
 		this.invoice = invoice;
 	}
 
-	public List<Product> getProduct() {
-		return product;
-	}
 
-	public void setProduct(List<Product> product) {
-		this.product = product;
-	}
 
 	public List<Docwz> getDocwz() {
 		return docwz;

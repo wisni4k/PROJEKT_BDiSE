@@ -43,20 +43,13 @@ public class Product {
 	private int ilosc;
 	
 	@Basic(optional = false)
-	@Column(name = "id_customer")
-	private int id_customer;
+	@Column(name = "dostawca")
+	private String dostawca;
 	
 	
 
 	//////////// relacje////////////
 
-	public int getId_customer() {
-		return id_customer;
-	}
-
-	public void setId_customer(int id_customer) {
-		this.id_customer = id_customer;
-	}
 
 	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "product")
 	@Column(nullable = false)
@@ -70,32 +63,32 @@ public class Product {
 	@Column(nullable = false)
 	private List<Invoiceposition> invoiceposition = new ArrayList<>();
 
-	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "product")
-	@Column(nullable = false)
-	private List<Docpzpos> docpzpos = new ArrayList<>();
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_customer", referencedColumnName = "id_customer", nullable = false, insertable = false, updatable = false)
-	private Customer customer;
+
 
 	/////// getery setery///////
+	
+	
+	
 
 
 	public int getId_prod() {
 		return id_prod;
 	}
 
+	public String getDostawca() {
+		return dostawca;
+	}
+
+	public void setDostawca(String dostawca) {
+		this.dostawca = dostawca;
+	}
+
 	public void setId_prod(int id_prod) {
 		this.id_prod = id_prod;
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+	
 
 	public List<Docwzpos> getDocwzpos() {
 		return docwzpos;
@@ -121,13 +114,7 @@ public class Product {
 		this.invoiceposition = invoiceposition;
 	}
 
-	public List<Docpzpos> getDocpzpos() {
-		return docpzpos;
-	}
-
-	public void setDocpzpos(List<Docpzpos> docpzpos) {
-		this.docpzpos = docpzpos;
-	}
+	
 
 	public int getId_product() {
 		return id_product;

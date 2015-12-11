@@ -1,13 +1,16 @@
 package pl.warehouse.model;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /*create table DocPZpos(
 id_docpzpos int(5) primary key auto_increment;
@@ -20,6 +23,7 @@ ilosc_palet int(5)
 @Entity
 @Table(name = "docpzpos")
 public class Docpzpos {
+	
 
 	@Basic(optional = false)
 	@Column(name = "id_docpz")
@@ -31,8 +35,8 @@ public class Docpzpos {
 	private int pozycja;
 
 	@Basic(optional = false)
-	@Column(name = "id_product")
-	private int id_product;
+	@Column(name = "nazwa")
+	private String nazwa;
 
 	@Basic(optional = false)
 	@Column(name = "ilosc_palet")
@@ -40,31 +44,25 @@ public class Docpzpos {
 
 	//////// relacje////////
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_product", referencedColumnName = "id_product", nullable = false, insertable = false, updatable = false)
-	private Product product;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_docpz", referencedColumnName = "id_docpz", nullable = false, insertable = false, updatable = false)
 	private Docpz docpz;
 
 	////////// getery setery///////////
+	
+	
 
 	public Docpz getDocpz() {
 		return docpz;
 	}
 
+
 	public void setDocpz(Docpz docpz) {
 		this.docpz = docpz;
 	}
 
-	public Product getProduct() {
-		return product;
-	}
 
-	public void setProduct(Product product) {
-		this.product = product;
-	}
 
 	public int getId_docpz() {
 		return id_docpz;
@@ -82,12 +80,14 @@ public class Docpzpos {
 		this.pozycja = pozycja;
 	}
 
-	public int getId_product() {
-		return id_product;
+	
+
+	public String getNazwa() {
+		return nazwa;
 	}
 
-	public void setId_product(int id_product) {
-		this.id_product = id_product;
+	public void setNazwa(String nazwa) {
+		this.nazwa = nazwa;
 	}
 
 	public int getIlosc_palet() {

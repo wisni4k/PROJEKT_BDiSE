@@ -18,7 +18,7 @@ angularProdukt.controller("MainCtrl",["Restangular","$scope","$filter",function(
       	var User = Restangular.all('products');
       	$scope.user = {	nazwa: 			product.nazwa,
   		    			ilosc: 			product.ilosc,
-  		    			id_customer: 	product.id_customer};
+  		    			dostawca: 		product.dostawca};
       	
       	User.post($scope.user);
       };
