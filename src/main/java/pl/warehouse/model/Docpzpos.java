@@ -21,15 +21,18 @@ ilosc_palet int(5)
 );*/
 
 @Entity
-@Table(name = "docpzpos")
+@Table(name = "docpzpos", uniqueConstraints = { @UniqueConstraint(columnNames = { "id_docpzpos" }) })
 public class Docpzpos {
 	
-
+	@Id
+	@Basic(optional = false)
+	@Column(name = "id_docpzpos")
+	private int id_docpzpos;
+	
 	@Basic(optional = false)
 	@Column(name = "id_docpz")
 	private int id_docpz;
 
-	@Id
 	@Basic(optional = false)
 	@Column(name = "pozycja")
 	private int pozycja;
@@ -55,6 +58,16 @@ public class Docpzpos {
 
 	public Docpz getDocpz() {
 		return docpz;
+	}
+
+
+	public int getId_docpzpos() {
+		return id_docpzpos;
+	}
+
+
+	public void setId_docpzpos(int id_docpzpos) {
+		this.id_docpzpos = id_docpzpos;
 	}
 
 

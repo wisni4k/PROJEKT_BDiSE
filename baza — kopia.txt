@@ -1,0 +1,265 @@
+create database warehouse;
+use warehouse;
+CREATE TABLE Customer(
+id_customer int(5) primary key auto_increment,
+customer_name varchar(20),
+contact_name varchar(20),
+customer_adress varchar(100),
+phone varchar(15),
+fax varchar(15),
+nip varchar(15)
+);
+
+CREATE TABLE Invoice(
+id_invoice int(5) primary key auto_increment,
+id_customer int(5),
+kwota int(50) DEFAULT 0
+);
+
+
+CREATE TABLE InvoicePosition(
+id_InvoicePosition int(5) primary key auto_increment,
+id_invoice int(5),
+pozycja int(5),
+id_uslugi int(5),
+liczba_dni int(5),
+id_product int(5),
+ilosc_palet int(5),
+cena_paleta int(5),
+kwota int(50) default 0
+);
+
+
+create table DocPZ(
+id_DocPZ int(5) primary key auto_increment,
+id_customer int(5),
+data_przyjecia varchar(50)
+);
+
+create table DocPZpos(
+id_docpzpos int(5) primary key auto_increment,
+id_DocPZ int (5),
+pozycja int(5),
+nazwa varchar(30),
+ilosc_palet int(5)
+);
+
+create table DocWZ(
+id_DocWZ int (5) primary key auto_increment,
+id_customer int(5),
+data_wydania varchar(50)
+);
+
+
+create table DocWZpos(
+id_docWZpos int (5) primary key auto_increment,
+id_DocWZ int (5),
+pozycja int(5),
+id_product int (5),
+ilosc_palet int(5)
+);
+
+
+
+create table product(
+id_product int(5) primary key auto_increment,
+nazwa varchar(50),
+ilosc int(5),
+dostawca varchar(20)
+);
+
+create table paleta(
+id_paleta int (5) primary key auto_increment,
+id_product int (5),
+id_pozycja int (5),
+na_magazynie varchar(1)
+);
+
+create table pozycja(
+id_pozycja int (5) primary key auto_increment,
+X int (5),
+Y int (5),
+Z int(5),
+status_pozycja int(5) default 1
+);
+
+create table pracownik(
+id_pracownik int (5) primary key auto_increment,
+nazwisko varchar(30),
+imie varchar(20),
+adres varchar(30),
+miasto varchar(30),
+kod_pocztowy varchar(10),
+kraj varchar(15),
+telefon varchar(15),
+stanowisko varchar(30)
+);
+
+
+create table uslugi(
+id_uslugi int(5) primary key auto_increment,
+opis varchar(50)
+);
+
+create table wyplata(
+id_wyplata int (5) primary key auto_increment,
+id_pracownik int(5),
+miesiac varchar(15),
+stawka int(5),
+ilosc_godz int (5),
+pensja_netto int (5) default 0,
+pensja_brutto int(5) default 0
+);
+
+
+
+alter table DocPZ add constraint FK_docpz_customer foreign key (id_customer) references customer(id_customer);
+alter table DocPZpos add constraint FK_DocPZpos_docpz foreign key (id_docpz) references docpz(id_docpz);
+
+alter table paleta add constraint FK_paleta_product foreign key (id_product) references product(id_product);
+alter table paleta add constraint FK_paleta_pozycja foreign key (id_pozycja) references pozycja (id_pozycja);
+
+
+alter table wyplata add constraint FK_wyplata_pracownik foreign key (id_pracownik) references pracownik(id_pracownik);
+alter table invoice add constraint FK_Invoice_Customer foreign key (id_customer) references Customer(id_customer);
+
+alter table InvoicePosition add constraint FK_InvoicePosition_usluga foreign key (id_uslugi)  references uslugi(id_uslugi);
+alter table InvoicePosition add constraint FK_InvoicePosition_Invoice foreign key (id_invoice) references Invoice(id_invoice);
+alter table invoiceposition add constraint FK_invoiceposition_product foreign key (id_product) references product(id_product);
+
+alter table DocWZ add constraint FK_docwz_customer foreign key (id_customer) references customer(id_customer);
+
+alter table DocWZpos add constraint FK_docwzpos_product foreign key (id_product) references product(id_product);
+
+alter table docwzpos add constraint FK_docwzpos_docwz foreign key (id_docwz) references docwz(id_docwz);
+
+
+
+
+
+
+
+
+procedury
+
+CREATE PROCEDURE dokumentwz_procedura (in param1 int(5), in param2 int(5))
+BEGIN
+declare i int(5);
+declare z int(5);
+declare zz int(5);
+set i=0;
+update product set ilosc=ilosc-param2 where id_product=param1;
+while i<param2 do
+select min(id_paleta) into z from paleta where id_product=param1 and na_magazynie=1;
+select id_pozycja into zz from paleta where id_paleta=z;
+update pozycja set status_pozycja=1 where id_pozycja=zz;
+update paleta set na_magazynie=0 where id_paleta=z;
+set i=i+1;
+end while;
+END
+
+CREATE procedure nowa_paleta(in param1 int(5), in param2 int(5))
+BEGIN
+declare x int(5);
+declare indeks int(5);
+set x=0;
+while x<param2 do
+	select min(id_pozycja) into indeks from pozycja where status_pozycja=1;
+	insert into paleta(id_product,id_pozycja,na_magazynie) values (param1,indeks,1);
+    update pozycja set status_pozycja=0 where id_pozycja = indeks;
+    set x=x+1;
+end while;
+end
+
+
+CREATE PROCEDURE licz (in param1 int(5),in param2 int(5))
+BEGIN
+declare z int(5);
+
+select kwota into z from invoice where id_invoice=param1;
+if z=0 then
+update invoice set kwota = param2 where id_invoice=param1;
+else
+update invoice set kwota = z + param2 where id_invoice=param1;
+end if;
+END
+
+CREATE PROCEDURE dodawanieprod(in param1 varchar(50), in param2 int (5))
+BEGIN
+declare x int (5);
+declare z int(5);
+declare y varchar(20);
+select max(id_docpz) into x from docpz;
+select id_customer into z from docpz where id_DocPZ=x;
+select customer_name into y from customer where id_customer=z;
+insert into product(nazwa,ilosc,dostawca) values (param1,param2,y);
+END
+
+CREATE PROCEDURE petla3(in param1 int(5), in param2 int(5))
+BEGIN
+declare i int(5);
+declare j int(5);
+declare k int(5);
+set i=param1;
+set j=param2;
+set k=1;
+while k<5 do
+	insert into pozycja(x,y,z) values (i,j,k);
+    set k=k+1;
+end while;
+END
+
+CREATE PROCEDURE petla2(in param1 int(5))
+BEGIN
+declare i int (5);
+declare j int (5);
+set i=param1;
+set j=1;
+while j<11 do
+	call petla3(i,j);
+    set j=j+1;
+end while;
+END
+
+CREATE PROCEDURE wypelnij_pozycje()
+BEGIN
+declare i int(5);
+set i=1;
+while i<11 do
+	call petla2(i);
+    set i=i+1;
+end while;
+END
+
+triggery
+
+create trigger dokument
+after insert on docwzpos
+for each row
+CALL dokumentwz_procedura(new.id_product,new.ilosc_palet);
+
+
+create trigger dodanie
+after insert on product
+for each row
+CALL nowa_paleta(NEW.id_product,NEW.ilosc);
+
+
+create trigger liczeniekwoty
+after insert on InvoicePosition
+for each row
+CALL licz(NEW.id_invoice,new.kwota);
+
+create trigger t3
+after insert on docpzpos
+for each row
+call dodawanieprod(new.nazwa,new.ilosc_palet);
+
+
+call wypelnij_pozycje();
+
+
+
+
+
+
