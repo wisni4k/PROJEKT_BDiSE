@@ -76,32 +76,6 @@ public class Invoiceposition {
 	@JoinColumn(name = "id_invoice", referencedColumnName = "id_invoice", nullable = false, insertable = false, updatable = false)
 	private Invoice invoice;
 
-	////////// getery setery/////////////
-
-	public Uslugi getUslugi() {
-		return uslugi;
-	}
-
-	public void setUslugi(Uslugi uslugi) {
-		this.uslugi = uslugi;
-	}
-
-	public Invoice getInvoice() {
-		return invoice;
-	}
-
-	public void setInvoice(Invoice invoice) {
-		this.invoice = invoice;
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
 	public int getId_invoiceposition() {
 		return id_invoiceposition;
 	}
@@ -174,4 +148,31 @@ public class Invoiceposition {
 		this.kwota = kwota;
 	}
 
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public Uslugi getUslugi() {
+		return uslugi;
+	}
+
+	public void setUslugi(Uslugi uslugi) {
+		this.uslugi = uslugi;
+	}
+
+	public Invoice getInvoice() {
+		return invoice;
+	}
+
+	public void setInvoice(Invoice invoice) {
+		this.invoice = invoice;
+	}
+
+	////////// getery setery/////////////
+
+	
 }

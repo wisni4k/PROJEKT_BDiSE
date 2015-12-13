@@ -28,6 +28,10 @@ public class Docwz {
 	@Basic(optional = false)
 	@Column(name = "id_docwz")
 	private int id_docwz;
+	
+	@Basic(optional = false)
+	@Column(name = "id_docwz", insertable = false, updatable = false)
+	private int id_dwz;
 
 	@Basic(optional = false)
 	@Column(name = "id_customer")
@@ -47,9 +51,19 @@ public class Docwz {
 	private Customer customer;
 
 	/////////// getery setery/////
+	
+	
 
 	public Customer getCustomer() {
 		return customer;
+	}
+
+	public int getId_dwz() {
+		return id_dwz;
+	}
+
+	public void setId_dwz(int id_dwz) {
+		this.id_dwz = id_dwz;
 	}
 
 	public void setCustomer(Customer customer) {

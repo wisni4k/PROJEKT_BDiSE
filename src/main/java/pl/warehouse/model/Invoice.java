@@ -40,6 +40,10 @@ public class Invoice {
 	@Column(name = "kwota")
 	private int kwota;
 
+	@Basic(optional = false)
+	@Column(name = "data_wystawienia")
+	private String data_wystawienia;
+	
 	/////////// relacje////////////
 
 	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "invoice")
@@ -91,5 +95,15 @@ public class Invoice {
 	public void setKwota(int kwota) {
 		this.kwota = kwota;
 	}
+
+	public String getData_wystawienia() {
+		return data_wystawienia;
+	}
+
+	public void setData_wystawienia(String data_wystawienia) {
+		this.data_wystawienia = data_wystawienia;
+	}
+	
+	
 
 }

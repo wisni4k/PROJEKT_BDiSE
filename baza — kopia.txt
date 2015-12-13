@@ -13,7 +13,8 @@ nip varchar(15)
 CREATE TABLE Invoice(
 id_invoice int(5) primary key auto_increment,
 id_customer int(5),
-kwota int(50) DEFAULT 0
+kwota int(50) DEFAULT 0,
+data_wystawienia varchar(20)
 );
 
 
