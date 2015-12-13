@@ -1,32 +1,38 @@
 var angularFakturapos =angular.module('angularFakturapos',["restangular"])
-angularDocwzpos.config(["RestangularProvider",function(RestangularProvider){
+angularFakturapos.config(["RestangularProvider",function(RestangularProvider){
 	RestangularProvider.setBaseUrl('/api');
 }]);
 
 
 angularFakturapos.controller("MainCtrl",["Restangular","$scope","$filter",function(Restangular,$scope,$filter){
-	$scope.getDocwzpos = function(docwzpos) {
-		var User = Restangular.all('docwzposes');
-		var oneUser = Restangular.one('docwzposes', docwzpos.id);
+	$scope.getFakturapos = function(invoiceposition) {
+		console.log("xx");
+		var User = Restangular.all('invoicepositions');
+		var oneUser = Restangular.one('invoicepositions', invoiceposition.id);
 		oneUser.get().then(function(docwzpos) {
 			  $scope.userek = user;
-			 
-			});
+				
+		});
       };
       
-      $scope.addDocwzpos = function(docwzpos){
-      	var User = Restangular.all('docwzposes');
-      	$scope.user = {	id_docwz: 			docwzpos.id_docwz,
-  		    			pozycja: 			docwzpos.pozycja,
-  		    			id_product: 		docwzpos.id_product,
-  		    			ilosc_palet:  		docwzpos.ilosc_palet};
+      $scope.addFakturapos = function(invoiceposition){
+      	var User = Restangular.all('invoicepositions');
+      	$scope.user = {	id_invoice: 			invoiceposition.id_invoice,
+  		    			pozycja: 				invoiceposition.pozycja,
+  		    			id_uslugi: 				invoiceposition.id_uslugi,
+  		    			liczba_dni:  			invoiceposition.liczba_dni,
+  		    			id_product:				invoiceposition.id_product,
+  		    			ilosc_palet:			invoiceposition.ilosc_palet,
+  		    			cena_paleta:			invoiceposition.cena_paleta,
+  		    			kwota:					invoiceposition.kwota};
       	
       	User.post($scope.user);
       };
       	
-      var User = Restangular.all('docwzposes');
+      var User = Restangular.all('invoicepositions');
     	User.getList().then(function(User) {
     	  $scope.users = User[0];
+    	  
     	})
     
     	
