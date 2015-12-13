@@ -31,6 +31,12 @@ public class Invoice {
 	@Basic(optional = false)
 	@Column(name = "id_invoice")
 	private int id_invoice;
+	
+	@Basic(optional = false)
+	@Column(name = "id_invoice", insertable = false, updatable = false)
+	private int id_faktury;
+	
+	
 
 	@Basic(optional = false)
 	@Column(name = "id_customer")
@@ -55,9 +61,19 @@ public class Invoice {
 	private Customer customer;
 
 	//////// getery setery/////////
+	
+	
 
 	public Customer getCustomer() {
 		return customer;
+	}
+
+	public int getId_faktury() {
+		return id_faktury;
+	}
+
+	public void setId_faktury(int id_faktury) {
+		this.id_faktury = id_faktury;
 	}
 
 	public void setCustomer(Customer customer) {

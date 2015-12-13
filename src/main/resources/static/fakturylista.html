@@ -1,4 +1,4 @@
-<html>
+<html  ng-app="angularFaktura">
 <head>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
 <script src="http://cdn.jsdelivr.net/restangular/1.1.3/restangular.min.js"></script>
@@ -7,44 +7,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-   	<script type="text/javascript" src="JS-angular/klient.js"></script>
+    <script type="text/javascript" src="JS-angular/faktura.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
 	
 </head>
 
-    <body>
+    <body >
     <div class="section section-primary">
-      <div class="container">
+      <div class="container" >
         <div class="row">
           <div class="col-md-7">
-            <h1 class="text-center">DOKUMENTACJA</h1>
+            <h1 class="text-center">DOKUMENTY WZ</h1>
           </div>
           <div class="col-md-5">
             <a class="btn btn-info btn-lg" href="magazyn.html">START<br></a>
+             
+             <a class="btn btn-info btn-lg" href="dokumentacja.html">WSTECZ<br></a>
           </div>
         </div>
       </div>
     </div>
-    <div class="container">
-    		<div class="row">
-    		<div class="jumbotron">
-	    	<div class="btn-group" role="group">  		
-	  			<div class="col-md-50" >
-	  			
-				<a href="fakturylista.html" class="btn btn-info btn-lg">Faktury<br></a>
-				<a href="docpzlista.html" class="btn btn-info btn-lg">Przyjęcia zewnętrzne<br></a>
-				<a href="docwzlista.html" class="btn btn-info btn-lg">Wydania zewnętrzne<br></a>
-				
-			
-				</div>
-				
-	  		</div>
-	  	    </div>
-    		</div>
-    </div>
-   
+
     
+    <br>
+    <div class="container">
+    <div ng-controller="MainCtrl">
+    	
+    	<div class="jumbotron">
+	    	<div class="btn-group" role="group">  		
+	  			<div class="input-group">
+				<span class="input-group-addon">Szukaj:</span>
+				<input type="text" class="form-control" ng-model="wyszukiwarka">
+			</div>
+	  		</div>
+	  	</div>
+	  	
+    	<br>
+		<div class="jumbotron">
+			<div class="table-resposive">
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<td>ID faktury</td>
+						<td>ID Dostawcy</td>
+						<td>Data wystawienia</td>
+						<td>Kwota</td>
+						<td>Szczegóły</td>
+					</tr>
+				</thead>
+				<tbody>
+			  		<tr ng-repeat="n in users.invoices | filter:wyszukiwarka">
+			    		<td>{{n.id_faktury}}</td>
+			    		<td>{{n.id_customer}}</td>
+			    		<td>{{n.data_wystawienia}}</td>
+			    		<td>{{n.kwota}}</td>
+			    		<td><a class="btn btn-info btn-lg" href="docwzposlista.html">SZCZEGÓŁY</a></td>
+			  		</tr>
+			  	</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	</div>	
+	
 	
 
 </body></html>

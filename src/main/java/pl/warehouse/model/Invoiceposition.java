@@ -75,6 +75,8 @@ public class Invoiceposition {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_invoice", referencedColumnName = "id_invoice", nullable = false, insertable = false, updatable = false)
 	private Invoice invoice;
+	
+	//////////getery setery/////////////
 
 	public int getId_invoiceposition() {
 		return id_invoiceposition;
@@ -172,7 +174,4 @@ public class Invoiceposition {
 		this.invoice = invoice;
 	}
 
-	////////// getery setery/////////////
-
-	
 }
