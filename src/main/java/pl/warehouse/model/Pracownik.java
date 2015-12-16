@@ -73,6 +73,10 @@ public class Pracownik {
 	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "pracownik")
 	@Column(nullable = false)
 	private List<Wyplata> wyplata = new ArrayList<>();
+	
+	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "pracownik")
+	@Column(nullable = false)
+	private List<Usun> usun = new ArrayList<>();
 
 	public List<Wyplata> getWyplata() {
 		return wyplata;
@@ -83,8 +87,19 @@ public class Pracownik {
 	}
 
 	//////// getery setery///////
+	
+	
+	
 	public int getId_prac() {
 		return id_prac;
+	}
+
+	public List<Usun> getUsun() {
+		return usun;
+	}
+
+	public void setUsun(List<Usun> usun) {
+		this.usun = usun;
 	}
 
 	public void setId_prac(int id_prac) {

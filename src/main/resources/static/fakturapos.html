@@ -36,21 +36,33 @@
     	
 		<div class="jumbotron">
 			<div class="form-group">
-			  <label for="imie">ID Przyjęcia zewnętrznego:</label>
-			  <input type="text" class="form-control" id="id_docpz" ng-model="docpzpos.id_docpz">
+			  <label for="imie">ID Faktury:</label>
+			  <input type="text" class="form-control" id="id_invoice" ng-model="invoiceposition.id_invoice">
 		
 			  <label for="nazwa">Pozycja:</label>
-			  <input type="text" class="form-control" id="pozycja" ng-model="docpzpos.pozycja">
+			  <input type="text" class="form-control" id="pozycja" ng-model="invoiceposition.pozycja">
 		
-			  <label for="adres">Nazwa produktu:</label>
-			  <input type="text" class="form-control" id="nazwa" ng-model="docpzpos.nazwa">
+			  <label for="adres">ID usługi:</label>
+			  <input type="text" class="form-control" id="id_uslugi" ng-model="invoiceposition.id_uslugi">
 			  
-			   <label for="adres">Ilość palet:</label>
-			  <input type="text" class="form-control" id="ilosc_palet" ng-model="docpzpos.ilosc_palet">
+			   <label for="adres">ID produktu:</label>
+			  <input type="text" class="form-control" id="id_product" ng-model="invoiceposition.id_product">
+			  
+			   <label for="adres">Liczba dni:</label>
+			  <input type="text" class="form-control" id="liczba_dni" ng-model="invoiceposition.liczba_dni">
+			  
+			  <label for="adres">Ilość palet:</label>
+			  <input type="text" class="form-control" id="ilosc_palet" ng-model="invoiceposition.ilosc_palet">
+			  
+			   <label for="adres">Cena za paletę:</label>
+			  <input type="text" class="form-control" id="cena_paleta" ng-model="invoiceposition.cena_paleta">
+			  
+			   <label for="adres">Kwota:</label>
+			  <input type="text" class="form-control" id="kwota" ng-model="invoiceposition.kwota">
 			</div>
 			<br>
-			<a href="docpzposs.html" class="btn btn-info btn-lg" ng-click="addDocpzpos(docpzpos)">UTWÓRZ<br></a>
-			<a href="magazyn.html"class="btn btn-info btn-lg">ZAKOŃCZ<br></a>
+			<a href="fakturapos.html" class="btn btn-info btn-lg" ng-click="addFakturapos(invoiceposition)">UTWÓRZ<br></a>
+			<a href="magazyn.html"class="btn btn-info btn-lg" ng-click="addFakturapos(invoiceposition)" >ZAKOŃCZ<br></a>
 		</div>
 	</div>
 	</div>

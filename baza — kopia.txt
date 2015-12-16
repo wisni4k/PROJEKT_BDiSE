@@ -112,7 +112,19 @@ pensja_netto int (5) default 0,
 pensja_brutto int(5) default 0
 );
 
+create table usun(
+id_usun int(5) primary key auto_increment,
+id_pracownik int(5)
+);
 
+create table konta(
+id_konta int(5) primary key auto_increment,
+login varchar(20) not null,
+haslo varchar(20) not null,
+uprawnienia varchar(10) not null,
+id_pracownik int(5) not null,
+status_konta int(5) default 1
+);
 
 alter table DocPZ add constraint FK_docpz_customer foreign key (id_customer) references customer(id_customer);
 alter table DocPZpos add constraint FK_DocPZpos_docpz foreign key (id_docpz) references docpz(id_docpz);
@@ -131,14 +143,11 @@ alter table invoiceposition add constraint FK_invoiceposition_product foreign ke
 alter table DocWZ add constraint FK_docwz_customer foreign key (id_customer) references customer(id_customer);
 
 alter table DocWZpos add constraint FK_docwzpos_product foreign key (id_product) references product(id_product);
-
 alter table docwzpos add constraint FK_docwzpos_docwz foreign key (id_docwz) references docwz(id_docwz);
 
+alter table usun add constraint FK_usun_pracownik foreign key (id_pracownik) references pracownik(id_pracownik);
 
-
-
-
-
+alter table konta add constraint FK_konto_pracownik foreign key (id_pracownik) references pracownik(id_pracownik);
 
 
 procedury
@@ -232,6 +241,12 @@ while i<11 do
 end while;
 END
 
+CREATE PROCEDURE zwolnij(in param1 int(5))
+BEGIN
+update pracownik set stanowisko='zwolniony' where id_pracownik = param1;
+update konta set status_konta=0 where id_pracownik = param1;
+END
+
 triggery
 
 create trigger dokument
@@ -255,6 +270,11 @@ create trigger t3
 after insert on docpzpos
 for each row
 call dodawanieprod(new.nazwa,new.ilosc_palet);
+
+create trigger zwolnijpracownika
+after insert on usun
+for each row
+call zwolnij(new.id_pracownik);
 
 
 call wypelnij_pozycje();
