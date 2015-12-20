@@ -77,6 +77,10 @@ public class Pracownik {
 	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "pracownik")
 	@Column(nullable = false)
 	private List<Usun> usun = new ArrayList<>();
+	
+	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "pracownik")
+	@Column(nullable = false)
+	private List<Konta> konta = new ArrayList<>();
 
 	public List<Wyplata> getWyplata() {
 		return wyplata;
@@ -92,6 +96,14 @@ public class Pracownik {
 	
 	public int getId_prac() {
 		return id_prac;
+	}
+
+	public List<Konta> getKonta() {
+		return konta;
+	}
+
+	public void setKonta(List<Konta> konta) {
+		this.konta = konta;
 	}
 
 	public List<Usun> getUsun() {
