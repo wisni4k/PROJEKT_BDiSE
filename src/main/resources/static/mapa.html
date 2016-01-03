@@ -42,15 +42,11 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 ctx.strokeStyle = '#ff0000';
 ctx.lineWidth = 4;
-for(i = 0; i < 11; i++) {
-        ctx.moveTo(iksy(i),igreki(i));
-		ctx.lineTo(iksy(i)+width,igreki(i));
-		ctx.lineTo(iksy(i)+width,igreki(i)+height);
-		ctx.lineTo(iksy(i)+2,igreki(i)+height);
-		ctx.lineTo(iksy(i)+2,igreki(i));
-    }
-
-
+        ctx.moveTo(iksy(5),igreki(5));
+		ctx.lineTo(iksy(5)+width,igreki(5));
+		ctx.lineTo(iksy(5)+width,igreki(5)+height);
+		ctx.lineTo(iksy(5)+2,igreki(5)+height);
+		ctx.lineTo(iksy(5)+2,igreki(5));
 ctx.stroke();
 
 </script>
