@@ -5,15 +5,8 @@ angularFakturapos.config(["RestangularProvider",function(RestangularProvider){
 
 
 angularFakturapos.controller("MainCtrl",["Restangular","$scope","$filter",function(Restangular,$scope,$filter){
-	$scope.getFakturapos = function(invoiceposition) {
-		console.log("xx");
-		var User = Restangular.all('invoicepositions');
-		var oneUser = Restangular.one('invoicepositions', invoiceposition.id);
-		oneUser.get().then(function(docwzpos) {
-			  $scope.userek = user;
-				
-		});
-      };
+	
+	
       
       $scope.addFakturapos = function(invoiceposition){
       	var User = Restangular.all('invoicepositions');
@@ -29,14 +22,44 @@ angularFakturapos.controller("MainCtrl",["Restangular","$scope","$filter",functi
       	
       	User.post($scope.user);
       };
-      	
+      
+      
+        
+        
+        $scope.podmiany = function(pozycje){
+        	console.log(pozycje);
+        	for(var i = 0;i<pozycje.length;i++){
+        		$scope.podmianaUslugi(pozycje[i]);
+        		$scope.podmianaProduktu(pozycje[i]);
+        	}
+        }
+        
+        $scope.podmianaUslugi = function(pozycja){
+        	var ktore = pozycja.id_uslugi;
+        	var usluga = Restangular.all('uslugis');
+  		  	var oneUsluga = Restangular.one('uslugis', ktore);
+  		  	oneUsluga.get().then(function(uslug) {
+  			  $scope.usluga = uslug.opis;
+  			  pozycja.id_uslugi = $scope.usluga;
+  		  	});
+        }
+        
+        $scope.podmianaProduktu = function(pozycja){
+        	var ktore = pozycja.id_product;
+        	var prod = Restangular.all('products');
+  		  	var oneProd = Restangular.one('products', ktore);
+  		  	oneProd.get().then(function(produk) {
+  			  $scope.produkt = produk.nazwa;
+  			  pozycja.id_product = $scope.produkt;
+  		  	});
+        }
+        
+        
       var User = Restangular.all('invoicepositions');
     	User.getList().then(function(User) {
     	  $scope.users = User[0];
-    	  
-    	})
-    
-    	
-    
+    	  $scope.podmiany($scope.users.invoicepositions);
+    	});
+    	   
 	
 }])
