@@ -24,7 +24,8 @@ angularFakturapos.controller("MainCtrl",["Restangular","$scope","$filter",functi
   		    			id_product:				invoiceposition.id_product,
   		    			ilosc_palet:			invoiceposition.ilosc_palet,
   		    			cena_paleta:			invoiceposition.cena_paleta,
-  		    			kwota:					invoiceposition.kwota};
+  		    			kwota:					invoiceposition.cena_paleta*invoiceposition.ilosc_palet*invoiceposition.liczba_dni
+  		    				};
       	
       	User.post($scope.user);
       };

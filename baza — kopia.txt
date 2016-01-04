@@ -27,7 +27,7 @@ liczba_dni int(5),
 id_product int(5),
 ilosc_palet int(5),
 cena_paleta int(5),
-kwota int(50) default 0
+kwota int(50)
 );
 
 
