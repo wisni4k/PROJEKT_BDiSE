@@ -55,7 +55,7 @@ public class Invoice {
 	@OneToMany(cascade = { CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "invoice")
 	@Column(nullable = false)
 	private List<Invoiceposition> invoiceposition = new ArrayList<>();
-
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_customer", referencedColumnName = "id_customer", nullable = false, insertable = false, updatable = false)
 	private Customer customer;
@@ -63,7 +63,6 @@ public class Invoice {
 	//////// getery setery/////////
 	
 	
-
 	public Customer getCustomer() {
 		return customer;
 	}

@@ -1,5 +1,7 @@
 package pl.warehouse.model;
 
+import java.util.ArrayList;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -77,6 +79,8 @@ public class Invoiceposition {
 	private Invoice invoice;
 	
 	//////////getery setery/////////////
+	
+	
 
 	public int getId_invoiceposition() {
 		return id_invoiceposition;

@@ -19,7 +19,11 @@ public class Uslugi {
 	@Id
 	@Basic(optional = false)
 	@Column(name = "id_uslugi")
-	private int id_customer;
+	private int id_uslugi;
+	
+	@Basic(optional = false)
+	@Column(name = "id_uslugi", insertable = false, updatable = false)
+	private int id_us;
 
 	@Basic(optional = false)
 	@Column(name = "opis")
@@ -41,12 +45,22 @@ public class Uslugi {
 		this.invoiceposition = invoiceposition;
 	}
 
-	public int getId_customer() {
-		return id_customer;
+	
+
+	public int getId_uslugi() {
+		return id_uslugi;
 	}
 
-	public void setId_customer(int id_customer) {
-		this.id_customer = id_customer;
+	public void setId_uslugi(int id_uslugi) {
+		this.id_uslugi = id_uslugi;
+	}
+
+	public int getId_us() {
+		return id_us;
+	}
+
+	public void setId_us(int id_us) {
+		this.id_us = id_us;
 	}
 
 	public String getOpis() {

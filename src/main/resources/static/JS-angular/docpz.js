@@ -22,11 +22,30 @@ angularDocpz.controller("MainCtrl",["Restangular","$scope","$filter",function(Re
     	
     	User.post($scope.user);
     };
+    
+    $scope.podmiany = function(pozycje){
+    	console.log(pozycje);
+    	for(var i = 0;i<pozycje.length;i++){
+    		$scope.podmianaKlienta(pozycje[i]);
+    	
+    	}
+    }
+    
+    $scope.podmianaKlienta = function(pozycja){
+    	var ktore = pozycja.id_customer;
+    	var usluga = Restangular.all('customers');
+		  	var oneUsluga = Restangular.one('customers', ktore);
+		  	oneUsluga.get().then(function(uslug) {
+			  $scope.usluga = uslug.customer_name;
+			  pozycja.id_customer = $scope.usluga;
+		  	});
+    }
       
 
     var User = Restangular.all('docpzes');
   	User.getList().then(function(User) {
   	  $scope.users = User[0];
+  	$scope.podmiany($scope.users.docpzes);
   	})
 	
 }])
