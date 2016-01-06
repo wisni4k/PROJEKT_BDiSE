@@ -1,62 +1,30 @@
-<!DOCTYPE html>
 <html>
 <head>
-<style> 
-html {
-    position: relative;
-    min-width: 1775px;
-    min-height: 850px;
-    height: 100%;
-}
-body {
-    background: url(WH2.jpeg) left top no-repeat;
-    background-size: 1775px 850px;
-    background-repeat: no-repeat;
-}
-</style>
 </head>
-<body>
+<body ng-app= 'mapaModule'>
+	<div ng-controller='mapaCtrl'>
+		<div class="section section-primary">
+		      <div class="container">
+		        <div class="row">
+		          <div class="col-md-7">
+		            <h1 class="text-center">MAPA MAGAZYNU</h1>
+		          </div>
+		          <div class="col-md-5">
+		            <a class="btn btn-info btn-lg" href="#/">START<br></a>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+	    <br>
+	    
+	    <center>
+		    <div>
+				<canvas id="myCanvas" width="1775" height="850" style="background: url('../assets/tla/WH2.jpeg'); zoom:80%"></canvas>
+			</div>
+		</center>
+	</div>
 
 
-<script>
-function iksy() {
-	var xx = [2,303,353,654,704,1005,1055,1356,1406,1706];
-    return xx[arguments[0]];
-} 
-document.getElementById("demo").innerHTML = iksy(0);
-</script>
-<script>
-function igreki() {
-	var yy = [14,14+1*69,14+2*69,14+3*69+1,14+4*69+2,14+5*69+3,14+6*69+4,14+7*69+5,14+8*69+7,
-	14+9*69+8,14+10*69+9];
-    return yy[arguments[0]];
-} 
-document.getElementById("demo3").innerHTML =igreki(0);
-</script>
-
-<canvas id="myCanvas" width="1775" height="850">
-</canvas>
-
-<script>
-var width = 49;
-var height = 69;
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-ctx.strokeStyle = '#ff0000';
-ctx.lineWidth = 4;
-        ctx.moveTo(iksy(5),igreki(5));
-		ctx.lineTo(iksy(5)+width,igreki(5));
-		ctx.lineTo(iksy(5)+width,igreki(5)+height);
-		ctx.lineTo(iksy(5)+2,igreki(5)+height);
-		ctx.lineTo(iksy(5)+2,igreki(5));
-ctx.stroke();
-
-</script>
-
-<script>
-var x = sumAll(2);
-document.getElementById("demo2").innerHTML = x;
-</script>
 
 
 </body>

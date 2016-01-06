@@ -5,7 +5,8 @@ var globalModule = angular.module('globalModule', [
   'przyjecieTowaruModule',
   'klientModule',
   'fakturaModule',
-  'wydanieTowaruModule'
+  'wydanieTowaruModule',
+  'mapaModule'
 ]);
 
 
@@ -28,7 +29,8 @@ globalModule.config(['$routeProvider',
 				    	 templateUrl: 'dokumentacja/dokumentacja.html'
 				  }).
 			      when('/mapa',{
-				    	 templateUrl: 'mapa/mapa.html'
+				    	 templateUrl: 'mapa/mapa.html',
+				    	 controller: 'mapaCtrl'
 				  }).
 			      when('/przyjecietowaru',{
 				    	 templateUrl: 'przyjecieTowaru/przyjecietowaru.html',
