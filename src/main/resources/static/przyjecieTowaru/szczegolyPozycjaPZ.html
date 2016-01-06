@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="JS-angular/pozycjepz.js"></script>
+</head>
+
+    <body ng-app="przyjecieTowaruModule">
+    <div class="section section-primary">
+      <div class="container" >
+        <div class="row">
+          <div class="col-md-7">
+            <h1 class="text-center">DOKUMENTY PZ</h1>
+          </div>
+          <div class="col-md-5">
+            <a class="btn btn-info btn-lg" href="#/">START<br></a>
+            <a class="btn btn-info btn-lg" href="#listaDokumentowPZ">WSTECZ<br></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <br>
+    <div class="container"   ng-app="angularDocpz">
+    <div ng-controller="listaPozycjiPZ">
+    	
+    	<div class="jumbotron">
+	    	<div class="btn-group" role="group">
+	    	  			Tutaj zeby wyswietlaly te pozycje ktore znajduje sie na dokemencie pz w ktorym kliknelismy szczegoly 		
+	  			<div class="input-group">
+				<span class="input-group-addon">Szukaj:</span>
+				<input type="text" class="form-control" ng-model="wyszukiwarka">
+			</div>
+	  		</div>
+	  	</div>
+	  	
+    	<br>
+		<div class="jumbotron">
+			<div class="table-resposive">
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<td>ID PZ</td>
+						<td>Pozycja</td>
+						<td>Nazwa produktu</td>
+						<td>Ilość palet</td>
+					</tr>
+				</thead>
+				<tbody>
+			  		<tr ng-repeat="n in users.docpzposes | filter:wyszukiwarka">
+			    		<td>{{n.id_docpz}}</td>
+			    		<td>{{n.pozycja}}</td>
+			    		<td>{{n.nazwa}}</td>
+			    		<td>{{n.ilosc_palet}}</td>
+			  		</tr>
+			  	</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	</div>	
+
+</body></html>

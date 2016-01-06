@@ -1,0 +1,149 @@
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+    <body ng-app="pracownikModule">
+    <div class="section section-primary">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <h1 class="text-center">PODGLAD PRACOWNIKOW</h1>
+          </div>
+          <div class="col-md-6">
+            <a class="btn btn-info btn-lg" href="#/">START<br></a>
+            <a class="btn btn-info btn-lg" data-toggle="modal" data-target="#addProductModal">NOWY<br></a>
+            <a class="btn btn-info btn-lg" href="#nowekonto">NOWE KONTO<br></a>
+            <a href="#zwolnij" class="btn btn-info btn-lg" href="magazyn.html">ZWOLNIJ<br></a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div ng-controller="pracownikCtrl">
+    <br>
+    
+    <div class="container">
+    	
+    	<div class="jumbotron">
+	    	<div class="btn-group" role="group">  		
+	  			<div class="input-group">
+				<span class="input-group-addon">Szukaj:</span>
+				<input type="text" class="form-control" ng-model="wyszukiwarka">
+			</div>
+	  		</div>
+	  	</div>
+	  	
+    	<br>
+		<div class="jumbotron">
+			<div class="table-resposive">
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<td>ID</td>
+						<td>Nazwisko</td>
+						<td>Imie</td>
+						<td>Adres</td>
+						<td>Miasto</td>
+						<td>Kod pocztowy</td>
+						<td>Kraj</td>
+						<td>Telefon</td>
+						<td>Stanowisko</td>
+					</tr>
+				</thead>
+				<tbody>
+			  		<tr ng-repeat="n in users.pracowniks | filter:wyszukiwarka">
+			  			<td>{{n.id_prac}}</td>
+			    		<td>{{n.nazwisko}}</td>
+			    		<td>{{n.imie}}</td>
+			    		<td>{{n.adres}}</td>
+			    		<td>{{n.miasto}}</td>
+			    		<td>{{n.kod_pocztowy}}</td>
+			    		<td>{{n.kraj}}</td>
+			    		<td>{{n.telefon}}</td>
+			    		<td>{{n.stanowisko}}</td>
+			  		</tr>
+			  	</tbody>
+				</table>
+
+			</div>
+		</div>
+		<div class="modal" id="addProductModal">
+      <div class="modal-dialog"> 
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="addProductModalLabel" contenteditable="true">Nowy pracownik</h2>
+          </div>
+          <div class="modal-body">
+            <p class="lead">Nazwisko</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control" id="nazwisko" ng-model="pracownik.nazwisko">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+            <p class="lead">Imie</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control" id="imie" ng-model="pracownik.imie">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+            <p class="lead">Adres</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control" id="adres" ng-model="pracownik.adres">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+             <p class="lead">Miasto</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control" id="miasto" ng-model="pracownik.miasto">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+             <p class="lead">Kod pocztowy</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control" id="kod_pocztowy" ng-model="pracownik.kod_pocztowy">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+             <p class="lead">Kraj</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control" id="kraj" ng-model="pracownik.kraj">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+             <p class="lead">Telefon</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control" id="telefon" ng-model="pracownik.telefon">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+             <p class="lead">Stanowisko</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control" id="stanowisko" ng-model="pracownik.stanowisko">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="resset" value="Reset" class="btn btn-default btn-lg" data-dismiss="modal" data-target="#addProductModal">Zamknij</button>
+            <a href="pracownicy.html" class="btn btn-info btn-lg" ng-click="addPracownik(pracownik)" data-dismiss="modal" data-target="#addProductModal">DODAJ<br></a>
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
+	</div>
+
+</body>
+</html>

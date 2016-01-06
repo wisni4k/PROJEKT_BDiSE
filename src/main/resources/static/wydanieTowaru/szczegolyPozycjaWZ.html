@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+    <body ng-app="wydanieTowaruModule">
+    <div class="section section-primary">
+      <div class="container" >
+        <div class="row">
+          <div class="col-md-7">
+            <h1 class="text-center">DOKUMENTY WZ</h1>
+          </div>
+          <div class="col-md-5">
+            <a class="btn btn-info btn-lg" href="#/">START<br></a>
+            <a class="btn btn-info btn-lg" href="docpzlista.html">WSTECZ<br></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <br>
+    <div class="container">
+    <div ng-controller="pozycjeWZCtrl">
+    	
+    	<div class="jumbotron">
+	    	<div class="btn-group" role="group">
+	    	  			Tutaj zeby wyswietlaly te pozycje ktore znajduje sie na dokemencie wz w ktorym kliknelismy szczegoly 		
+	  			<div class="input-group">
+				<span class="input-group-addon">Szukaj:</span>
+				<input type="text" class="form-control" ng-model="wyszukiwarka">
+			</div>
+	  		</div>
+	  	</div>
+	  	
+    	<br>
+		<div class="jumbotron">
+			<div class="table-resposive">
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<td>ID PZ</td>
+						<td>Pozycja</td>
+						<td>ID produktu</td>
+						<td>Ilość palet</td>
+					</tr>
+				</thead>
+				<tbody>
+			  		<tr ng-repeat="n in users.docwzposes | filter:wyszukiwarka">
+			    		<td>{{n.id_docwz}}</td>
+			    		<td>{{n.pozycja}}</td>
+			    		<td>{{n.id_product}}</td>
+			    		<td>{{n.ilosc_palet}}</td>
+			  		</tr>
+			  	</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	</div>	
+
+</body></html>

@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+    <body ng-app="wydanieTowaruModule">
+    <div class="section section-primary">
+      <div class="container" >
+        <div class="row">
+          <div class="col-md-7">
+            <h1 class="text-center">DOKUMENTY WZ</h1>
+          </div>
+          <div class="col-md-5">
+            <a class="btn btn-info btn-lg" href="#/">START<br></a>
+             
+             <a class="btn btn-info btn-lg" href="dokumentacja.html">WSTECZ<br></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <br>
+    <div class="container">
+    <div ng-controller="wzCtrl">
+    	
+    	<div class="jumbotron">
+	    	<div class="btn-group" role="group">  		
+	  			<div class="input-group">
+				<span class="input-group-addon">Szukaj:</span>
+				<input type="text" class="form-control" ng-model="wyszukiwarka">
+			</div>
+	  		</div>
+	  	</div>
+	  	
+    	<br>
+		<div class="jumbotron">
+			<div class="table-resposive">
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<td>ID</td>
+						<td>Nazwa Klienta</td>
+						<td>Data wydania</td>
+						<td>Szczegóły</td>
+					</tr>
+				</thead>
+				<tbody>
+			  		<tr ng-repeat="n in users.docwzes | filter:wyszukiwarka">
+			    		<td>{{n.id_dwz}}</td>
+			    		<td>{{n.id_customer}}</td>
+			    		<td>{{n.data_wydania}}</td>
+			    		<td><a class="btn btn-info btn-lg" href="#szczegolyWZ">SZCZEGÓŁY</a></td>
+			  		</tr>
+			  	</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	</div>	
+	
+	
+
+</body></html>

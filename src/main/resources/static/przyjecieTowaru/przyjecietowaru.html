@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body ng-app="przyjecieTowaruModule">
+	    <div class="section section-primary">
+	      <div class="container">
+	        <div class="row">
+	          <div class="col-md-7">
+	            <h1 class="text-center">PRZYJECIE TOWARU 
+	              <br>
+	            </h1>
+	          </div>
+	          <div class="col-md-5">
+	            <a class="btn btn-info btn-lg" href="#/">START<br></a>
+	            <a class="btn btn-info btn-lg" href="#klient">KLIENCI<br></a>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	     
+	      <div class="container">
+	      <div ng-controller="przyjecieTowaruCtrl">
+	        <div class="row">
+	        	<div class="jumbotron">
+	        	<div class="section text-center">
+	       			 <h3>Przyjęcie zewnętrzne</h3>
+	       			 </div>
+	       			 <div class="form-group">
+				  		<label for="ID">ID Klienta</label>
+				 		 <input type="text" class="form-control" id="id_customer" ng-model="docpz.id_customer">
+				 		 <label for="dataa">Data przyjęcia</label>
+				 		 <input type="text" class="form-control" id="data_przyjecia" ng-model="docpz.data_przyjecia">
+					</div>
+					<a href="#dodajPozycjePZ" class="btn btn-info btn-lg" ng-click="addDocpz(docpz)" >UTWÓRZ<br></a>
+					
+	        	</div>
+	        </div>
+	      </div>
+	      </div>
+    
+  
+
+</body></html>

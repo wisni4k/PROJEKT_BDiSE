@@ -1,0 +1,65 @@
+<html>
+<head>
+
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+    <body ng-app="fakturaModule">
+    <div class="section section-primary">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center">POZYCJE FAKTURA</h1>
+          </div>
+          <div class="col-md-6">
+           <a class="btn btn-info btn-lg" href="magazyn.html">START<br></a>
+           <a class="btn btn-info btn-lg" href="listauslug.html">LISTA USŁUG<br></a>
+           <a class="btn btn-info btn-lg" href="stanmagazynu.html">PRODUKTY<br></a>
+            <a class="btn btn-info btn-lg" href="przyjecietowaru.html">WSTECZ<br></a>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div ng-controller="fakturaPozycjeCtrl">
+    <br>
+    
+    <div class="container">
+    	
+		<div class="jumbotron">
+			<form>
+			  <label for="imie">ID Faktury:</label>
+			  <input type="text" class="form-control" id="id_invoice" ng-model="invoiceposition.id_invoice">
+		
+			  <label for="nazwa">Pozycja:</label>
+			  <input type="text" class="form-control" id="pozycja" ng-model="invoiceposition.pozycja">
+		
+			  <label for="adres">ID usługi:</label>
+			  <input type="text" class="form-control" id="id_uslugi" ng-model="invoiceposition.id_uslugi">
+			  
+			   <label for="adres">ID produktu:</label>
+			  <input type="text" class="form-control" id="id_product" ng-model="invoiceposition.id_product">
+			  
+			   <label for="adres">Liczba dni:</label>
+			  <input type="text" class="form-control" id="liczba_dni" ng-model="invoiceposition.liczba_dni">
+			  
+			  <label for="adres">Ilość palet:</label>
+			  <input type="text" class="form-control" id="ilosc_palet" ng-model="invoiceposition.ilosc_palet">
+			  
+			   <label for="adres">Cena za paletę:</label>
+			  <input type="text" class="form-control" id="cena_paleta" ng-model="invoiceposition.cena_paleta">
+			  <br>
+			  <button type="reset" value="Reset" class="btn btn-default" ng-click="addFakturapos(invoiceposition)">Dodaj</button>
+			  <a href="#listaFaktury"class="btn btn-default" ng-click="addFakturapos(invoiceposition)">ZAKOŃCZ<br></a>
+
+			</form>
+			<br>
+			
+			
+		</div>
+	</div>
+	</div>
+
+</body></html>

@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+</head>
+
+    <body ng-app="przyjecieTowaruModule">
+    <div class="section section-primary">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <h1 class="text-center">POZYCJE PZ</h1>
+          </div>
+          <div class="col-md-5">
+           <a class="btn btn-info btn-lg" href="#/">START<br></a>
+            <a class="btn btn-info btn-lg" href="#przyjecietowaru">WSTECZ<br></a>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div ng-controller="listaPozycjiPZ">
+    <br>
+    
+    <div class="container">
+    	
+		<div class="jumbotron">
+			<form>
+			  <label for="imie">ID Przyjęcia zewnętrznego:</label>
+			  <input type="text" class="form-control" id="id_docpz" ng-model="docpzpos.id_docpz">
+		
+			  <label for="nazwa">Pozycja:</label>
+			  <input type="text" class="form-control" id="pozycja" ng-model="docpzpos.pozycja">
+		
+			  <label for="adres">Nazwa produktu:</label>
+			  <input type="text" class="form-control" id="nazwa" ng-model="docpzpos.nazwa">
+			  
+			   <label for="adres">Ilość palet:</label>
+			  <input type="text" class="form-control" id="ilosc_palet" ng-model="docpzpos.ilosc_palet">
+			  <br>
+			  <button type="reset" value="Reset" class="btn btn-default" ng-click="addDocpzpos(docpzpos)">Dodaj</button>
+			  <a href="#listaDokumentowPZ"class="btn btn-default" ng-click="addDocpzpos(docpzpos)">ZAKOŃCZ<br></a>
+			</form>
+			
+
+			
+		</div>
+	</div>
+	</div>
+
+</body></html>

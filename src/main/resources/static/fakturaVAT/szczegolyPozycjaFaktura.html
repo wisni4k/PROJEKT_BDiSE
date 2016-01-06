@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+    <body ng-app="fakturaModule">
+    <div class="section section-primary">
+      <div class="container" >
+        <div class="row">
+          <div class="col-md-7">
+            <h1 class="text-center">Faktury</h1>
+          </div>
+          <div class="col-md-5">
+            <a class="btn btn-info btn-lg" href="magazyn.html">START<br></a>
+            <a class="btn btn-info btn-lg" href="fakturylista.html">WSTECZ<br></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <br>
+    <div class="container">
+    <div ng-controller="fakturaPozycjeCtrl">
+    	
+    	<div class="jumbotron">
+	    	<div class="btn-group" role="group">
+	    	  			Tutaj zeby wyswietlaly te pozycje ktore znajduje sie na fakturach w ktorym kliknelismy szczegoly 		
+	  			<div class="input-group">
+				<span class="input-group-addon">Szukaj:</span>
+				<input type="text" class="form-control" ng-model="wyszukiwarka">
+			</div>
+	  		</div>
+	  	</div>
+	  	
+    	<br>
+		<div class="jumbotron">
+			<div class="table-resposive">
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<td>ID faktury</td>
+						<td>Pozycja</td>
+						<td>ID usługi</td>
+						<td>ID produktu</td>
+						<td>Liczba dni</td>
+						<td>Ilość palet</td>
+						<td>Cena/1 paleta</td>
+						<td>Kwota</td>
+					</tr>
+				</thead>
+				<tbody>
+			  		<tr ng-repeat="n in users.invoicepositions | filter:wyszukiwarka">
+			    		<td>{{n.id_invoice}}</td>
+			    		<td>{{n.pozycja}}</td>
+			    		<td>{{n.id_uslugi}}</td>
+			    		<td>{{n.id_product}}</td>
+			    		<td>{{n.liczba_dni}}</td>
+			    		<td>{{n.ilosc_palet}}</td>
+			    		<td>{{n.cena_paleta}}</td>
+			    		<td>{{n.kwota}}</td>
+			  		</tr>
+			  	</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	</div>
+
+</body></html>

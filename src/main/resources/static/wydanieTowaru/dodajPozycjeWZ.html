@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+    <body ng-app="wydanieTowaruModule">
+    <div class="section section-primary">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <h1 class="text-center">POZYCJE WZ</h1>
+          </div>
+          <div class="col-md-5">
+                      <a class="btn btn-info btn-lg" href="#/">START<br></a>
+            		  <a class="btn btn-info btn-lg" href="#stanmagazynu">PRODUKTY<br></a>
+            		  <a class="btn btn-info btn-lg" href="docwz.html">WSTECZ<br></a>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div ng-controller="pozycjeWZCtrl">
+    <br>
+    
+    <div class="container">
+    	
+		<div class="jumbotron">
+			<form>
+			  <label for="imie">ID Wydania zewnętrznego:</label>
+			  <input type="text" class="form-control" id="id_docwz" ng-model="docwzpos.id_docwz">
+		
+			  <label for="nazwa">Pozycja:</label>
+			  <input type="text" class="form-control" id="pozycja" ng-model="docwzpos.pozycja">
+		
+			  <label for="adres">ID produktu:</label>
+			  <input type="text" class="form-control" id="id_product" ng-model="docwzpos.id_product">
+			  
+			   <label for="adres">Ilość palet:</label>
+			  <input type="text" class="form-control" id="ilosc_palet" ng-model="docwzpos.ilosc_palet">
+			  <br>
+			  <button type="reset" value="Reset" class="btn btn-default" ng-click="addDocwzpos(docwzpos)">Dodaj</button>
+			  <a href="#listaDokumentowWZ"class="btn btn-default" ng-click="addDocwzpos(docwzpos)">ZAKOŃCZ<br></a>
+			</form>
+		</div>
+	</div>
+	</div>
+
+</body></html>
