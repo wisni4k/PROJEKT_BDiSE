@@ -30,19 +30,41 @@
 			  <label for="imie">ID Przyjęcia zewnętrznego:</label>
 			  <input type="text" class="form-control" id="id_docpz" ng-model="docpzpos.id_docpz">
 		
-			  <label for="nazwa">Pozycja:</label>
-			  <input type="text" class="form-control" id="pozycja" ng-model="docpzpos.pozycja">
-		
 			  <label for="adres">Nazwa produktu:</label>
 			  <input type="text" class="form-control" id="nazwa" ng-model="docpzpos.nazwa">
 			  
 			   <label for="adres">Ilość palet:</label>
 			  <input type="text" class="form-control" id="ilosc_palet" ng-model="docpzpos.ilosc_palet">
 			  <br>
-			  <button type="reset" value="Reset" class="btn btn-default" ng-click="addDocpzpos(docpzpos)">Dodaj</button>
+			  <button type="reset" value="Reset" class="btn btn-default" ng-click="addToPozList(docpzpos)">Dodaj</button>
 			  <a href="#listaDokumentowPZ"class="btn btn-default" ng-click="addDocpzpos(docpzpos)">ZAKOŃCZ<br></a>
 			</form>
+			<br>
+			<br>
 			
+			<div class="jumbotron">
+			<div class="table-resposive">
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<td>ID</td>
+						<td>Pozycja</td>
+						<td>Nazwa</td>
+						<td>Ilość palet</td>
+					</tr>
+				</thead>
+				<tbody>
+			  		<tr ng-repeat="n in listaPozycji">
+			    		<td>{{n.id_docpz}}</td>
+			    		<td>{{n.pozycja}}</td>
+			    		<td>{{n.nazwa}}</td>
+			    		<td>{{n.ilosc_palet}}</td>
+			    		<td><button data-ng-click="removeFromPozLista($index)">Usuń</button></td>
+			  		</tr>
+			  	</tbody>
+				</table>
+			</div>
+		</div>
 
 			
 		</div>

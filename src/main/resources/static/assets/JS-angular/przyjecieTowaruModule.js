@@ -72,23 +72,38 @@ przyjecieTowaruModule.controller("przyjecieTowaruCtrl",["Restangular","$scope","
 
 
 przyjecieTowaruModule.controller("listaPozycjiPZ",["Restangular","$scope","$filter",function(Restangular,$scope,$filter){
-	$scope.getDocpzpos = function(docpzpos) {
-		var User = Restangular.all('docpzposes');
-		var oneUser = Restangular.one('docpzposes', docpzpos.id);
-		oneUser.get().then(function(docpzpos) {
-			  $scope.userek = user;
-			 
-			});
-      };
+	
+	
+	$scope.listaPozycji = [];
+	$scope.pozycja = 1;
+	$scope.addToPozList = function(docpzpos) {
+		$scope.listaPozycji.push({
+			id_docpz: 		docpzpos.id_docpz,
+			pozycja: 		$scope.pozycja,
+			nazwa: 			docpzpos.nazwa,
+			ilosc_palet: 	docpzpos.ilosc_palet
+		});
+		$scope.pozycja = $scope.pozycja +1;
+	}
+	$scope.removeFromPozLista = function(index){
+	    $scope.listaPozycji.splice(index, 1);
+	    for(i=0;i<$scope.listaPozycji.length;i++){
+	    	$scope.listaPozycji[i].pozycja = i+1;
+	    	if(i==0){
+	    		$scope.pozycja = 1;
+	    	}else
+	    	{$scope.pozycja = i+2;}
+
+      	}
+	  }
       
       $scope.addDocpzpos = function(docpzpos){
-      	var User = Restangular.all('docpzposes');
-      	$scope.user = {	id_docpz: 			docpzpos.id_docpz,
-  		    			pozycja: 			docpzpos.pozycja,
-  		    			nazwa: 				docpzpos.nazwa,
-  		    			ilosc_palet:  		docpzpos.ilosc_palet};
+      	var docPozycjePZ = Restangular.all('docpzposes');
       	
-      	User.post($scope.user);
+      	for(i=0;i<$scope.listaPozycji.length;i++){
+      		docPozycjePZ.post($scope.listaPozycji[i]);
+      	}
+
       };
       	
       var User = Restangular.all('docpzposes');
