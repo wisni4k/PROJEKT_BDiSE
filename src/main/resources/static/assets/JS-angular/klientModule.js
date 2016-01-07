@@ -16,12 +16,13 @@ klientModule.controller("klientCtrl",["Restangular","$scope","$filter",function(
       
     $scope.addCustomer = function(customer){
     	var User = Restangular.all('customers');
-    	$scope.user = {	customer_name: 		customer.imie,
+    	$scope.user = {	
+    					id_customer:		customer.id_customer,
+    					customer_name: 		customer.imie,
 		    			contact_name: 		customer.nazwa,
 		    			customer_adress: 	customer.adres,
 		    			phone:				customer.tel,
-		    			fax:				customer.fax,
-		    			nip:				customer.nip};
+		    			fax:				customer.fax};
     	
     	User.post($scope.user);
     };

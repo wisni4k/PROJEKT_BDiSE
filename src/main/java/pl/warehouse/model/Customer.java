@@ -30,11 +30,11 @@ public class Customer {
 	@Id
 	@Basic(optional = false)
 	@Column(name = "id_customer")
-	private int id_customer;
+	private String id_customer;
 	
 	@Basic(optional = false)
 	@Column(name = "id_customer", insertable = false, updatable = false)
-	private int id_cust;
+	private String id_cust;
 	
 
 	@Basic(optional = false)
@@ -57,9 +57,6 @@ public class Customer {
 	@Column(name = "fax")
 	private String fax;
 	
-	@Basic(optional = false)
-	@Column(name = "nip")
-	private String nip;
 
 	
 	
@@ -88,11 +85,11 @@ public class Customer {
 		return invoice;
 	}
 
-	public int getId_cust() {
+	public String getId_cust() {
 		return id_cust;
 	}
 
-	public void setId_cust(int id_cust) {
+	public void setId_cust(String id_cust) {
 		this.id_cust = id_cust;
 	}
 
@@ -118,11 +115,11 @@ public class Customer {
 		this.docpz = docpz;
 	}
 
-	public int getId_customer() {
+	public String getId_customer() {
 		return id_customer;
 	}
 
-	public void setId_customer(int id_customer) {
+	public void setId_customer(String id_customer) {
 		this.id_customer = id_customer;
 	}
 
@@ -166,12 +163,5 @@ public class Customer {
 		this.fax = fax;
 	}
 
-	public String getNip() {
-		return nip;
-	}
-
-	public void setNip(String nip) {
-		this.nip = nip;
-	}
 
 }

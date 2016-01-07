@@ -40,7 +40,7 @@ public class Invoice {
 
 	@Basic(optional = false)
 	@Column(name = "id_customer")
-	private int id_customer;
+	private String id_customer;
 
 	@Basic(optional = false)
 	@Column(name = "kwota")
@@ -95,11 +95,11 @@ public class Invoice {
 		this.id_invoice = id_invoice;
 	}
 
-	public int getId_customer() {
+	public String getId_customer() {
 		return id_customer;
 	}
 
-	public void setId_customer(int id_customer) {
+	public void setId_customer(String id_customer) {
 		this.id_customer = id_customer;
 	}
 

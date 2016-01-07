@@ -37,7 +37,8 @@ przyjecieTowaruModule.controller("przyjecieTowaruCtrl",["Restangular","$scope","
       
     $scope.addDocpz = function(docpz){
     	var User = Restangular.all('docpzes');
-    	$scope.user = {	id_customer: 		docpz.id_customer,
+    	$scope.user = {	id_docpz:			docpz.id_docpz,
+    					id_customer: 		docpz.id_customer,
 		    			data_przyjecia: 	docpz.data_przyjecia,
 		    			};
     	

@@ -27,15 +27,15 @@ public class Docwz {
 	@Id
 	@Basic(optional = false)
 	@Column(name = "id_docwz")
-	private int id_docwz;
+	private String id_docwz;
 	
 	@Basic(optional = false)
 	@Column(name = "id_docwz", insertable = false, updatable = false)
-	private int id_dwz;
+	private String id_dwz;
 
 	@Basic(optional = false)
 	@Column(name = "id_customer")
-	private int id_customer;
+	private String id_customer;
 
 	@Basic(optional = false)
 	@Column(name = "data_wydania")
@@ -58,11 +58,11 @@ public class Docwz {
 		return customer;
 	}
 
-	public int getId_dwz() {
+	public String getId_dwz() {
 		return id_dwz;
 	}
 
-	public void setId_dwz(int id_dwz) {
+	public void setId_dwz(String id_dwz) {
 		this.id_dwz = id_dwz;
 	}
 
@@ -78,19 +78,19 @@ public class Docwz {
 		this.docwzpos = docwzpos;
 	}
 
-	public int getId_docwz() {
+	public String getId_docwz() {
 		return id_docwz;
 	}
 
-	public void setId_docwz(int id_docwz) {
+	public void setId_docwz(String id_docwz) {
 		this.id_docwz = id_docwz;
 	}
 
-	public int getId_customer() {
+	public String getId_customer() {
 		return id_customer;
 	}
 
-	public void setId_customer(int id_customer) {
+	public void setId_customer(String id_customer) {
 		this.id_customer = id_customer;
 	}
 
