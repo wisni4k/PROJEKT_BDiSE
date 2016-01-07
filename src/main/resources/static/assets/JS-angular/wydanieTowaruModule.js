@@ -88,7 +88,9 @@ wydanieTowaruModule.controller("wzCtrl",["Restangular","$scope","$filter",functi
       
     $scope.addDocwz = function(docwz){
     	var User = Restangular.all('docwzes');
-    	$scope.user = {	id_customer: 		docwz.id_customer,
+    	$scope.user = {	
+    					id_docwz:			docwz.id_docwz,
+    					id_customer: 		docwz.id_customer,
 		    			data_wydania: 		docwz.data_wydania,
 		    			};
     	

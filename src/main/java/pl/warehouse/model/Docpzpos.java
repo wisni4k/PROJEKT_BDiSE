@@ -31,7 +31,7 @@ public class Docpzpos {
 	
 	@Basic(optional = false)
 	@Column(name = "id_docpz")
-	private int id_docpz;
+	private String id_docpz;
 
 	@Basic(optional = false)
 	@Column(name = "pozycja")
@@ -77,11 +77,11 @@ public class Docpzpos {
 
 
 
-	public int getId_docpz() {
+	public String getId_docpz() {
 		return id_docpz;
 	}
 
-	public void setId_docpz(int id_docpz) {
+	public void setId_docpz(String id_docpz) {
 		this.id_docpz = id_docpz;
 	}
 

@@ -2,10 +2,10 @@
 <head>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="JS-angular/klient.js"></script>
+    <script type="text/javascript" src="JS-angular/klientModule.js"></script>
 </head>
 
-    <body ng-app="angularKlient">
+    <body ng-app="klientModule">
     <div class="section section-primary">
       <div class="container">
         <div class="row">
@@ -40,13 +40,12 @@
 				<table class="table table-hover">
 				<thead>
 					<tr>
-						<td>ID</td>
+						<td>NIP</td>
 						<td>Nazwa</td>
 						<td>Kontakt</td>
 						<td>Adres</td>
 						<td>Telefon</td>
 						<td>Fax</td>
-						<td>NIP</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -57,7 +56,6 @@
 			    		<td>{{n.customer_adress}}</td>
 			    		<td>{{n.phone}}</td>
 			    		<td>{{n.fax}}</td>
-			    		<td>{{n.nip}}</td>
 			  		</tr>
 			  	</tbody>
 				</table>
@@ -70,6 +68,14 @@
             <h2 class="modal-title" id="addProductModalLabel" contenteditable="true">Nowy klient</h2>
           </div>
           <div class="modal-body">
+          <p class="lead">NIP</p>
+            <div class="form-group has-success">
+              <div class="input-group">
+                <input type="text" class="form-control" id="id_customer" ng-model="customer.id_customer">
+                <span class="input-group-btn"></span>
+              </div>
+            </div>
+          	
             <p class="lead">Nazwa firmy</p>
             <div class="form-group has-success">
               <div class="input-group">
@@ -102,13 +108,6 @@
             <div class="form-group has-success">
               <div class="input-group">
                 <input type="text" class="form-control" id="fax" ng-model="customer.fax">
-                <span class="input-group-btn"></span>
-              </div>
-            </div>
-             <p class="lead">NIP</p>
-            <div class="form-group has-success">
-              <div class="input-group">
-                <input type="text" class="form-control" id="nip" ng-model="customer.nip">
                 <span class="input-group-btn"></span>
               </div>
             </div>
