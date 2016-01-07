@@ -40,10 +40,36 @@
 			   <label for="adres">Ilość palet:</label>
 			  <input type="text" class="form-control" id="ilosc_palet" ng-model="docwzpos.ilosc_palet">
 			  <br>
-			  <button type="reset" value="Reset" class="btn btn-default" ng-click="addDocwzpos(docwzpos)">Dodaj</button>
-			  <a href="#listaDokumentowWZ"class="btn btn-default" ng-click="addDocwzpos(docwzpos)">ZAKOŃCZ<br></a>
+			  <button type="reset" value="Reset" class="btn btn-default" ng-click="addToPozList(docwzpos)">Dodaj</button>
+			  <a href="#listaDokumentowWZ"class="btn btn-default" ng-click="addDocwzpos()">ZAKOŃCZ<br></a>
 			</form>
 		</div>
+		<br>
+					<div class="jumbotron">
+			<div class="table-resposive">
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<td>ID</td>
+						<td>Pozycja</td>
+						<td>Nazwa</td>
+						<td>Ilość palet</td>
+					</tr>
+				</thead>
+				<tbody>
+			  		<tr ng-repeat="n in listaPozycji">
+			    		<td>{{n.id_docwz}}</td>
+			    		<td>{{n.pozycja}}</td>
+			    		<td>{{n.id_product}}</td>
+			    		<td>{{n.ilosc_palet}}</td>
+			    		<td><button data-ng-click="removeFromPozLista($index)">Usuń</button></td>
+			  		</tr>
+			  	</tbody>
+				</table>
+			</div>
+		</div>
+		
+		
 	</div>
 	</div>
 

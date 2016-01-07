@@ -25,31 +25,43 @@ wydanieTowaruModule.config(['$routeProvider',
 
 
 wydanieTowaruModule.controller("pozycjeWZCtrl",["Restangular","$scope","$filter",function(Restangular,$scope,$filter){
-	$scope.getDocwzpos = function(docwzpos) {
-		var User = Restangular.all('docwzposes');
-		var oneUser = Restangular.one('docwzposes', docwzpos.id);
-		oneUser.get().then(function(docwzpos) {
-			  $scope.userek = user;
-			 
-			});
-      };
+
       
-      $scope.addDocwzpos = function(docwzpos){
-      	var User = Restangular.all('docwzposes');
-      	$scope.user = {	id_docwz: 			docwzpos.id_docwz,
-  		    			pozycja: 			docwzpos.pozycja,
-  		    			id_product: 		docwzpos.id_product,
-  		    			ilosc_palet:  		docwzpos.ilosc_palet};
-      	
-      	User.post($scope.user);
+	$scope.listaPozycji = [];
+	$scope.pozycja = 1;
+	$scope.addToPozList = function(docwzpos) {
+		$scope.listaPozycji.push({
+			id_docwz: 		docwzpos.id_docwz,
+			pozycja: 		$scope.pozycja,
+			id_product: 	docwzpos.id_product,
+			ilosc_palet: 	docwzpos.ilosc_palet
+		});
+		$scope.pozycja = $scope.pozycja +1;
+		console.log($scope.listaPozycji);
+	}
+	$scope.removeFromPozLista = function(index){
+	    $scope.listaPozycji.splice(index, 1);
+	    for(i=0;i<$scope.listaPozycji.length;i++){
+	    	$scope.listaPozycji[i].pozycja = i+1;
+	    	if(i==0){
+	    		$scope.pozycja = 1;
+	    	}else
+	    	{$scope.pozycja = i+2;}
+
+      	}
+	  }
+	
+	
+      $scope.addDocwzpos = function(){
+      	var docPozycjeWZ = Restangular.all('docwzposes');
+      	for(i=0;i<$scope.listaPozycji.length;i++){
+      		docPozycjeWZ.post($scope.listaPozycji[i]);
+      	}
       };
       
       $scope.podmiany = function(pozycje){
-      	console.log(pozycje);
       	for(var i = 0;i<pozycje.length;i++){
       		$scope.podmianaProduktu(pozycje[i]);
-      		
-      	
       	}
       }
       
@@ -96,7 +108,6 @@ wydanieTowaruModule.controller("wzCtrl",["Restangular","$scope","$filter",functi
     };
       
     $scope.podmiany = function(pozycje){
-    	console.log(pozycje);
     	for(var i = 0;i<pozycje.length;i++){
     		$scope.podmianaKlienta(pozycje[i]);
     		
