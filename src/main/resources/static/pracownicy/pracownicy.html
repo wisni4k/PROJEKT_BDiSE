@@ -11,11 +11,12 @@
           <div class="col-md-7">
             <h1 class="text-center">PODGLAD PRACOWNIKOW</h1>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-7">
             <a class="btn btn-info btn-lg" href="#/">START<br></a>
             <a class="btn btn-info btn-lg" data-toggle="modal" data-target="#addProductModal">NOWY<br></a>
             <a class="btn btn-info btn-lg" href="#nowekonto">NOWE KONTO<br></a>
             <a href="#zwolnij" class="btn btn-info btn-lg" href="magazyn.html">ZWOLNIJ<br></a>
+            <a href="#wyplata" class="btn btn-info btn-lg" href="wyplata.html">PENSJE<br></a>
             
           </div>
         </div>
@@ -51,6 +52,7 @@
 						<td>Kraj</td>
 						<td>Telefon</td>
 						<td>Stanowisko</td>
+						<td>Pensje</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,6 +66,7 @@
 			    		<td>{{n.kraj}}</td>
 			    		<td>{{n.telefon}}</td>
 			    		<td>{{n.stanowisko}}</td>
+			    		<td><a href="#wyplata2/{{n.id_prac}}" class="btn btn-info btn-lg" href="wyplatylista.html">PENSJE</a></td>
 			  		</tr>
 			  	</tbody>
 				</table>

@@ -1,7 +1,7 @@
 create database warehouse;
 use warehouse;
 CREATE TABLE Customer(
-id_customer int(5) primary key,
+id_customer int(11) primary key,
 customer_name varchar(20),
 contact_name varchar(20),
 customer_adress varchar(100),
@@ -12,7 +12,7 @@ nip varchar(15)
 
 CREATE TABLE Invoice(
 id_invoice int(5) primary key,
-id_customer int(5),
+id_customer int(11),
 kwota int(50) DEFAULT 0,
 data_wystawienia varchar(20)
 );
@@ -33,7 +33,7 @@ kwota int(50)
 
 create table DocPZ(
 id_DocPZ int(5) primary key,
-id_customer int(5),
+id_customer int(11),
 data_przyjecia varchar(50)
 );
 
@@ -47,7 +47,7 @@ ilosc_palet int(5)
 
 create table DocWZ(
 id_DocWZ int (5) primary key,
-id_customer int(5),
+id_customer int(11),
 data_wydania varchar(50)
 );
 

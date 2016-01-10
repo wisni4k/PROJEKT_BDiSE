@@ -4,29 +4,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-    <body ng-app="wydanieTowaruModule">
+    <body ng-app="pracownikModule">
     <div class="section section-primary">
-      <div class="container" >
+      <div class="container">
         <div class="row">
           <div class="col-md-7">
-            <h1 class="text-center">DOKUMENTY WZ</h1>
+            <h1 class="text-center">PODGLAD PRACOWNIKOW</h1>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-7">
             <a class="btn btn-info btn-lg" href="#/">START<br></a>
-            <a class="btn btn-info btn-lg"  href="#listaDokumentowWZ">WSTECZ<br></a>
+         
+            
           </div>
         </div>
       </div>
     </div>
 
-    
+    <div ng-controller="pensjaCtrl">
     <br>
+    
     <div class="container">
-    <div ng-controller="pozycjeWZCtrl">
     	
     	<div class="jumbotron">
-	    	<div class="btn-group" role="group">
-	    	  			Tutaj zeby wyswietlaly te pozycje ktore znajduje sie na dokemencie wz w ktorym kliknelismy szczegoly 		
+	    	<div class="btn-group" role="group">  		
 	  			<div class="input-group">
 				<span class="input-group-addon">Szukaj:</span>
 				<input type="text" class="form-control" ng-model="wyszukiwarka">
@@ -40,24 +40,30 @@
 				<table class="table table-hover">
 				<thead>
 					<tr>
-						<td>ID PZ</td>
-						<td>Pozycja</td>
-						<td>ID produktu</td>
-						<td>Ilość palet</td>
+						<td>ID pracownika</td>
+						<td>Miesiąc</td>
+						<td>Stawka</td>
+						<td>Ilość godzin</td>
+						<td>Pensja netto</td>
+						<td>Pensja brutto</td>
 					</tr>
 				</thead>
 				<tbody>
-			  		<tr ng-repeat="n in prawidloweSczegoly | filter:wyszukiwarka">
-			    		<td>{{n.id_docwz}}</td>
-			    		<td>{{n.pozycja}}</td>
-			    		<td>{{n.id_product}}</td>
-			    		<td>{{n.ilosc_palet}}</td>
+			  		<tr ng-repeat="n in users.wyplatas | filter:wyszukiwarka">
+			  			<td>{{n.id_pracownik}}</td>
+			    		<td>{{n.miesiac}}</td>
+			    		<td>{{n.stawka}}</td>
+			    		<td>{{n.ilosc_godz}}</td>
+			    		<td>{{n.pensja_brutto}}</td>
+			    		<td>{{n.pensja_netto}}</td>
 			  		</tr>
 			  	</tbody>
 				</table>
+
 			</div>
 		</div>
 	</div>
-	</div>	
+	</div>
 
-</body></html>
+</body>
+</html>

@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: warehouse
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Mateusz
+Built-By: Michaￅﾂ
 Implementation-Vendor-Id: pl.warehouse
 Build-Jdk: 1.8.0_65
 Created-By: Maven Integration for Eclipse

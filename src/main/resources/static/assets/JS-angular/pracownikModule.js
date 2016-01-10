@@ -15,7 +15,16 @@ pracownikModule.config(['$routeProvider',
         			      when('/zwolnij', {
           			        templateUrl: 'pracownicy/zwolnienie.html',
           			        controller: 'zwolnieniePracownikaCtrl'
+          			      }).
+          			      when('/wyplata',{
+          			    	  templateUrl: 'pracownicy/wyplata.html',
+          			    	  controller: 'pensjaCtrl'
+          			      }).
+          			      when('/wyplata2/:number',{
+          			    	  templateUrl:	'pracownicy/wyplatylista.html',
+          			    	  controller: 'pensjaCtrl'
           			      })
+          			 
         			  }
         ]);
 
@@ -109,5 +118,57 @@ pracownikModule.controller("zwolnieniePracownikaCtrl",["Restangular","$scope","$
   	User.getList().then(function(User) {
   	  $scope.users = User[0];
   	})
+	
+}]);
+
+
+pracownikModule.controller("pensjaCtrl",["Restangular","$scope","$filter",function(Restangular,$scope,$filter){
+	
+	$scope.getUsun = function(wyplata) {
+		var User = Restangular.all('wyplatas');
+		var oneUser = Restangular.one('wyplatas', wyplata.id);
+		oneUser.get().then(function(user) {
+			  $scope.userek = user;
+			});
+      };
+      
+    $scope.addWyplata = function(wyplata){
+    	var User = Restangular.all('wyplatas');
+    	$scope.user = {
+		    			id_pracownik: 	wyplata.id_pracownik,
+		    			miesiac:		wyplata.miesiac,
+		    			stawka:			wyplata.stawka,
+		    			ilosc_godz:		wyplata.ilosc_godz,
+		    			pensja_netto:	0.8*wyplata.stawka*wyplata.ilosc_godz,
+		    			pensja_brutto:	wyplata.stawka*wyplata.ilosc_godz
+		    			};
+    	
+    	User.post($scope.user);
+    };
+      
+    
+    $scope.pobranie = function(wyplatas){
+  	  for(var i = 0;i<wyplatas.length;i++){
+  		  $scope.lista.push(wyplatas[i]);
+    	}
+  	  $scope.prawidlowePozycje($scope.lista);
+    }
+    
+    $scope.prawidlowePozycje = function(listapozycji){
+  	  for(var i = 0;i<listapozycji.length;i++){
+  		  if(listapozycji[i].id_pracownik == paramValue){
+  			  $scope.prawidloweSczegoly.push(listapozycji[i]);
+  		  }
+  	  }
+    }
+
+    var User = Restangular.all('wyplatas');
+  	User.getList().then(function(User) {
+  	  $scope.users = User[0];
+  	  $scope.pobranie($scope.users.wyplatas);
+  	})
+  	
+  	
+  	
 	
 }]);
