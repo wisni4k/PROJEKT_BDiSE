@@ -79,7 +79,7 @@ przyjecieTowaruModule.controller("listaPozycjiPZ",["Restangular","$scope","$filt
 	$scope.pozycja = 1;
 	$scope.addToPozList = function(docpzpos) {
 		$scope.listaPozycji.push({
-			id_docpz: 		docpzpos.id_docpz,
+			id_DocPZ: 	    docpzpos.id_docpz,
 			pozycja: 		$scope.pozycja,
 			nazwa: 			docpzpos.nazwa,
 			ilosc_palet: 	docpzpos.ilosc_palet
