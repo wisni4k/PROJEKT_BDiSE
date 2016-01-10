@@ -15,11 +15,11 @@ globalModule.config(['$routeProvider',
              function($routeProvider) {
 			    $routeProvider.
 			    	when('/', {
-			        templateUrl: 'loowanie.html',
+			        templateUrl: 'logowanie.html',
 			        controller: 'logowanieCtrl'
 			      }).
 			      when('/logowanie/:login?/:haslo?', {
-			        templateUrl: 'loowanie.html',
+			        templateUrl: 'logowanie.html',
 			        controller: 'logowanieCtrl'
 			      }).
 			      when('/menu', {
