@@ -6,17 +6,26 @@ var globalModule = angular.module('globalModule', [
   'klientModule',
   'fakturaModule',
   'wydanieTowaruModule',
-  'mapaModule'
+  'mapaModule',
+  'logowanieModule'
 ]);
 
 
 globalModule.config(['$routeProvider',
              function($routeProvider) {
 			    $routeProvider.
-			      when('/', {
-			        templateUrl: 'menu.html',
-			        controller: 'testCtrl'
+			    	when('/', {
+			        templateUrl: 'loowanie.html',
+			        controller: 'logowanieCtrl'
 			      }).
+			      when('/logowanie/:login?/:haslo?', {
+			        templateUrl: 'loowanie.html',
+			        controller: 'logowanieCtrl'
+			      }).
+			      when('/menu', {
+				     templateUrl: 'menu.html',
+				     controller: 'testCtrl'
+				  }).
 			      when('/stanmagazynu',{
 			    	 templateUrl: 'stanmagazynu/stanmagazynu.html',
 			    	 controller: 'stanmagazynuCtrl'
