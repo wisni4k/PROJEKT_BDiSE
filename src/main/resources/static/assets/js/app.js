@@ -26,6 +26,11 @@ globalModule.config(['$routeProvider',
 				     templateUrl: 'menu.html',
 				     controller: 'testCtrl'
 				  }).
+				  when('/menum', {
+					     templateUrl: 'menum.html',
+					     controller: 'testCtrl'
+				  }).
+
 			      when('/stanmagazynu',{
 			    	 templateUrl: 'stanmagazynu/stanmagazynu.html',
 			    	 controller: 'stanmagazynuCtrl'

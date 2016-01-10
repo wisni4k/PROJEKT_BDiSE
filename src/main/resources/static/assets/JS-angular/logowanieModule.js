@@ -22,10 +22,36 @@ logowanieModule.controller("logowanieCtrl",["Restangular","$scope","$filter","$r
   	  for(var i = 0;i<kont.length;i++){
   		  $scope.listaKont.push(kont[i]);
     	}
-  	 if(login != undefined){
+  	 
+  	if(document.cookie){
+			if(document.cookie == "username=wszytsko"){
+				window.location.href = "#menu";
+			}else if(document.cookie == "username=magaz" ){
+				window.location.href = "#menum";
+			}
+		}
+  	else if(login != undefined){
      	for(i=0;i<$scope.listaKont.length;i++){
+     		var str1 = $scope.listaKont[i].uprawnienia;
      		if($scope.listaKont[i].login == login && $scope.listaKont[i].haslo == haslo && $scope.listaKont[i].status_konta == 1){
-     			window.location.href = "#menu";
+     			if($scope.listaKont[i].uprawnienia == "wszystko"){
+     				window.location.href = "#menu";
+     				document.cookie="username=wszytsko";
+     				console.log(document.cookie);
+     				break;
+     			}
+     			else if($scope.listaKont[i].uprawnienia == "magazynier"){
+     				window.location.href = "#menum";
+     				document.cookie="username=magaz";
+     				break;
+     			}
+     			else{
+     				window.location.href = "#menu";
+     				break;
+     			}
+     		}
+     		else{
+     			window.location.href = "#/";
      		}
      	}
      }
