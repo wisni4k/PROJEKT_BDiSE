@@ -8,13 +8,13 @@ wydanieTowaruModule.config(['$routeProvider',
                  			    $routeProvider.
                  			      when('/listaDokumentowWZ', {
                    			        templateUrl: 'wydanieTowaru/docwzlista.html',
-                   			        controller: 'przyjecieTowaruCtrl'
+                   			        controller: 'wzCtrl'
                  			      }).
-                 			     when('/dodajPozycjeWZ', {
+                 			     when('/dodajPozycjeWZ/:number', {
                     			        templateUrl: 'wydanieTowaru/dodajPozycjeWZ.html',
                     			        controller: 'pozycjeWZCtrl'
                     			  }).
-                      			 when('/szczegolyWZ', {
+                      			 when('/szczegolyWZ/:number', {
                    			        templateUrl: 'wydanieTowaru/szczegolyPozycjaWZ.html',
                    			        controller: 'pozycjeWZCtrl'
                       			 })
@@ -24,31 +24,36 @@ wydanieTowaruModule.config(['$routeProvider',
 
 
 
-wydanieTowaruModule.controller("pozycjeWZCtrl",["Restangular","$scope","$filter",function(Restangular,$scope,$filter){
+wydanieTowaruModule.controller("pozycjeWZCtrl",["Restangular","$scope","$filter","$route",function(Restangular,$scope,$filter,$route){
 
-      
+	var paramValue = $route.current.params.number;
+	$scope.lista = [];
+	$scope.prawidloweSczegoly = [];
 	$scope.listaPozycji = [];
 	$scope.pozycja = 1;
+	
+	
 	$scope.addToPozList = function(docwzpos) {
 		$scope.listaPozycji.push({
-			id_docwz: 		docwzpos.id_docwz,
+			id_docwz: 		paramValue,
 			pozycja: 		$scope.pozycja,
 			id_product: 	docwzpos.id_product,
 			ilosc_palet: 	docwzpos.ilosc_palet
 		});
 		$scope.pozycja = $scope.pozycja +1;
-		console.log($scope.listaPozycji);
 	}
+	
 	$scope.removeFromPozLista = function(index){
+		
 	    $scope.listaPozycji.splice(index, 1);
 	    for(i=0;i<$scope.listaPozycji.length;i++){
 	    	$scope.listaPozycji[i].pozycja = i+1;
-	    	if(i==0){
-	    		$scope.pozycja = 1;
-	    	}else
-	    	{$scope.pozycja = i+2;}
-
+	    	$scope.pozycja = i+2;
       	}
+	    if($scope.listaPozycji.length == 0) {
+	    	$scope.pozycja = 1;
+	    }
+
 	  }
 	
 	
@@ -74,11 +79,27 @@ wydanieTowaruModule.controller("pozycjeWZCtrl",["Restangular","$scope","$filter"
 			  pozycja.id_product = $scope.produkt;
 		  	});
       }
+      
+      $scope.pobranie = function(docpzposes){
+    	  for(var i = 0;i<docpzposes.length;i++){
+    		  $scope.lista.push(docpzposes[i]);
+      	}
+    	  $scope.prawidlowePozycje($scope.lista);
+      }
+      
+      $scope.prawidlowePozycje = function(listapozycji){
+    	  for(var i = 0;i<listapozycji.length;i++){
+    		  if(listapozycji[i].id_docwz == paramValue){
+    			  $scope.prawidloweSczegoly.push(listapozycji[i]);
+    		  }
+    	  }
+      }
       	
       var User = Restangular.all('docwzposes');
     	User.getList().then(function(User) {
     	  $scope.users = User[0];
     	  $scope.podmiany($scope.users.docwzposes);
+    	  $scope.pobranie($scope.users.docwzposes);
     	})
     
     	
@@ -88,15 +109,9 @@ wydanieTowaruModule.controller("pozycjeWZCtrl",["Restangular","$scope","$filter"
 
 
 
-wydanieTowaruModule.controller("wzCtrl",["Restangular","$scope","$filter",function(Restangular,$scope,$filter){
+wydanieTowaruModule.controller("wzCtrl",["Restangular","$scope","$filter","$route",function(Restangular,$scope,$filter,$route){
 	
-	$scope.getDocwz = function(docwz) {
-		var User = Restangular.all('docwzes');
-		var oneUser = Restangular.one('docwzes', docpz.id);
-		oneUser.get().then(function(user) {
-			  $scope.userek = user;
-			});
-      };
+	$scope.ostatniaPozycja;
       
     $scope.addDocwz = function(docwz){
     	var User = Restangular.all('docwzes');
@@ -112,8 +127,13 @@ wydanieTowaruModule.controller("wzCtrl",["Restangular","$scope","$filter",functi
     $scope.podmiany = function(pozycje){
     	for(var i = 0;i<pozycje.length;i++){
     		$scope.podmianaKlienta(pozycje[i]);
-    		
-    	
+    	}
+    	if(pozycje.length != 0){
+    		console.log(pozycje);
+    		$scope.ostatniaPozycja = pozycje[pozycje.length-1].id_dwz;
+    	}
+    	else{
+    		$scope.ostatniaPozycja = " BRAK"
     	}
     }
     

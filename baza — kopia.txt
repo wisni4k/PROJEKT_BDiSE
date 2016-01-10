@@ -1,7 +1,7 @@
 create database warehouse;
 use warehouse;
 CREATE TABLE Customer(
-id_customer varchar(20) primary key,
+id_customer int(5) primary key,
 customer_name varchar(20),
 contact_name varchar(20),
 customer_adress varchar(100),
@@ -11,8 +11,8 @@ nip varchar(15)
 );
 
 CREATE TABLE Invoice(
-id_invoice int(5) primary key auto_increment,
-id_customer varchar(20),
+id_invoice int(5) primary key,
+id_customer int(5),
 kwota int(50) DEFAULT 0,
 data_wystawienia varchar(20)
 );
@@ -32,29 +32,29 @@ kwota int(50)
 
 
 create table DocPZ(
-id_DocPZ varchar(30) primary key,
-id_customer varchar(20),
+id_DocPZ int(5) primary key,
+id_customer int(5),
 data_przyjecia varchar(50)
 );
 
 create table DocPZpos(
 id_docpzpos int(5) primary key auto_increment,
-id_DocPZ varchar(30),
+id_DocPZ int (5),
 pozycja int(5),
 nazwa varchar(30),
 ilosc_palet int(5)
 );
 
 create table DocWZ(
-id_DocWZ varchar(30) primary key,
-id_customer varchar(20),
+id_DocWZ int (5) primary key,
+id_customer int(5),
 data_wydania varchar(50)
 );
 
 
 create table DocWZpos(
 id_docWZpos int (5) primary key auto_increment,
-id_DocWZ varchar(30),
+id_DocWZ int (5),
 pozycja int(5),
 id_product int (5),
 ilosc_palet int(5)
@@ -278,6 +278,7 @@ call zwolnij(new.id_pracownik);
 
 
 call wypelnij_pozycje();
+
 
 
 

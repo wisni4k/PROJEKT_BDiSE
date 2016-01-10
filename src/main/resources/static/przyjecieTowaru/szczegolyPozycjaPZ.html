@@ -48,7 +48,7 @@
 					</tr>
 				</thead>
 				<tbody>
-			  		<tr ng-repeat="n in users.docpzposes | filter:wyszukiwarka">
+			  		<tr ng-repeat="n in prawidloweSczegoly | filter:wyszukiwarka | orderBy:'+pozycja'">
 			    		<td>{{n.id_docpz}}</td>
 			    		<td>{{n.pozycja}}</td>
 			    		<td>{{n.nazwa}}</td>

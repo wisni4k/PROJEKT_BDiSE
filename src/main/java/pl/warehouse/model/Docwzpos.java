@@ -28,7 +28,7 @@ public class Docwzpos {
 
 	@Basic(optional = false)
 	@Column(name = "id_docwz")
-	private String id_docwz;
+	private int id_docwz;
 
 	@Basic(optional = false)
 	@Column(name = "pozycja")
@@ -79,11 +79,11 @@ public class Docwzpos {
 		this.id_docwzpos = id_docwzpos;
 	}
 
-	public String getId_docwz() {
+	public int getId_docwz() {
 		return id_docwz;
 	}
 
-	public void setId_docwz(String id_docwz) {
+	public void setId_docwz(int id_docwz) {
 		this.id_docwz = id_docwz;
 	}
 

@@ -27,15 +27,15 @@ public class Docpz {
 	@Id
 	@Basic(optional = false)
 	@Column(name = "id_docpz")
-	private String id_docpz;
+	private int id_docpz;
 	
 	@Basic(optional = false)
 	@Column(name = "id_docpz", insertable = false, updatable = false)
-	private String id_dpz;
+	private int id_dpz;
 
 	@Basic(optional = false)
 	@Column(name = "id_customer")
-	private String id_customer;
+	private int id_customer;
 
 	@Basic(optional = false)
 	@Column(name = "data_przyjecia")
@@ -59,11 +59,11 @@ public class Docpz {
 		return customer;
 	}
 
-	public String getId_dpz() {
+	public int getId_dpz() {
 		return id_dpz;
 	}
 
-	public void setId_dpz(String id_dpz) {
+	public void setId_dpz(int id_dpz) {
 		this.id_dpz = id_dpz;
 	}
 
@@ -79,19 +79,19 @@ public class Docpz {
 		this.docpzpos = docpzpos;
 	}
 
-	public String getId_docpz() {
+	public int getId_docpz() {
 		return id_docpz;
 	}
 
-	public void setId_docpz(String id_docpz) {
+	public void setId_docpz(int id_docpz) {
 		this.id_docpz = id_docpz;
 	}
 
-	public String getId_customer() {
+	public int getId_customer() {
 		return id_customer;
 	}
 
-	public void setId_customer(String id_customer) {
+	public void setId_customer(int id_customer) {
 		this.id_customer = id_customer;
 	}
 

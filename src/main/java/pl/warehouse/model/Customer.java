@@ -30,11 +30,11 @@ public class Customer {
 	@Id
 	@Basic(optional = false)
 	@Column(name = "id_customer")
-	private String id_customer;
+	private int id_customer;
 	
 	@Basic(optional = false)
 	@Column(name = "id_customer", insertable = false, updatable = false)
-	private String id_cust;
+	private int id_cust;
 	
 
 	@Basic(optional = false)
@@ -85,11 +85,11 @@ public class Customer {
 		return invoice;
 	}
 
-	public String getId_cust() {
+	public int getId_cust() {
 		return id_cust;
 	}
 
-	public void setId_cust(String id_cust) {
+	public void setId_cust(int id_cust) {
 		this.id_cust = id_cust;
 	}
 
@@ -115,11 +115,11 @@ public class Customer {
 		this.docpz = docpz;
 	}
 
-	public String getId_customer() {
+	public int getId_customer() {
 		return id_customer;
 	}
 
-	public void setId_customer(String id_customer) {
+	public void setId_customer(int id_customer) {
 		this.id_customer = id_customer;
 	}
 

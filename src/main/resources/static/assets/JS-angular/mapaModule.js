@@ -1,8 +1,14 @@
-var mapaModule =angular.module('mapaModule',[]);
+var mapaModule =angular.module('mapaModule',["restangular"]);
+
+mapaModule.config(["RestangularProvider",function(RestangularProvider){
+	RestangularProvider.setBaseUrl('/api');
+}]);
 
 
 
-mapaModule.controller("mapaCtrl",["$scope","$filter",function($scope,$filter){
+mapaModule.controller("mapaCtrl",["Restangular","$scope","$filter",function(Restangular,$scope,$filter){
+	
+	$scope.lista = []; //tutaj są wszytskie dostepna pozycje z bazy danych.
 	
 	$scope.getX = function(liczba) {
 		var xx = [2,303,353,654,704,1005,1055,1356,1406,1706];
@@ -30,6 +36,19 @@ mapaModule.controller("mapaCtrl",["$scope","$filter",function($scope,$filter){
         }
     ctx.stroke();
     
-
+    
+    $scope.pobranie = function(pozycje){
+  	  for(var i = 0;i<pozycje.length;i++){
+  		  $scope.lista.push(pozycje[i]);
+    	}
+  	  console.log($scope.lista);
+    }
+    
+    var mapaPozycje = Restangular.all('pozycjas');
+    mapaPozycje.getList().then(function(mapa) {
+	  $scope.pozycje = mapa[0];
+	  $scope.pobranie($scope.pozycje.pozycjas);
+	})
+    
 	
 }])
