@@ -122,8 +122,12 @@ pracownikModule.controller("zwolnieniePracownikaCtrl",["Restangular","$scope","$
 }]);
 
 
-pracownikModule.controller("pensjaCtrl",["Restangular","$scope","$filter",function(Restangular,$scope,$filter){
+pracownikModule.controller("pensjaCtrl",["Restangular","$scope","$filter","$route",function(Restangular,$scope,$filter,$route){
 	
+	var paramValue = $route.current.params.number;
+	$scope.lista = [];
+	$scope.prawidlowePozycje =[];
+	$scope.prawidloweSczegoly =[];
 	$scope.getUsun = function(wyplata) {
 		var User = Restangular.all('wyplatas');
 		var oneUser = Restangular.one('wyplatas', wyplata.id);
@@ -146,6 +150,7 @@ pracownikModule.controller("pensjaCtrl",["Restangular","$scope","$filter",functi
     	User.post($scope.user);
     };
       
+    
     
     $scope.pobranie = function(wyplatas){
   	  for(var i = 0;i<wyplatas.length;i++){

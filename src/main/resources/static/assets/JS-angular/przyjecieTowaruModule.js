@@ -28,12 +28,13 @@ przyjecieTowaruModule.config(['$routeProvider',
 przyjecieTowaruModule.controller("przyjecieTowaruCtrl",["Restangular","$scope","$filter","$route",function(Restangular,$scope,$route,$filter){
 	
 	$scope.ostatniaPozycja;
+
 	
     $scope.addDocpz = function(docpz){
     	var User = Restangular.all('docpzes');
     	$scope.user = {	id_docpz:			docpz.id_docpz,
     					id_customer: 		docpz.id_customer,
-		    			data_przyjecia: 	docpz.data_przyjecia,
+		    			data_przyjecia: 	new Date(),
 		    			};
     	
     	User.post($scope.user);

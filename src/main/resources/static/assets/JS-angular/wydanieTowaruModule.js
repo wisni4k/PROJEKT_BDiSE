@@ -118,7 +118,7 @@ wydanieTowaruModule.controller("wzCtrl",["Restangular","$scope","$filter","$rout
     	$scope.user = {	
     					id_docwz:			docwz.id_docwz,
     					id_customer: 		docwz.id_customer,
-		    			data_wydania: 		docwz.data_wydania,
+		    			data_wydania: 		new Date(),
 		    			};
     	
     	User.post($scope.user);

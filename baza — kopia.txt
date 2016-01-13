@@ -6,8 +6,7 @@ customer_name varchar(20),
 contact_name varchar(20),
 customer_adress varchar(100),
 phone varchar(15),
-fax varchar(15),
-nip varchar(15)
+fax varchar(15)
 );
 
 CREATE TABLE Invoice(
