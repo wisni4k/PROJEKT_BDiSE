@@ -114,11 +114,15 @@ wydanieTowaruModule.controller("wzCtrl",["Restangular","$scope","$filter","$rout
 	$scope.ostatniaPozycja;
       
     $scope.addDocwz = function(docwz){
+    	
+    	var data = docwz.data;
+   	 	var data2 = new Date(docwz.data);
+   	 	data2.setHours(docwz.data.getHours()+1);
     	var User = Restangular.all('docwzes');
     	$scope.user = {	
     					id_docwz:			docwz.id_docwz,
     					id_customer: 		docwz.id_customer,
-		    			data_wydania: 		new Date(),
+		    			data_wydania: 		data2,
 		    			};
     	
     	User.post($scope.user);

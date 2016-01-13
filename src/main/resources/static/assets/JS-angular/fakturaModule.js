@@ -27,6 +27,7 @@ fakturaModule.config(['$routeProvider',
 fakturaModule.controller("fakturaCtrl",["Restangular","$scope","$filter",function(Restangular,$scope,$filter){
 	
 	
+	
 	$scope.getFaktura = function(invoice) {
 		var User = Restangular.all('invoices');
 		var oneUser = Restangular.one('invoices', invoice.id);

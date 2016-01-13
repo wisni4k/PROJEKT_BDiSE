@@ -33,8 +33,14 @@
 	       			  <input type="text" class="form-control" id="id_docpz" ng-model="docpz.id_docpz">
 				  		<label for="ID">NIP</label>
 				 		 <input type="text" class="form-control" id="id_customer" ng-model="docpz.id_customer">
-				 		<!--  <label for="dataa">Data przyjęcia</label>
-				 		 <input type="text" class="form-control" id="data_przyjecia" ng-model="docpz.data_przyjecia"> -->
+				 		
+				 		<label for="exampleInput">Data przyjecia</label>
+				 		<br>
+  						<input type="datetime-local" id="exampleInput" name="input" ng-model="docpz.data"
+     						 placeholder="yyyy-MM-ddTHH:mm:ss" min="2016-01-01T00:00:00" max="2222-12-31T00:00:00" required />
+     					 
+				 		<!-- <label for="dataa">Data przyjęcia</label>
+				 		 <input type="text" class="form-control" id="data_przyjecia" ng-model="docpz.data_przyjecia" placeholder="yyyy-MM-ddTHH:mm:ss" min="2016-01-01T00:00:00" max="2020-12-31T00:00:00" required /> -->
 					</div>
 					<a href="#dodajPozycjePZ/{{docpz.id_docpz}}" class="btn btn-info btn-lg" ng-click="addDocpz(docpz)" >UTWÓRZ<br></a>
 					

@@ -32,9 +32,15 @@
        			 <label for="ID">Numer wydania</label>
        			 <input type="text" class="form-control" id="id_docwz" ng-model="docwz.id_docwz">
 			  		<label for="ID">NIP</label>
-			 		 <input type="text" class="form-control" id="id_customer" ng-model="docwz.id_customer">
-			 		 <!-- <label for="dataa">Data wydania</label>
-			 		<input type="text" class="form-control" id="data_przyjecia" ng-model="docwz.data_wydania"> -->
+			  		
+			 		 <input type="text" class="form-control" id="id_customer" ng-model="docwz.id_customer"
+			 		 placeholder="000-00-00-000">
+				
+				<label for="exampleInput">Data wydania</label>
+				 		<br>
+  						<input type="datetime-local" id="exampleInput" name="input" ng-model="docwz.data"
+     						 placeholder="yyyy-MM-ddTHH:mm:ss" min="2016-01-01T00:00:00" max="2222-12-31T00:00:00" required />
+				
 				</div>
 				<a href="#dodajPozycjeWZ/{{docwz.id_docwz}}" class="btn btn-info btn-lg" ng-click="addDocwz(docwz)">UTWÓRZ<br></a>
 				
