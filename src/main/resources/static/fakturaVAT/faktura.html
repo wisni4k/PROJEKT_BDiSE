@@ -31,12 +31,17 @@
 		       			<h3>Nowa faktura</h3>
 		       		</div>
 	       			<div class="form-group">
+	       				 <label>Ostatni numer faktury: {{ostatniaPozycja}}</label><br>
+	       				 <label>Numer faktury</label>
+	       			 	 <input type="text" class="form-control" id="id_invoice" ng-model="invoice.id_invoice">
 				  		<label for="ID">NIP</label>
 				 			<input type="text" class="form-control" id="id_customer" ng-model="invoice.id_customer">
-				 			<label for="dataa">Data wystawienia</label>
-				 		<input type="text" class="form-control" id="data_wystawienia" ng-model="invoice.data_wystawienia">
+				 			<label for="exampleInput">Data wystawienia</label>
+				 		<br>
+  						<input type="datetime-local" id="exampleInput" name="input" ng-model="invoice.data"
+     						 placeholder="yyyy-MM-ddTHH:mm:ss" min="2016-01-01T00:00:00" max="2222-12-31T00:00:00" required />
 					</div>
-					<a href="#dodajPozFaktura" class="btn btn-info btn-lg" ng-click="addFaktura(invoice)">UTWÓRZ<br></a>
+					<a href="#dodajPozFaktura/{{invoice.id_invoice}}" class="btn btn-info btn-lg" ng-click="addFaktura(invoice)">UTWÓRZ<br></a>
 	        	</div>
         	</div>
         	
