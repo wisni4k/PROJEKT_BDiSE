@@ -135,9 +135,7 @@ fakturaModule.controller("fakturaPozycjeCtrl",["Restangular","$scope","$filter",
       	}
 
       };
-    
-      
-      
+
       $scope.podmiany = function(pozycje){
       	console.log(pozycje);
       	for(var i = 0;i<=pozycje.length;i++){
