@@ -92,7 +92,7 @@ fakturaModule.controller("fakturaCtrl",["Restangular","$scope","$filter",functio
 fakturaModule.controller("fakturaPozycjeCtrl",["Restangular","$scope","$filter","$route",function(Restangular,$scope,$filter,$route){
 	
 	var paramValue = $route.current.params.number;
-	
+	console.log(paramValue);
 	
 	$scope.lista = [];
 	$scope.prawidloweSczegoly = [];
@@ -172,15 +172,17 @@ fakturaModule.controller("fakturaPozycjeCtrl",["Restangular","$scope","$filter",
     		  $scope.lista.push(invoicepositions[i]);
       	}
     	  $scope.prawidlowePozycje($scope.lista);
+    	  console.log($scope.lista);
       }
       
       $scope.prawidlowePozycje = function(listapozycji){
     	  for(var i = 0;i<listapozycji.length;i++){
-    		  if(listapozycji[i].id_docpz == paramValue){
+    		  if(listapozycji[i].id_invoice == paramValue){
     			  $scope.prawidloweSczegoly.push(listapozycji[i]);
     		  }
+    		  
     	  }
-    	  
+    	  $scope.podmiany($scope.prawidloweSczegoly);
     	  
       }
       
