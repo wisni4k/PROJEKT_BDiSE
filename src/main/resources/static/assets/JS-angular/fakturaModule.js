@@ -15,7 +15,7 @@ fakturaModule.config(['$routeProvider',
           			        templateUrl: 'fakturaVAT/fakturylista.html',
           			        controller: 'fakturaCtrl'
           			      }).
-        			      when('/szczegolyFaktura', {
+        			      when('/szczegolyFaktura/:number', {
             			        templateUrl: 'fakturaVAT/szczegolyPozycjaFaktura.html',
             			        controller: 'fakturaPozycjeCtrl'
             			  })
@@ -89,32 +89,31 @@ fakturaModule.controller("fakturaCtrl",["Restangular","$scope","$filter",functio
 
 
 
-fakturaModule.controller("fakturaPozycjeCtrl",["Restangular","$scope","$filter",function(Restangular,$scope,$filter){
+fakturaModule.controller("fakturaPozycjeCtrl",["Restangular","$scope","$filter","$route",function(Restangular,$scope,$filter,$route){
 	
 	var paramValue = $route.current.params.number;
+	
 	
 	$scope.lista = [];
 	$scope.prawidloweSczegoly = [];
 	$scope.listaPozycji = [];
 	$scope.pozycja = 1;
-    
-    $scope.addToInvoiceList = function(invoiceposition){
-    	$scope.listaPozycji.push({	
-    					id_invoice: 			paramValue,
-		    			pozycja: 				$scope.pozycja,
-		    			id_uslugi: 				invoiceposition.id_uslugi,
-		    			liczba_dni:  			invoiceposition.liczba_dni,
-		    			id_product:				invoiceposition.id_product,
-		    			ilosc_palet:			invoiceposition.ilosc_palet,
-		    			cena_paleta:			invoiceposition.cena_paleta,
-		    			kwota:					invoiceposition.cena_paleta*invoiceposition.ilosc_palet*invoiceposition.liczba_dni
-		    				});
-    	$scope.pozycja = $scope.pozycja +1;
-    
-    };
-    
-    
-    	$scope.removeFromPozLista = function(index){
+	
+	
+	$scope.addToFaktList = function(invoiceposition) {
+		$scope.listaPozycji.push({
+			id_invoice:	    paramValue,
+			pozycja: 		$scope.pozycja,
+			id_uslugi:		invoiceposition.id_uslugi,
+			liczba_dni:		invoiceposition.liczba_dni,
+			id_product: 	invoiceposition.id_product,
+			ilosc_palet:	invoiceposition.ilosc_palet,
+			cena_paleta:	invoiceposition.cena_paleta,
+			kwota:			invoiceposition.cena_paleta*invoiceposition.ilosc_palet*invoiceposition.liczba_dni
+		});
+		$scope.pozycja = $scope.pozycja +1;
+	}
+	$scope.removeFromPozLista = function(index){
 		
 	    $scope.listaPozycji.splice(index, 1);
 	    for(i=0;i<$scope.listaPozycji.length;i++){
@@ -127,12 +126,12 @@ fakturaModule.controller("fakturaPozycjeCtrl",["Restangular","$scope","$filter",
 	    
 	    
 	  }
-    
-    $scope.addFakturapos = function(invoiceposition){
-      	var docPozycjePZ = Restangular.all('invoicepositions');
+      
+      $scope.addFakturapos = function(invoiceposition){
+      	var fakturapozycje = Restangular.all('invoicepositions');
 		console.log($scope.listaPozycji);
       	for(i=0;i<$scope.listaPozycji.length;i++){
-      		docPozycjePZ.post($scope.listaPozycji[i]);
+      		fakturapozycje.post($scope.listaPozycji[i]);
       	}
 
       };
@@ -181,13 +180,15 @@ fakturaModule.controller("fakturaPozycjeCtrl",["Restangular","$scope","$filter",
     			  $scope.prawidloweSczegoly.push(listapozycji[i]);
     		  }
     	  }
+    	  
+    	  
       }
       
     var User = Restangular.all('invoicepositions');
   	User.getList().then(function(User) {
   	  $scope.users = User[0];
-  	  $scope.podmiany($scope.users.invoicepositions);
-  	$scope.pobranie($scope.users.invoicepositions);
+  	  $scope.pobranie($scope.users.invoicepositions);
+  	  
   	});
   	   
 	

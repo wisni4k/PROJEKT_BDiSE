@@ -47,12 +47,40 @@
 			   <label for="adres">Cena za paletę:</label>
 			  <input type="text" class="form-control" id="cena_paleta" ng-model="invoiceposition.cena_paleta">
 			  <br>
-			  <button type="reset" value="Reset" class="btn btn-default" ng-click="addToInvoiceList(invoiceposition)">Dodaj</button>
+			  <button type="reset" value="Reset" class="btn btn-default" ng-click="addToFaktList(invoiceposition)">Dodaj</button>
 			  <a href="#listaFaktury"class="btn btn-default" ng-click="addFakturapos(invoiceposition)">ZAKOŃCZ<br></a>
 
 			</form>
 			<br>
-			
+			<br>
+			<div class="jumbotron">
+			<div class="table-resposive">
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<td>ID uslugi</td>
+						<td>Pozycja</td>
+						<td>ID produktu</td>
+						<td>Ilość palet</td>
+						<td>Liczba dni</td>
+						<td>Cena/paleta</td>
+						<td>Kwota</td>
+					</tr>
+				</thead>
+				<tbody>
+			  		<tr ng-repeat="n in listaPozycji">
+			    		<td>{{n.id_uslugi}}</td>
+			    		<td>{{n.pozycja}}</td>
+			    		<td>{{n.id_product}}</td>
+			    		<td>{{n.ilosc_palet}}</td>
+			    		<td>{{n.liczba_dni}}</td>
+			    		<td>{{n.cena_paleta}}</td>
+			    		<td>{{n.kwota}}</td>
+			    		<td><button data-ng-click="removeFromPozLista($index)">Usuń</button></td>
+			  		</tr>
+			  	</tbody>
+				</table>
+			</div>
 			
 		</div>
 	</div>

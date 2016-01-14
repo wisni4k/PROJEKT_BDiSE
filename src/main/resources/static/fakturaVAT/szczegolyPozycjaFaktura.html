@@ -51,7 +51,7 @@
 					</tr>
 				</thead>
 				<tbody>
-			  		<tr ng-repeat="n in users.invoicepositions | filter:wyszukiwarka">
+			  		<tr ng-repeat="n in prawidloweSczegoly | filter:wyszukiwarka | orderBy:'+pozycja'">
 			    		<td>{{n.id_invoice}}</td>
 			    		<td>{{n.pozycja}}</td>
 			    		<td>{{n.id_uslugi}}</td>

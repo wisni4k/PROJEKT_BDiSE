@@ -13,7 +13,7 @@ CREATE TABLE Invoice(
 id_invoice int(5) primary key,
 id_customer int(11),
 kwota int(50) DEFAULT 0,
-data_wystawienia varchar(20)
+data_wystawienia varchar(50)
 );
 
 
