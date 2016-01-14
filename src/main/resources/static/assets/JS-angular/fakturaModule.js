@@ -140,7 +140,7 @@ fakturaModule.controller("fakturaPozycjeCtrl",["Restangular","$scope","$filter",
       
       $scope.podmiany = function(pozycje){
       	console.log(pozycje);
-      	for(var i = 0;i<pozycje.length;i++){
+      	for(var i = 0;i<=pozycje.length;i++){
       		$scope.podmianaUslugi(pozycje[i]);
       		$scope.podmianaProduktu(pozycje[i]);
       	}

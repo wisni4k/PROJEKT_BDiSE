@@ -116,7 +116,7 @@ przyjecieTowaruModule.controller("listaPozycjiPZ",["Restangular","$scope","$filt
       $scope.addDocpzpos = function(docpzpos){
       	var docPozycjePZ = Restangular.all('docpzposes');
 		console.log($scope.listaPozycji);
-      	for(i=0;i<$scope.listaPozycji.length;i++){
+      	for(i=0;i<=$scope.listaPozycji.length;i++){
       		docPozycjePZ.post($scope.listaPozycji[i]);
       	}
 
