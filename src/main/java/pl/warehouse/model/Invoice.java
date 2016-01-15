@@ -44,7 +44,7 @@ public class Invoice {
 
 	@Basic(optional = false)
 	@Column(name = "kwota")
-	private int kwota;
+	private Float kwota;
 
 	@Basic(optional = false)
 	@Column(name = "data_wystawienia")
@@ -103,11 +103,11 @@ public class Invoice {
 		this.id_customer = id_customer;
 	}
 
-	public int getKwota() {
+	public Float getKwota() {
 		return kwota;
 	}
 
-	public void setKwota(int kwota) {
+	public void setKwota(Float kwota) {
 		this.kwota = kwota;
 	}
 

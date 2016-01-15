@@ -58,11 +58,11 @@ public class Invoiceposition {
 
 	@Basic(optional = false)
 	@Column(name = "cena_paleta")
-	private int cena_paleta;
+	private Float cena_paleta;
 
 	@Basic(optional = false)
 	@Column(name = "kwota")
-	private int kwota;
+	private Float kwota;
 
 	///////////////// relacje/////////////
 
@@ -138,19 +138,19 @@ public class Invoiceposition {
 		this.ilosc_palet = ilosc_palet;
 	}
 
-	public int getCena_paleta() {
+	public Float getCena_paleta() {
 		return cena_paleta;
 	}
 
-	public void setCena_paleta(int cena_paleta) {
+	public void setCena_paleta(Float cena_paleta) {
 		this.cena_paleta = cena_paleta;
 	}
 
-	public int getKwota() {
+	public Float getKwota() {
 		return kwota;
 	}
 
-	public void setKwota(int kwota) {
+	public void setKwota(Float kwota) {
 		this.kwota = kwota;
 	}
 

@@ -38,7 +38,7 @@ public class Wyplata {
 
 	@Basic(optional = false)
 	@Column(name = "stawka")
-	private int stawka;
+	private Float stawka;
 
 	@Basic(optional = false)
 	@Column(name = "ilosc_godz")
@@ -46,11 +46,11 @@ public class Wyplata {
 
 	@Basic(optional = false)
 	@Column(name = "pensja_netto")
-	private int pensja_netto;
+	private Float pensja_netto;
 
 	@Basic(optional = false)
 	@Column(name = "pensja_brutto")
-	private int pensja_brutto;
+	private Float pensja_brutto;
 	//////////// relacje////////////
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -91,11 +91,11 @@ public class Wyplata {
 		this.miesiac = miesiac;
 	}
 
-	public int getStawka() {
+	public Float getStawka() {
 		return stawka;
 	}
 
-	public void setStawka(int stawka) {
+	public void setStawka(Float stawka) {
 		this.stawka = stawka;
 	}
 
@@ -107,19 +107,19 @@ public class Wyplata {
 		this.ilosc_godz = ilosc_godz;
 	}
 
-	public int getPensja_netto() {
+	public Float getPensja_netto() {
 		return pensja_netto;
 	}
 
-	public void setPensja_netto(int pensja_netto) {
+	public void setPensja_netto(Float pensja_netto) {
 		this.pensja_netto = pensja_netto;
 	}
 
-	public int getPensja_brutto() {
+	public Float getPensja_brutto() {
 		return pensja_brutto;
 	}
 
-	public void setPensja_brutto(int pensja_brutto) {
+	public void setPensja_brutto(Float pensja_brutto) {
 		this.pensja_brutto = pensja_brutto;
 	}
 

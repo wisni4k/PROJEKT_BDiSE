@@ -29,10 +29,10 @@
 		<div class="jumbotron">
 			<form>
 			  <label for="adres">ID produktu:</label>
-			  <input type="text" class="form-control" id="id_product" ng-model="docwzpos.id_product">
+			  <input type="text" class="form-control"  oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" id="id_product" ng-model="docwzpos.id_product">
 			  
 			   <label for="adres">Ilość palet:</label>
-			  <input type="text" class="form-control" id="ilosc_palet" ng-model="docwzpos.ilosc_palet">
+			  <input type="text" class="form-control"  oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" id="ilosc_palet" ng-model="docwzpos.ilosc_palet">
 			  <br>
 			  <button type="reset" value="Reset" class="btn btn-default" ng-click="addToPozList(docwzpos)">Dodaj</button>
 			  <a href="#listaDokumentowWZ"class="btn btn-default" ng-click="addDocwzpos()">ZAKOŃCZ<br></a>

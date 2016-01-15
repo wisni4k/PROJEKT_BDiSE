@@ -29,13 +29,13 @@
        			 </div>
        			 <div class="form-group">
 			  		<label for="ID">ID pracownika</label>
-			 		 <input type="text" class="form-control" id=i"d_pracownika" ng-model="wyplata.id_pracownik">
+			 		 <input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"  id=i"d_pracownika" ng-model="wyplata.id_pracownik">
 			 		 <label for="dataa">Miesiąc</label>
 			 		<input class="form-control" id="miesiac" ng-model="wyplata.miesiac">
 			 		<label for="dataa">Stawka</label>
-			 		<input type="text" class="form-control" id="stawka" ng-model="wyplata.stawka">
+			 		<input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" id="stawka" ng-model="wyplata.stawka">
 			 		<label for="dataa">Ilość godzin</label>
-			 		<input type="text" class="form-control" id="ilosc_godz" ng-model="wyplata.ilosc_godz">
+			 		<input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" id="ilosc_godz" ng-model="wyplata.ilosc_godz">
 				</div>
 				<a href="#pracownicy" class="btn btn-info btn-lg" ng-click="addWyplata(wyplata)">UTWÓRZ<br></a>
 				

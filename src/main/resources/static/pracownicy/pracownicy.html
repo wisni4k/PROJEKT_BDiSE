@@ -111,7 +111,7 @@
              <p class="lead">Kod pocztowy</p>
             <div class="form-group has-success">
               <div class="input-group">
-                <input type="text" class="form-control" id="kod_pocztowy" ng-model="pracownik.kod_pocztowy">
+                <input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9-]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" id="kod_pocztowy" ng-model="pracownik.kod_pocztowy">
                 <span class="input-group-btn"></span>
               </div>
             </div>
@@ -125,7 +125,7 @@
              <p class="lead">Telefon</p>
             <div class="form-group has-success">
               <div class="input-group">
-                <input type="text" class="form-control" id="telefon" ng-model="pracownik.telefon">
+                <input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" id="telefon" ng-model="pracownik.telefon">
                 <span class="input-group-btn"></span>
               </div>
             </div>

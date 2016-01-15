@@ -71,7 +71,7 @@
           <p class="lead">NIP</p>
             <div class="form-group has-success">
               <div class="input-group">
-                <input type="text" class="form-control" id="id_customer" ng-model="customer.id_customer" maxlength="10">
+                <input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" id="id_customer" ng-model="customer.id_customer" maxlength="10">
                 <span class="input-group-btn"></span>
               </div>
             </div>
@@ -100,14 +100,14 @@
             <p class="lead">Telefon</p>
             <div class="form-group has-success">
               <div class="input-group">
-                <input type="text" class="form-control" id="tel" ng-model="customer.tel">
+                <input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" id="tel" ng-model="customer.tel">
                 <span class="input-group-btn"></span>
               </div>
             </div>
              <p class="lead">FAX</p>
             <div class="form-group has-success">
               <div class="input-group">
-                <input type="text" class="form-control" id="fax" ng-model="customer.fax">
+                <input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" id="fax" ng-model="customer.fax">
                 <span class="input-group-btn"></span>
               </div>
             </div>

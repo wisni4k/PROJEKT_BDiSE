@@ -130,7 +130,7 @@ fakturaModule.controller("fakturaPozycjeCtrl",["Restangular","$scope","$filter",
       $scope.addFakturapos = function(invoiceposition){
       	var fakturapozycje = Restangular.all('invoicepositions');
 		console.log($scope.listaPozycji);
-      	for(i=0;i<$scope.listaPozycji.length;i++){
+      	for(i=0;i<=$scope.listaPozycji.length;i++){
       		fakturapozycje.post($scope.listaPozycji[i]);
       	}
 
@@ -138,7 +138,7 @@ fakturaModule.controller("fakturaPozycjeCtrl",["Restangular","$scope","$filter",
 
       $scope.podmiany = function(pozycje){
       	console.log(pozycje);
-      	for(var i = 0;i<=pozycje.length;i++){
+      	for(var i = 0;i<pozycje.length;i++){
       		$scope.podmianaUslugi(pozycje[i]);
       		$scope.podmianaProduktu(pozycje[i]);
       	}

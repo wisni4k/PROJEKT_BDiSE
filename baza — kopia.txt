@@ -12,7 +12,7 @@ fax varchar(15)
 CREATE TABLE Invoice(
 id_invoice int(5) primary key,
 id_customer int(11),
-kwota int(50) DEFAULT 0,
+kwota float DEFAULT 0,
 data_wystawienia varchar(50)
 );
 
@@ -25,8 +25,8 @@ id_uslugi int(5),
 liczba_dni int(5),
 id_product int(5),
 ilosc_palet int(5),
-cena_paleta int(5),
-kwota int(50)
+cena_paleta float,
+kwota float
 );
 
 
@@ -105,10 +105,10 @@ create table wyplata(
 id_wyplata int (5) primary key auto_increment,
 id_pracownik int(5),
 miesiac varchar(15),
-stawka int(5),
+stawka float,
 ilosc_godz int (5),
-pensja_netto int (5) default 0,
-pensja_brutto int(5) default 0
+pensja_netto float default 0,
+pensja_brutto float default 0
 );
 
 create table usun(
@@ -181,9 +181,9 @@ end while;
 end
 
 
-CREATE PROCEDURE licz (in param1 int(5),in param2 int(5))
+CREATE PROCEDURE licz (in param1 int(5),in param2 float)
 BEGIN
-declare z int(5);
+declare z float;
 
 select kwota into z from invoice where id_invoice=param1;
 if z=0 then
