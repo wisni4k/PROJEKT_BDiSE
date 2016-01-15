@@ -61,7 +61,16 @@ globalModule.config(['$routeProvider',
 			      when('/faktura',{
 				    	 templateUrl: 'fakturaVAT/faktura.html',
 				    	 controller: 'fakturaCtrl'
+				  }).
+				  when('/wydanieTowaru',{
+					  templateUrl:	'wydanieTowaru/docwz.html',
+					  controller:	'wzCtrl'
+				  }).
+				  when('/uslugi',{
+					  templateUrl:	'uslugi/listauslug.html',
+					  controller:	'MainCtrl'
 				  })
+				 
 			  }
 ]);
 
