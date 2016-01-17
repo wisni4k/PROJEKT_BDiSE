@@ -149,7 +149,6 @@ alter table docwzpos add constraint FK_docwzpos_docwz foreign key (id_docwz) ref
 
 alter table usun add constraint FK_usun_pracownik foreign key (id_pracownik) references pracownik(id_pracownik);
 
-alter table konta add constraint FK_konto_pracownik foreign key (id_pracownik) references pracownik(id_pracownik);
 
 
 insert into konta(login,haslo,uprawnienia,id_pracownik) values('admin','admin','wszystko',0);
