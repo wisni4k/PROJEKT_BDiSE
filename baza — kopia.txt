@@ -95,8 +95,6 @@ telefon varchar(15),
 stanowisko varchar(30)
 );
 
-
-
 create table wyplata(
 id_wyplata int (5) primary key auto_increment,
 id_pracownik int(5),
