@@ -43,14 +43,40 @@ public class Wyplata {
 	@Basic(optional = false)
 	@Column(name = "ilosc_godz")
 	private int ilosc_godz;
+	
+	@Basic(optional = false)
+	@Column(name = "pensja_brutto")
+	private Float pensja_brutto;
+	
+	@Basic(optional = false)
+	@Column(name = "sk_emerytalna")
+	private Float sk_emerytalna;
+	
+	@Basic(optional = false)
+	@Column(name = "sk_rentowa")
+	private Float sk_rentowa;
+	
+	@Basic(optional = false)
+	@Column(name = "sk_chorobowa")
+	private Float sk_chorobowa;
+	
+	@Basic(optional = false)
+	@Column(name = "pod_na_ub_zdr")
+	private Float pod_na_ub_zdr;
 
+	@Basic(optional = false)
+	@Column(name = "sk_zdrowotne")
+	private Float sk_zdrowotne;
+	
+	@Basic(optional = false)
+	@Column(name = "zalicz_podatek_dochodowy")
+	private Float zalicz_podatek_dochodowy;
+	
 	@Basic(optional = false)
 	@Column(name = "pensja_netto")
 	private Float pensja_netto;
 
-	@Basic(optional = false)
-	@Column(name = "pensja_brutto")
-	private Float pensja_brutto;
+
 	//////////// relacje////////////
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -123,4 +149,54 @@ public class Wyplata {
 		this.pensja_brutto = pensja_brutto;
 	}
 
+	public Float getSk_emerytalna() {
+		return sk_emerytalna;
+	}
+
+	public void setSk_emerytalna(Float sk_emerytalna) {
+		this.sk_emerytalna = sk_emerytalna;
+	}
+
+	public Float getSk_rentowa() {
+		return sk_rentowa;
+	}
+
+	public void setSk_rentowa(Float sk_rentowa) {
+		this.sk_rentowa = sk_rentowa;
+	}
+
+	public Float getSk_chorobowa() {
+		return sk_chorobowa;
+	}
+
+	public void setSk_chorobowa(Float sk_chorobowa) {
+		this.sk_chorobowa = sk_chorobowa;
+	}
+
+	public Float getPod_na_ub_zdr() {
+		return pod_na_ub_zdr;
+	}
+
+	public void setPod_na_ub_zdr(Float pod_na_ub_zdr) {
+		this.pod_na_ub_zdr = pod_na_ub_zdr;
+	}
+
+	public Float getSk_zdrowotne() {
+		return sk_zdrowotne;
+	}
+
+	public void setSk_zdrowotne(Float sk_zdrowotne) {
+		this.sk_zdrowotne = sk_zdrowotne;
+	}
+
+	public Float getZalicz_podatek_dochodowy() {
+		return zalicz_podatek_dochodowy;
+	}
+
+	public void setZalicz_podatek_dochodowy(Float zalicz_podatek_dochodowy) {
+		this.zalicz_podatek_dochodowy = zalicz_podatek_dochodowy;
+	}
+
+	
+	
 }

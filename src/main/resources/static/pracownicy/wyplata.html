@@ -36,6 +36,7 @@
 			 		<input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" id="stawka" ng-model="wyplata.stawka">
 			 		<label for="dataa">Ilość godzin</label>
 			 		<input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" id="ilosc_godz" ng-model="wyplata.ilosc_godz">
+					<input type="text" class="form-control">
 				</div>
 				<a href="#pracownicy" class="btn btn-info btn-lg" ng-click="addWyplata(wyplata)">UTWÓRZ<br></a>
 				

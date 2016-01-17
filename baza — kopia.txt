@@ -103,8 +103,14 @@ id_pracownik int(5),
 miesiac varchar(15),
 stawka float,
 ilosc_godz int (5),
-pensja_netto float default 0,
-pensja_brutto float default 0
+pensja_brutto float,
+sk_emerytalna float,
+sk_rentowa float,
+sk_chorobowa float,
+pod_na_ub_zdr float,
+sk_zdrowotne float,
+zalicz_podatek_dochodowy float,
+pensja_netto float 
 );
 
 create table usun(
