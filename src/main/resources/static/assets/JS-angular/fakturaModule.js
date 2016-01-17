@@ -101,7 +101,19 @@ fakturaModule.controller("fakturaPozycjeCtrl",["Restangular","$scope","$filter",
 	
 	
 	$scope.addToFaktList = function(invoiceposition) {
+		var fakturapozycje = Restangular.all('invoicepositions');
 		var opis="przechowywanie";
+		$scope.poz = {
+				id_invoice:	    paramValue,
+				pozycja: 		$scope.pozycja,
+				opis_uslugi:	opis,
+				liczba_dni:		invoiceposition.liczba_dni,
+				id_product: 	invoiceposition.id_product,
+				ilosc_palet:	invoiceposition.ilosc_palet,
+				cena_paleta:	invoiceposition.cena_paleta,
+				kwota:			invoiceposition.cena_paleta*invoiceposition.ilosc_palet*invoiceposition.liczba_dni
+			};
+		
 		$scope.listaPozycji.push({
 			id_invoice:	    paramValue,
 			pozycja: 		$scope.pozycja,
@@ -113,6 +125,7 @@ fakturaModule.controller("fakturaPozycjeCtrl",["Restangular","$scope","$filter",
 			kwota:			invoiceposition.cena_paleta*invoiceposition.ilosc_palet*invoiceposition.liczba_dni
 		});
 		$scope.pozycja = $scope.pozycja +1;
+		fakturapozycje.post($scope.poz);
 	}
 	$scope.removeFromPozLista = function(index){
 		
