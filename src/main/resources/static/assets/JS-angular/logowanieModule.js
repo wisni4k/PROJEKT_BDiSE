@@ -36,7 +36,11 @@ logowanieModule.controller("logowanieCtrl",["Restangular","$scope","$filter","$r
      		if($scope.listaKont[i].login == login && $scope.listaKont[i].haslo == haslo && $scope.listaKont[i].status_konta == 1){
      			if($scope.listaKont[i].uprawnienia == "wszystko"){
      				window.location.href = "#menu";
-     				document.cookie="username=wszytsko";
+     				var data = new Date();
+     				var dni = 1;
+     		        data.setTime(data.getTime()+(dni*24*60*60*1000));           
+     		        var expires = "; expires="+data.toGMTString();
+     				document.cookie="username=wszytsko"+expires;
      				console.log(document.cookie);
      				break;
      			}
