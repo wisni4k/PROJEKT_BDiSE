@@ -42,9 +42,6 @@ public class Konta {
 	
 	////////////relacje//////////////////
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_pracownik", referencedColumnName = "id_pracownik", nullable = false, insertable = false, updatable = false)
-	private Pracownik pracownik;
 
 	////////////getery i setery/////////////
 	
@@ -110,13 +107,6 @@ public class Konta {
 	}
 
 
-	public Pracownik getPracownik() {
-		return pracownik;
-	}
 
-
-	public void setPracownik(Pracownik pracownik) {
-		this.pracownik = pracownik;
-	}
 
 }

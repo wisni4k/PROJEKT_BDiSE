@@ -42,7 +42,7 @@
 					<tr>
 						<td>ID faktury</td>
 						<td>Pozycja</td>
-						<td>ID usługi</td>
+						<td>Opis usługi</td>
 						<td>ID produktu</td>
 						<td>Liczba dni</td>
 						<td>Ilość palet</td>
@@ -54,7 +54,7 @@
 			  		<tr ng-repeat="n in prawidloweSczegoly | filter:wyszukiwarka | orderBy:'+pozycja'">
 			    		<td>{{n.id_invoice}}</td>
 			    		<td>{{n.pozycja}}</td>
-			    		<td>{{n.id_uslugi}}</td>
+			    		<td>{{n.opis_uslugi}}</td>
 			    		<td>{{n.id_product}}</td>
 			    		<td>{{n.liczba_dni}}</td>
 			    		<td>{{n.ilosc_palet}}</td>

@@ -101,10 +101,11 @@ fakturaModule.controller("fakturaPozycjeCtrl",["Restangular","$scope","$filter",
 	
 	
 	$scope.addToFaktList = function(invoiceposition) {
+		var opis="przechowywanie";
 		$scope.listaPozycji.push({
 			id_invoice:	    paramValue,
 			pozycja: 		$scope.pozycja,
-			id_uslugi:		invoiceposition.id_uslugi,
+			opis_uslugi:	opis,
 			liczba_dni:		invoiceposition.liczba_dni,
 			id_product: 	invoiceposition.id_product,
 			ilosc_palet:	invoiceposition.ilosc_palet,
@@ -116,7 +117,7 @@ fakturaModule.controller("fakturaPozycjeCtrl",["Restangular","$scope","$filter",
 	$scope.removeFromPozLista = function(index){
 		
 	    $scope.listaPozycji.splice(index, 1);
-	    for(i=0;i<$scope.listaPozycji.length;i++){
+	    for(i=0;i<=$scope.listaPozycji.length;i++){
 	    	$scope.listaPozycji[i].pozycja = i+1;
 	    	$scope.pozycja = i+2;
       	}
@@ -139,20 +140,12 @@ fakturaModule.controller("fakturaPozycjeCtrl",["Restangular","$scope","$filter",
       $scope.podmiany = function(pozycje){
       	console.log(pozycje);
       	for(var i = 0;i<pozycje.length;i++){
-      		$scope.podmianaUslugi(pozycje[i]);
+      		
       		$scope.podmianaProduktu(pozycje[i]);
       	}
       }
       
-      $scope.podmianaUslugi = function(pozycja){
-      	var ktore = pozycja.id_uslugi;
-      	var usluga = Restangular.all('uslugis');
-		  	var oneUsluga = Restangular.one('uslugis', ktore);
-		  	oneUsluga.get().then(function(uslug) {
-			  $scope.usluga = uslug.opis;
-			  pozycja.id_uslugi = $scope.usluga;
-		  	});
-      }
+ 
       
       $scope.podmianaProduktu = function(pozycja){
       	var ktore = pozycja.id_product;

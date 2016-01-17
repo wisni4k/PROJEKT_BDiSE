@@ -31,8 +31,8 @@
 			<form>
 			  
 		
-			  <label for="adres">ID usługi:</label>
-			  <input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" id="id_uslugi" ng-model="invoiceposition.id_uslugi">
+			 <!--  <label for="adres">Opis uslugi:</label>
+			  <input type="text" class="form-control"  id="opis_uslugi" ng-model="invoiceposition.opis_uslugi"> -->
 			  
 			   <label for="adres">ID produktu:</label>
 			  <input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" id="id_product" ng-model="invoiceposition.id_product">
@@ -57,7 +57,7 @@
 				<table class="table table-hover">
 				<thead>
 					<tr>
-						<td>ID uslugi</td>
+						<td>Opis uslugi</td>
 						<td>Pozycja</td>
 						<td>ID produktu</td>
 						<td>Ilość palet</td>
@@ -68,7 +68,7 @@
 				</thead>
 				<tbody>
 			  		<tr ng-repeat="n in listaPozycji">
-			    		<td>{{n.id_uslugi}}</td>
+			    		<td>{{n.opis_uslugi}}</td>
 			    		<td>{{n.pozycja}}</td>
 			    		<td>{{n.id_product}}</td>
 			    		<td>{{n.ilosc_palet}}</td>

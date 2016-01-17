@@ -21,7 +21,7 @@ CREATE TABLE InvoicePosition(
 id_InvoicePosition int(5) primary key auto_increment,
 id_invoice int(5),
 pozycja int(5),
-id_uslugi int(5),
+opis_uslugi varchar(100),
 liczba_dni int(5),
 id_product int(5),
 ilosc_palet int(5),
@@ -96,10 +96,6 @@ stanowisko varchar(30)
 );
 
 
-create table uslugi(
-id_uslugi int(5) primary key auto_increment,
-opis varchar(50)
-);
 
 create table wyplata(
 id_wyplata int (5) primary key auto_increment,
@@ -125,6 +121,8 @@ id_pracownik int(5) not null,
 status_konta int(5) default 1
 );
 
+
+
 alter table DocPZ add constraint FK_docpz_customer foreign key (id_customer) references customer(id_customer);
 alter table DocPZpos add constraint FK_DocPZpos_docpz foreign key (id_docpz) references docpz(id_docpz);
 
@@ -135,7 +133,6 @@ alter table paleta add constraint FK_paleta_pozycja foreign key (id_pozycja) ref
 alter table wyplata add constraint FK_wyplata_pracownik foreign key (id_pracownik) references pracownik(id_pracownik);
 alter table invoice add constraint FK_Invoice_Customer foreign key (id_customer) references Customer(id_customer);
 
-alter table InvoicePosition add constraint FK_InvoicePosition_usluga foreign key (id_uslugi)  references uslugi(id_uslugi);
 alter table InvoicePosition add constraint FK_InvoicePosition_Invoice foreign key (id_invoice) references Invoice(id_invoice);
 alter table invoiceposition add constraint FK_invoiceposition_product foreign key (id_product) references product(id_product);
 
@@ -148,6 +145,8 @@ alter table usun add constraint FK_usun_pracownik foreign key (id_pracownik) ref
 
 alter table konta add constraint FK_konto_pracownik foreign key (id_pracownik) references pracownik(id_pracownik);
 
+
+insert into konta(login,haslo,uprawnienia,id_pracownik) values('admin','admin','wszystko',0);
 
 procedury
 

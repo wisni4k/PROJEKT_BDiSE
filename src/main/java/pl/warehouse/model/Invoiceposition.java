@@ -41,8 +41,8 @@ public class Invoiceposition {
 	private int pozycja;
 
 	@Basic(optional = false)
-	@Column(name = "id_uslugi")
-	private int id_uslugi;
+	@Column(name = "opis_uslugi")
+	private String opis_uslugi;
 
 	@Basic(optional = false)
 	@Column(name = "liczba_dni")
@@ -70,9 +70,6 @@ public class Invoiceposition {
 	@JoinColumn(name = "id_product", referencedColumnName = "id_product", nullable = false, insertable = false, updatable = false)
 	private Product product;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_uslugi", referencedColumnName = "id_uslugi", nullable = false, insertable = false, updatable = false)
-	private Uslugi uslugi;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_invoice", referencedColumnName = "id_invoice", nullable = false, insertable = false, updatable = false)
@@ -106,13 +103,7 @@ public class Invoiceposition {
 		this.pozycja = pozycja;
 	}
 
-	public int getId_uslugi() {
-		return id_uslugi;
-	}
-
-	public void setId_uslugi(int id_uslugi) {
-		this.id_uslugi = id_uslugi;
-	}
+	
 
 	public int getLiczba_dni() {
 		return liczba_dni;
@@ -162,12 +153,14 @@ public class Invoiceposition {
 		this.product = product;
 	}
 
-	public Uslugi getUslugi() {
-		return uslugi;
+	
+
+	public String getOpis_uslugi() {
+		return opis_uslugi;
 	}
 
-	public void setUslugi(Uslugi uslugi) {
-		this.uslugi = uslugi;
+	public void setOpis_uslugi(String opis_uslugi) {
+		this.opis_uslugi = opis_uslugi;
 	}
 
 	public Invoice getInvoice() {
