@@ -34,12 +34,21 @@ wydanieTowaruModule.controller("pozycjeWZCtrl",["Restangular","$scope","$filter"
 	
 	
 	$scope.addToPozList = function(docwzpos) {
+		var docPozycjeWZ = Restangular.all('docwzposes');
+		$scope.poz = {
+				id_docwz: 		paramValue,
+				pozycja: 		$scope.pozycja,
+				id_product: 	docwzpos.id_product,
+				ilosc_palet: 	docwzpos.ilosc_palet
+			};
+		
 		$scope.listaPozycji.push({
 			id_docwz: 		paramValue,
 			pozycja: 		$scope.pozycja,
 			id_product: 	docwzpos.id_product,
 			ilosc_palet: 	docwzpos.ilosc_palet
 		});
+		docPozycjeWZ.post($scope.poz);
 		$scope.pozycja = $scope.pozycja +1;
 	}
 	

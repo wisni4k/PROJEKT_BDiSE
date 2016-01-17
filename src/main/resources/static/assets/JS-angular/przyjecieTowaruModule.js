@@ -91,6 +91,13 @@ przyjecieTowaruModule.controller("listaPozycjiPZ",["Restangular","$scope","$filt
 	
 	
 	$scope.addToPozList = function(docpzpos) {
+		var docPozycjePZ = Restangular.all('docpzposes');
+		$scope.poz = {
+			id_docpz:	    paramValue,
+			pozycja: 		$scope.pozycja,
+			nazwa: 			docpzpos.nazwa,
+			ilosc_palet: 	docpzpos.ilosc_palet
+		};
 		$scope.listaPozycji.push({
 			id_docpz:	    paramValue,
 			pozycja: 		$scope.pozycja,
@@ -98,6 +105,7 @@ przyjecieTowaruModule.controller("listaPozycjiPZ",["Restangular","$scope","$filt
 			ilosc_palet: 	docpzpos.ilosc_palet
 		});
 		$scope.pozycja = $scope.pozycja +1;
+		docPozycjePZ.post($scope.poz);
 	}
 	$scope.removeFromPozLista = function(index){
 		
