@@ -33,30 +33,44 @@ logowanieModule.controller("logowanieCtrl",["Restangular","$scope","$filter","$r
   	else if(login != undefined){
      	for(i=0;i<$scope.listaKont.length;i++){
      		var str1 = $scope.listaKont[i].uprawnienia;
-     		if($scope.listaKont[i].login == login && $scope.listaKont[i].haslo == haslo && $scope.listaKont[i].status_konta == 1){
-     			if($scope.listaKont[i].uprawnienia == "wszystko"){
-     				window.location.href = "#menu";
-     				var data = new Date();
-     				var dni = 1;
-     		        data.setTime(data.getTime()+(dni*24*60*60*1000));           
-     		        var expires = "; expires="+data.toGMTString();
-     				document.cookie="username=wszytsko"+expires;
-     				console.log(document.cookie);
-     				break;
+     		if($scope.listaKont[i].login == login)
+     			{
+     				if($scope.listaKont[i].haslo == haslo)
+     					{
+     						if($scope.listaKont[i].status_konta == 1)
+     							{
+     							if($scope.listaKont[i].uprawnienia == "wszystko"){
+     			     				window.location.href = "#menu";
+     			     				var data = new Date();
+     			     				var dni = 1;
+     			     		        data.setTime(data.getTime()+(dni*24*60*60*1000));           
+     			     		        var expires = "; expires="+data.toGMTString();
+     			     				document.cookie="username=wszytsko"+expires;
+     			     				console.log(document.cookie);
+     			     				break;
+     			     				}
+     							if($scope.listaKont[i].uprawnienia == "magazynier"){
+     			     				window.location.href = "#menum";
+     			     				document.cookie="username=magaz";
+     			     				break;
+     			     				}
+     							}
+     						else
+     							{
+     							window.location.href = "#blad2";
+     							}
+     					}
+     				else
+     					{
+     						window.location.href = "#blad";
+     					}
      			}
-     			else if($scope.listaKont[i].uprawnienia == "magazynier"){
-     				window.location.href = "#menum";
-     				document.cookie="username=magaz";
-     				break;
+     		else
+     			{
+     				window.location.href = "#blad";
      			}
-     			else{
-     				window.location.href = "#menu";
-     				break;
-     			}
-     		}
-     		else{
-     			window.location.href = "#/";
-     		}
+     			
+     			
      	}
      }
     } 

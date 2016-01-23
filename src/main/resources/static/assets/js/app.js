@@ -69,7 +69,16 @@ globalModule.config(['$routeProvider',
 				  when('/uslugi',{
 					  templateUrl:	'uslugi/listauslug.html',
 					  controller:	'MainCtrl'
+				  }).
+				  when('/blad',{
+					  templateUrl:	'blad.html',
+					  controller: 	'MainCtrl'
+				  }).
+				  when('/blad2',{
+					  templateUrl:	'blad2.html',
+					  controller: 	'MainCtrl'
 				  })
+				  
 				 
 			  }
 ]);

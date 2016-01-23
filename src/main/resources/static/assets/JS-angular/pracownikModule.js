@@ -8,7 +8,7 @@ pracownikModule.config(["RestangularProvider",function(RestangularProvider){
 pracownikModule.config(['$routeProvider',
                      function($routeProvider) {
         			    $routeProvider.
-        			      when('/nowekonto', {
+        			      when('/nowekonto/:number', {
         			        templateUrl: 'pracownicy/noweKontoLogowanie.html',
         			        controller: 'noweKontoCtrl'
         			      }).
@@ -16,7 +16,7 @@ pracownikModule.config(['$routeProvider',
           			        templateUrl: 'pracownicy/zwolnienie.html',
           			        controller: 'zwolnieniePracownikaCtrl'
           			      }).
-          			      when('/wyplata',{
+          			      when('/wyplata/:number',{
           			    	  templateUrl: 'pracownicy/wyplata.html',
           			    	  controller: 'pensjaCtrl'
           			      }).
@@ -64,8 +64,9 @@ pracownikModule.controller("pracownikCtrl",["Restangular","$scope","$filter",fun
 }]);
 
 
-pracownikModule.controller("noweKontoCtrl",["Restangular","$scope","$filter",function(Restangular,$scope,$filter){
-	
+pracownikModule.controller("noweKontoCtrl",["Restangular","$scope","$filter","$route",function(Restangular,$scope,$filte,$route){
+	var paramValue = $route.current.params.number;
+	console.log(paramValue);
 	$scope.getKonta = function(konta) {
 		var User = Restangular.all('kontas');
 		var oneUser = Restangular.one('kontas', konta.id);
@@ -79,7 +80,7 @@ pracownikModule.controller("noweKontoCtrl",["Restangular","$scope","$filter",fun
     	$scope.user = {	login: 			konta.login,
 		    			haslo: 		   	konta.haslo,
 		    			uprawnienia:  	konta.uprawnienia,
-		    			id_pracownik: 	konta.id_pracownik,
+		    			id_pracownik: 	paramValue
 		    			};
     	
     	User.post($scope.user);
@@ -152,7 +153,7 @@ pracownikModule.controller("pensjaCtrl",["Restangular","$scope","$filter","$rout
     	var pensja_netto = podstawa-zdrow-zaliczka;
     	
     	$scope.user = {
-		    			id_pracownik: 	wyplata.id_pracownik,
+		    			id_pracownik: 	paramValue,
 		    			miesiac:		wyplata.miesiac,
 		    			stawka:			wyplata.stawka,
 		    			ilosc_godz:		wyplata.ilosc_godz,

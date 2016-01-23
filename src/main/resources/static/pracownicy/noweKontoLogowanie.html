@@ -34,8 +34,7 @@
 			 		<input type="password" class="form-control" id="haslo" ng-model="konta.haslo">
 			 		<label for="dataa">Uprawnienia</label>
 			 		<input type="text" class="form-control" id="uprawnienia" ng-model="konta.uprawnienia">
-			 		<label for="dataa">ID pracownika</label>
-			 		<input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" id="id_pracownik" ng-model="konta.id_pracownik">
+			 		
 				</div>
 				<a href="#pracownicy" class="btn btn-info btn-lg" ng-click="addKonta(konta)">UTWÓRZ<br></a>
 				
